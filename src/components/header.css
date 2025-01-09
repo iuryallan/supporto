@@ -1,0 +1,17 @@
+.title{
+  text-transform: lowercase;
+  font-size: 2rem;
+  color: #fff;
+}
+
+header{
+  padding: 1rem;
+  background-color: #8E9DCC;
+  display: flex;
+  justify-content: space-between;
+}
+
+.buttons-login{
+  display: flex;
+  gap:1rem;
+}

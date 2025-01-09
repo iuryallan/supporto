@@ -1,0 +1,17 @@
+section{
+  background-color: #8E9DCC;
+  display: flex;
+  justify-content: space-around;
+  padding: 10rem 0;
+}
+
+.content-hero{
+  color: white;
+  max-width: 35rem;
+  line-height: 1.5;
+}
+
+.content-hero p{
+  line-height: 2;
+  margin-bottom: 1.5rem;
+}
