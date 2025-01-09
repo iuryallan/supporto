@@ -1,0 +1,37 @@
+.about-us {
+    display: flex;
+    flex-direction: column;
+    background-color: #F9F9ED;
+}
+
+.quem-somos {
+    display: flex;
+    justify-content: center;
+    font-size: 2rem;
+}
+
+.content-about {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 10rem;
+}
+
+.text-about {
+    max-width: 60rem;
+    line-height: 1.5;
+}
+
+.content-about h3 {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+}
+
+.content-about p {
+    font-size: 1.5rem;
+}
+
+.img-aboutus {
+    height: 40rem;
+}

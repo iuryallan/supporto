@@ -1,5 +1,6 @@
 import './hero.css'
 import Button from './Button'
+import ImgHero from '../assets/img-hero.svg'
 
 function hero(){
   return(
@@ -14,7 +15,7 @@ function hero(){
         <Button label='Quero ajuda'/>
       </div>
       <div>
-        <img src="../assets/img-hero.svg" alt="imagem pessoas abraçadas"/>
+        <img src={ImgHero} alt='duas pessoas abraçadas' className='img-hero'/>;
       </div>
     </section>
   );
