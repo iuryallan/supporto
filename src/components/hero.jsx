@@ -4,7 +4,7 @@ import ImgHero from '../assets/img-hero.svg'
 
 function hero(){
   return(
-    <section>
+    <section className="section-hero">
       <div className="content-hero">
         <h2>
           Nem toda tempestade precisa ser enfrentada sozinha. Procure ajuda.
@@ -12,10 +12,10 @@ function hero(){
         <p>
           Somos uma plataforma de Apoio Psicológico Comunitário. Oferecemos profissionais qualificados e serviço acessível.
         </p>
-        <Button label='Quero ajuda'/>
+        <Button className="help-me" label='Quero ajuda'/>
       </div>
       <div>
-        <img src={ImgHero} alt='duas pessoas abraçadas' className='img-hero'/>;
+        <img src={ImgHero} alt='duas pessoas abraçadas' className='img-hero'/>
       </div>
     </section>
   );
