@@ -5,7 +5,7 @@ function aboutUs() {
     return (
         <section className='about-us'>
             <div className='quem-somos'>
-                <h2>Quem Somos?</h2>
+                <h2>Quem somos?</h2>
             </div>
             <div className='content-about'>
                 <div>
