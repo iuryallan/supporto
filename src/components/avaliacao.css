@@ -1,0 +1,57 @@
+.secaoAvaliacao{
+    background-color: #DBF4A7;
+    padding: 2rem 1rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.tituloAvaliacao{
+    margin-bottom: 2rem;
+    
+}
+.tituloAvaliacao h2{
+    font-weight: normal;
+    font-size: 2rem;
+}
+.conteinerCards{
+    display: flex;
+    gap: 1rem;
+}
+.cardAvaliacao{
+    background-color: #F9F9ED;
+    padding: 1rem;
+    border-radius: 4rem;
+
+}
+
+.headerCard{
+    border-bottom: 0.1rem solid #8E9DCC;
+    padding: 1rem 2rem;
+}
+.headerCard h3{
+    font-size: 1.5rem;
+    font-weight: normal;
+    
+}
+.bodyCard{
+    padding: 1rem;
+    border-bottom: 0.1rem solid #8E9DCC;
+    min-height: 20rem;
+    max-width: 20rem;
+}
+.footerCard{
+    padding: 1rem;
+    display: flex;
+    justify-content: center;
+}
+.footerCard img{
+    width: 2rem;
+}
+.navAvaliacao {
+    margin-top: 2rem;
+}
+.navAvaliacao img{
+    color: #7D84B2;
+    width: 2rem;
+}
