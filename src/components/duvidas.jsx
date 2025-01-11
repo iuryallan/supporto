@@ -4,11 +4,15 @@ import UpArrow from '../assets/up-arrow.svg';
 import {useState} from 'react';
 
 function Duvidas(){
-  const [arrow, setArrow] = useState(DownArrow);
+  const [arrow1, setArrow1] = useState(DownArrow);
+  const [arrow2, setArrow2] = useState(DownArrow);
+  const [arrow3, setArrow3] = useState(DownArrow);
+  const [arrow4, setArrow4] = useState(DownArrow);
 
-  const handleToggle = () => {
-    setArrow(arrow === DownArrow ? UpArrow : DownArrow);
-  };
+  const handleToggle1 = () => setArrow1(arrow1 === DownArrow ? UpArrow : DownArrow);
+  const handleToggle2 = () => setArrow2(arrow2 === DownArrow ? UpArrow : DownArrow);
+  const handleToggle3 = () => setArrow3(arrow3 === DownArrow ? UpArrow : DownArrow);
+  const handleToggle4 = () => setArrow4(arrow4 === DownArrow ? UpArrow : DownArrow);
 
   return(
     <section className='secao-duvidas'>
@@ -18,10 +22,10 @@ function Duvidas(){
 
       <div className="perguntas-respostas">
         <details>
-          <summary onClick={handleToggle}>
+          <summary onClick={handleToggle1}>
             <div>Quanto custa?</div>
             <div>
-              <img src={arrow} alt="seta para baixo" />
+              <img src={arrow1} alt="seta para baixo" />
             </div>
           </summary>
           <div className='texto-ajuda'>
@@ -30,10 +34,10 @@ function Duvidas(){
         </details>
 
         <details>
-          <summary onClick={handleToggle}>
+          <summary onClick={handleToggle2}>
             <div>Como achar meu profissional ideal?</div>
             <div>
-              <img src={arrow} alt="seta para baixo" />
+              <img src={arrow2} alt="seta para baixo" />
             </div>
           </summary>
           <div className="texto-ajuda">
@@ -42,10 +46,10 @@ function Duvidas(){
         </details>
 
         <details>
-          <summary onClick={handleToggle}>
+          <summary onClick={handleToggle3}>
             <div>Como funcionam os atendimentos?</div>
             <div>
-              <img src={arrow} alt="seta para baixo" />
+              <img src={arrow3} alt="seta para baixo" />
             </div>
           </summary>
           <div className="texto-ajuda">
@@ -54,10 +58,10 @@ function Duvidas(){
         </details>
 
         <details>
-          <summary onClick={handleToggle}>
+          <summary onClick={handleToggle4}>
             <div>Como posso me tornar um colaborador?</div>
             <div>
-              <img src={arrow} alt="seta para baixo" />
+              <img src={arrow4} alt="seta para baixo" />
             </div>
           </summary>
           <div className="texto-ajuda">
