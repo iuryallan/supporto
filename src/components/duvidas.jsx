@@ -1,8 +1,15 @@
 import './duvidas.css';
 import DownArrow from '../assets/down-arrow.svg';
 import UpArrow from '../assets/up-arrow.svg';
+import {useState} from 'react';
 
-function duvidas(){
+function Duvidas(){
+  const [arrow, setArrow] = useState(DownArrow);
+
+  const handleToggle = () => {
+    setArrow(arrow === DownArrow ? UpArrow : DownArrow);
+  };
+
   return(
     <section className='secao-duvidas'>
       <div className='h2-duvidas'>
@@ -11,10 +18,10 @@ function duvidas(){
 
       <div className="perguntas-respostas">
         <details>
-          <summary>
+          <summary onClick={handleToggle}>
             <div>Quanto custa?</div>
             <div>
-              <img src={DownArrow} alt="seta para baixo" />
+              <img src={arrow} alt="seta para baixo" />
             </div>
           </summary>
           <div className='texto-ajuda'>
@@ -23,10 +30,10 @@ function duvidas(){
         </details>
 
         <details>
-          <summary>
+          <summary onClick={handleToggle}>
             <div>Como achar meu profissional ideal?</div>
             <div>
-              <img src={DownArrow} alt="seta para baixo" />
+              <img src={arrow} alt="seta para baixo" />
             </div>
           </summary>
           <div className="texto-ajuda">
@@ -35,10 +42,10 @@ function duvidas(){
         </details>
 
         <details>
-          <summary>
+          <summary onClick={handleToggle}>
             <div>Como funcionam os atendimentos?</div>
             <div>
-              <img src={DownArrow} alt="seta para baixo" />
+              <img src={arrow} alt="seta para baixo" />
             </div>
           </summary>
           <div className="texto-ajuda">
@@ -47,10 +54,10 @@ function duvidas(){
         </details>
 
         <details>
-          <summary>
+          <summary onClick={handleToggle}>
             <div>Como posso me tornar um colaborador?</div>
             <div>
-              <img src={DownArrow} alt="seta para baixo" />
+              <img src={arrow} alt="seta para baixo" />
             </div>
           </summary>
           <div className="texto-ajuda">
@@ -62,4 +69,4 @@ function duvidas(){
   )
 }
 
-export default duvidas;
+export default Duvidas;
