@@ -1,5 +1,7 @@
-import Star from "../assets/star.svg"
 import Ellipse from "../assets/ellipse.svg"
+import CardOpiniao from "./cardOpiniao";
+
+
 import './avaliacao.css'
 function Avaliacao(){
     return (
@@ -8,61 +10,14 @@ function Avaliacao(){
                 <h2>Qual a opinião dos nossos usuários?</h2>
             </div>
             <div className="conteinerCards">
-                <div className="cardAvaliacao">
-                    <div className="headerCard">
-                        <h3>Fulano</h3>
-                        <p>Paciente de Fulana</p>
-                    </div>
-                    <div className="bodyCard">
-                        <p>“Profissional incrível! Sou muito grato por toda ajuda.”</p>
-                    </div>
-                    <div className="footerCard">
-                        <img src={Star} alt="icone de estrela" />
-                        <img src={Star} alt="icone de estrela" />
-                        <img src={Star} alt="icone de estrela" />
-                        <img src={Star} alt="icone de estrela" />
-                        <img src={Star} alt="icone de estrela" />
-                    </div>
-                </div>
-                
-                <div className="cardAvaliacao">
-                    <div className="headerCard">
-                        <h3>Fulano</h3>
-                        <p>Paciente de Fulana</p>
-                    </div>
-                    <div className="bodyCard">
-                        <p>“Profissional incrível! Sou muito grato por toda ajuda.”</p>
-                    </div>
-                    <div className="footerCard">
-                        <img src={Star} alt="icone de estrela" />
-                        <img src={Star} alt="icone de estrela" />
-                        <img src={Star} alt="icone de estrela" />
-                        <img src={Star} alt="icone de estrela" />
-                        <img src={Star} alt="icone de estrela" />
-                    </div>
-                </div>
-                <div className="cardAvaliacao">
-                    <div className="headerCard">
-                        <h3>Fulano</h3>
-                        <p>Paciente de Fulana</p>
-                    </div>
-                    <div className="bodyCard">
-                        <p>“Profissional incrível! Sou muito grato por toda ajuda.”</p>
-                    </div>
-                    <div className="footerCard">
-                        <img src={Star} alt="icone de estrela" />
-                        <img src={Star} alt="icone de estrela" />
-                        <img src={Star} alt="icone de estrela" />
-                        <img src={Star} alt="icone de estrela" />
-                        <img src={Star} alt="icone de estrela" />
-                    </div>
-                </div>
+                <CardOpiniao nome='diego' profissional='barbeiro' opiniao = 'topsisisismo'/>
+                <CardOpiniao nome='iury' profissional='prefeito' opiniao = 'competentissisismo'/>
+                <CardOpiniao nome='Fabs' profissional='gay' opiniao = 'gente boasisisimo'/>
             </div>
             
             <div className="navAvaliacao">
-                
-                <img src={Ellipse} alt="icone ellipse" />
-                <img src={Ellipse} alt="icone ellipse" />
+                <ion-icon name="ellipse" className='elipse-nav'></ion-icon>
+                <ion-icon name="ellipse" className='elipse-nav'></ion-icon>
             </div>
         </section>
     )

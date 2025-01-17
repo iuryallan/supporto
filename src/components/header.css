@@ -1,12 +1,12 @@
 .title{
   text-transform: lowercase;
   font-size: 2rem;
-  color: #fff;
+  color: var(--branco);
 }
 
 header{
   padding: 2rem 2rem 2rem 2rem;
-  background-color: #8E9DCC;
+  background-color:var(--roxoClaro);
   display: flex;
   justify-content: space-between;
   position: sticky;

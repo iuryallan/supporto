@@ -1,7 +1,7 @@
 .about-us {
     display: flex;
     flex-direction: column;
-    background-color: #F9F9ED;
+    background-color: var(--bg);
     padding: 10rem 0;
 }
 
@@ -37,4 +37,14 @@
     height: 40rem;
     border-bottom-right-radius: 10rem ;
     border-bottom-left-radius: 10rem ;
+}
+
+@media (max-width: 800px){
+    .img-aboutus {
+        height: 28rem;
+    }
+
+    .content-about{
+        flex-wrap: wrap;
+    }
 }

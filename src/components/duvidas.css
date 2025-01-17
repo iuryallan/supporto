@@ -6,17 +6,20 @@
 }
 details{
   display: block;
-  border: 0.1rem solid #8E9DCC;
+  border: 0.1rem solid var(--roxoClaro);
   padding: 1rem 2rem;
   border-radius: 6rem;
-  width: 120rem;
+  max-width: 80rem;
+  width: 100%;
   cursor: pointer;
 }
 
 .perguntas-respostas{
+  width: 100%;
   min-height: 6rem;
   display: flex;
   flex-direction: column;
+  align-items: center;
   gap: 2rem;
 }
 
@@ -26,17 +29,18 @@ details{
 }
 
 .texto-ajuda{
-  border-top:0.1rem solid #8E9DCC;
+  border-top:0.1rem solid var(--roxoClaro);
   padding: 0.5rem 1rem 0.5rem 1rem;
   font-size: 1.5rem;
   line-height: 1.5;
-  color: rgb(30, 30, 30);
+  color: #1e1e1e;
 }
 
 summary{
   display: flex;
   justify-content: space-between;
   padding: 0.5rem 1rem 0.5rem 1rem;
+  width: 100%;
   font-size: 1.7rem;
   list-style: none;
   cursor: pointer;
