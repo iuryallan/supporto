@@ -12,11 +12,11 @@ function cardOpiniao(props){
           <p>{props.opiniao}</p>
       </div>
       <div className="footerCard">
-          <img src={Star} alt="icone de estrela" />
-          <img src={Star} alt="icone de estrela" />
-          <img src={Star} alt="icone de estrela" />
-          <img src={Star} alt="icone de estrela" />
-          <img src={Star} alt="icone de estrela" />
+      <ion-icon name="star"></ion-icon>
+      <ion-icon name="star"></ion-icon>
+      <ion-icon name="star"></ion-icon>
+      <ion-icon name="star"></ion-icon>
+      <ion-icon name="star"></ion-icon>
       </div>
     </div>  
 
