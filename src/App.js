@@ -4,8 +4,8 @@ import Header from './components/Header'
 import Hero from './components/hero'
 import AboutUs from './components/AboutUs'
 import Duvidas from './components/duvidas'
-
 import Avaliacao from './components/avaliacao'
+import Footer from './components/footer'
 function App() {
   return (
     <>
@@ -14,6 +14,7 @@ function App() {
       <AboutUs/>
       <Avaliacao/>
       <Duvidas/>
+      <Footer/>
     </>
   );
 }
