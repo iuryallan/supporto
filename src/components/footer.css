@@ -33,7 +33,26 @@
   }
   
   .footer-section ul li a:hover {
-    text-decoration: underline;
+    color: #5b4ac9;
+  }
+
+  .social-icons {
+    display: flex;
+    gap: 5px;
+  }
+  
+  .icon {
+    width: 30px;
+    height: 30px;
+    transition: background-color 0.3s, border-radius 0.3s;
+    padding: 5px; 
+    border-radius: 50%; 
+  }
+  
+  .icon:hover {
+    background-color: #5b4ac9; 
+    border-radius: 50%;
+    box-shadow: 0px 4px 1px rgba(0, 0, 0, 0.2);
   }
   
   .footer-contact {
@@ -44,23 +63,6 @@
   .footer-contact p {
     margin: 5px 0;
   }
-  
-  .footer-contact .app-links {
-    margin-top: 10px;
-  }
-  
-  .footer-contact .app-links img {
-    margin-right: 10px;
-    width: 120px;
-  }
-  
-  .social-icons {
-    display: flex;
-    justify-content: flex-start;
-  }
-  
-  .social-icons img {
-    width: 30px;
-    margin-right: 10px;
-  }
+
+
   

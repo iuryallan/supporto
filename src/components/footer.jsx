@@ -34,9 +34,9 @@ function Footer (){
                     <li><a href=''>Fórum</a></li>
                 </ul>
                 <div className='social-icons'>
-                    <img src={ImgInsta} alt="Instagram"/>
-                    <img src={ImgFace} alt="Facebook"/>
-                    <img src= {ImgTwitter} alt="Twitter"/>
+                    <a href=''><img src={ImgInsta} alt="Instagram" className='icon'/></a>
+                    <a href=''><img src={ImgFace} alt="Facebook" className='icon'/></a>
+                    <a href=''><img src= {ImgTwitter} alt="Twitter" className='icon'/></a>
                 </div>
             </div>
             <div className="footer-contact">
