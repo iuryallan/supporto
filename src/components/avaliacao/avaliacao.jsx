@@ -1,6 +1,5 @@
-import Ellipse from "../assets/ellipse.svg"
-import CardOpiniao from "./cardOpiniao";
-
+import CardOpiniao from "../card-opiniao";
+import './avaliacao.css'
 
 import './avaliacao.css'
 function Avaliacao(){

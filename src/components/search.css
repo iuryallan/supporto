@@ -1,0 +1,32 @@
+.barraPesquisa{
+  max-width: 60rem;
+  width: 100%;
+  text-align: right;
+  position: relative;
+  display: inline-block;
+}
+
+.barraPesquisa input{
+  border-radius: 5rem;
+  background-color: #D9D9D9;  
+  padding: 1rem;
+  width: 100%;
+  border: 0;
+}
+
+.barraPesquisa input:focus{
+  border: 0;
+  outline: none;
+}
+
+.barraPesquisa ion-icon{
+  position: absolute;
+  right: 1rem;
+  font-size: 3rem;
+  color: #7D84B2;
+  transition: ease 0.3s transform;
+}
+
+.barraPesquisa ion-icon:hover{
+  transform: scale(1.050);
+}
