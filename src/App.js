@@ -1,10 +1,12 @@
 import "./App.css";
 
 import Home from "./pages/home/Home";
+import Agendamento from "./pages/agendamento/agendamento"
 function App() {
   return (
     <>
-      <Home />
+      {/* <Home/> */}
+      <Agendamento/>
     </>
   );
 }

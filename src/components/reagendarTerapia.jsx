@@ -3,7 +3,6 @@ import './reagendarTerapia.css'
 function reagendarTerapia(props){
   return(
     <div>
-      <p className="ult-agend">Último agendamento:</p>
       <div className="card-ult-agend">
         <div className="secaocom">
           <h4>Sessão de Terapia</h4>

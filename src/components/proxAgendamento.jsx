@@ -2,7 +2,6 @@ import './proxAgendamento.css'
 function proxAgendamento(props){
   return(
     <div>
-      <p className="prox-agend">Proximo agendamento:</p>
       <div className="card-prox-agend">
         <div className="secaocom">
           <h4>Sessão de Terapia</h4>
