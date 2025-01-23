@@ -6,9 +6,17 @@
 .button-login input {
     width: 100%;
     height: 5rem;
-    font-size: 2.5rem;
+    font-size: 1.8rem;
     background-color: #DBF4A7;
     border-radius: 4rem;
     border: none;
     box-shadow: 1px 1px 3px;
+    cursor: pointer;
+    transition: .5s;
+}
+
+.button-login input:hover {
+    transform: scale(1.05);
+    background: #799949;
+    color: #fff;
 }
