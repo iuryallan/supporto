@@ -12,7 +12,7 @@ function Footer (){
                     Sobre o suportto
                 </h4>
                 <ul>
-                    <li><a href=''>Quem somos nós</a></li>
+                    <li><a href='.about-us'>Quem somos nós</a></li>
                     <li><a href=''>Nossas avaliações</a></li>
                 </ul>
             </div>
