@@ -6,19 +6,16 @@ import AboutUs from './components/AboutUs'
 import Duvidas from './components/duvidas'
 import Avaliacao from './components/avaliacao'
 import Footer from './components/footer'
-import Profile from './components/Profile';
+import Login from './components/login'
+import LoginFazerParte from './components/loginFazerParte'
+import LoginPaciente from './components/loginPaciente'
+import LoginProfissional from './components/loginProfissional'
 
 function App() {
   return (
-    <>
-      <Header/>
-      <Hero/>
-      <AboutUs/>
-      <Avaliacao/>
-      <Duvidas/>
-      <Footer/>
-      <Profile/>
-    </>
+    <div className='Login'>
+      <Login/>
+    </div>
   );
 }
 
