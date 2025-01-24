@@ -7,17 +7,24 @@ import Duvidas from './components/duvidas'
 import Avaliacao from './components/avaliacao'
 import Footer from './components/footer'
 import Profile from './components/Profile';
+import Calendar from './components/Agend/Calendar';
 
 function App() {
   return (
     <>
-      <Header/>
+      {/* <Header/>
       <Hero/>
       <AboutUs/>
       <Avaliacao/>
       <Duvidas/>
       <Footer/>
-      <Profile/>
+      <Profile/> */}
+      <Calendar 
+        minDate={new Date()}
+        className='react-calendar' 
+        view='month' 
+        onClickDay={(date) => console.log(date)}
+      />
     </>
   );
 }
