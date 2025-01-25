@@ -175,3 +175,27 @@
   .react-calendar--selectRange .react-calendar__tile--hover {
     background-color: rgb(238 242 255);
   }
+
+  .container-agend {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2rem;
+    padding: 2rem;
+    margin-top: 6rem;
+    background-color: #fff;
+    border-radius: 2rem;
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+  }
+
+  .time-section {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 1rem;
+  }
+
+  .title-container {
+    display: flex;
+    font-size: 1.5rem;
+  }

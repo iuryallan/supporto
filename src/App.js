@@ -8,6 +8,7 @@ import Avaliacao from './components/avaliacao'
 import Footer from './components/footer'
 import Profile from './components/Profile';
 import Calendar from './components/Agend/Calendar';
+import TimePicker from './components/Agend/Time';
 
 function App() {
   return (
