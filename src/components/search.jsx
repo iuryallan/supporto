@@ -1,16 +1,34 @@
-import "./search.css"
-import Profissional from "../components/profissional"
-function search (){
+import React, { useState } from "react";
+import "./search.css";
+import Profissional from "../components/profissional";
+
+function Search() {
+  // Estado para controlar a visibilidade dos filtros
+  const [mostrarFiltros, setMostrarFiltros] = useState(false);
+
+  // Funções para manipular o foco no input
+  const mostrarFiltrosHandler = () => setMostrarFiltros(true);
+  const esconderFiltrosHandler = () => setMostrarFiltros(false);
+
   return (
-    <div className="barraPesquisa">
-      <input type="text" name="search" id="search" />
+    <div className={!mostrarFiltros? "barraPesquisa":"barra-posFiltros"}>
+      <input
+        type="text"
+        name="search"
+        id="search"
+        className="input-filtro"
+        autocomplete="off"
+        onFocus={mostrarFiltrosHandler} // Quando o input for focado, mostra os filtros
+        onBlur={esconderFiltrosHandler}  // Quando o input perder o foco, esconde os filtros
+      />
       <label htmlFor="search">
-        <ion-icon name="search"></ion-icon>
+        <ion-icon name="search" className="lupa"></ion-icon>
       </label>
 
-      <div className="filtros">
-        <div className="pos-filtro">
-          <div>
+      {/* Exibe os filtros apenas quando o estado mostrarFiltros for true */}
+      {mostrarFiltros && (
+        <div className="filtros">
+          <div className="pos-filtro">
             <select name="estado" id="estado">
               <option value="estado">CE</option>
               <option value="estado">PE</option>
@@ -33,15 +51,13 @@ function search (){
               <option value="estado">véi</option>
             </select>
           </div>
-          <div>
-            <Profissional/>
+          <div className="filtro-profissionais">
+            <Profissional />
           </div>
-
         </div>
-      </div>
-
+      )}
     </div>
-  )
+  );
 }
 
-export default search;
+export default Search;
