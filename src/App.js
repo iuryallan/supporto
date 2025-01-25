@@ -19,12 +19,7 @@ function App() {
       <Duvidas/>
       <Footer/>
       <Profile/> */}
-      <Calendar 
-        minDate={new Date()}
-        className='react-calendar' 
-        view='month' 
-        onClickDay={(date) => console.log(date)}
-      />
+      <Calendar/>
     </>
   );
 }
