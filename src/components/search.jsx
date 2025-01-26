@@ -3,12 +3,12 @@ import "./search.css";
 import Profissional from "../components/profissional";
 
 function Search() {
-  // Estado para controlar a visibilidade dos filtros
+
   const [mostrarFiltros, setMostrarFiltros] = useState(false);
 
-  // Funções para manipular o foco no input
-  const mostrarFiltrosHandler = () => setMostrarFiltros(true);
-  const esconderFiltrosHandler = () => setMostrarFiltros(false);
+  const alternarFiltros = () => {
+    setMostrarFiltros(!mostrarFiltros);
+  };
 
   return (
     <div className={!mostrarFiltros? "barraPesquisa":"barra-posFiltros"}>
@@ -17,15 +17,16 @@ function Search() {
         name="search"
         id="search"
         className="input-filtro"
-        autocomplete="off"
-        onFocus={mostrarFiltrosHandler} // Quando o input for focado, mostra os filtros
-        onBlur={esconderFiltrosHandler}  // Quando o input perder o foco, esconde os filtros
+        autoComplete="off"
       />
       <label htmlFor="search">
         <ion-icon name="search" className="lupa"></ion-icon>
       </label>
 
-      {/* Exibe os filtros apenas quando o estado mostrarFiltros for true */}
+      <div className="icone-filtros" onClick={alternarFiltros}>
+        <ion-icon name="options-outline"></ion-icon>
+      </div>
+
       {mostrarFiltros && (
         <div className="filtros">
           <div className="pos-filtro">

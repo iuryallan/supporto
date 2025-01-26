@@ -48,6 +48,21 @@ ion-icon.lupa:hover{
   transform: scale(1.050);
 }
 
+.icone-filtros{
+  position: absolute;
+  right: 5rem;
+  top: 0;
+}
+.icone-filtros >ion-icon{
+  color: #7D84B2;
+  font-size: 3rem;
+  transition: ease 0.3s transform;
+}
+.icone-filtros >ion-icon:hover{
+  transform: scale(1.050);
+
+}
+
 .filtros{
   display: flex;
   justify-content: center;
@@ -67,6 +82,7 @@ ion-icon.lupa:hover{
   justify-content: center;
   gap: 1.5rem;
   border-top: 1px solid #7D84B2;
+  flex-wrap: wrap;
 
 }
 
