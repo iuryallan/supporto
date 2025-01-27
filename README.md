@@ -1,7 +1,7 @@
 # Plataforma de Apoio Psicológico Comunitário 🌍💙
 
 ## Visão Geral
-A **Plataforma de Apoio Psicológico Comunitário** é uma solução digital que visa democratizar o acesso à saúde mental, conectando pessoas que precisam de apoio psicológico com profissionais dispostos a oferecer atendimento gratuito ou de baixo custo. Este projeto tem como objetivo promover bem-estar e inclusão social através de uma interface intuitiva e acessível.
+A **Supporto** é uma solução digital que visa democratizar o acesso à saúde mental, conectando pessoas que precisam de apoio psicológico com profissionais dispostos a oferecer atendimento gratuito ou de baixo custo. Este projeto tem como objetivo promover bem-estar e inclusão social através de uma interface intuitiva e acessível.
 
 ---
 
