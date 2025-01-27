@@ -6,7 +6,7 @@ import AboutUs from './components/AboutUs'
 import Duvidas from './components/duvidas'
 import Avaliacao from './components/avaliacao'
 import Footer from './components/footer'
-import Profile from './components/Profile';
+
 
 function App() {
   return (
@@ -17,7 +17,6 @@ function App() {
       <Avaliacao/>
       <Duvidas/>
       <Footer/>
-      <Profile/>
     </>
   );
 }
