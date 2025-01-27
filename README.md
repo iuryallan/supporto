@@ -34,7 +34,7 @@ A plataforma oferece:
 - **Painel Administrativo**:
   - Gerenciamento de cadastros e monitoramento básico da plataforma.
 
-###Funcionalidades Avançadas**
+###Funcionalidades Avançadas
 - **Agenda e Agendamento**: Profissionais configuram horários disponíveis, e pacientes agendam sessões diretamente pela plataforma.
 - **Feedback e Avaliação**: Pacientes podem avaliar as sessões realizadas.
 
