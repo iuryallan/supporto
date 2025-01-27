@@ -13,13 +13,13 @@ function Header() {
       </div>
 
       <div className="column2">
-        <div className='icon-ativado'>
+        <div>
           <ion-icon name="home-outline"></ion-icon>
         </div>
         <div>
           <ion-icon name="calendar"></ion-icon>
         </div>
-        <div>
+        <div className='icon-ativado'>
           <ion-icon name="person-outline"></ion-icon>
         </div>
       </div>
