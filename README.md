@@ -1,70 +1,67 @@
-# Getting Started with Create React App
+# Plataforma de Apoio Psicológico Comunitário 🌍💙
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Visão Geral
+A **Supporto** é uma solução digital que visa democratizar o acesso à saúde mental, conectando pessoas que precisam de apoio psicológico com profissionais dispostos a oferecer atendimento gratuito ou de baixo custo. Este projeto tem como objetivo promover bem-estar e inclusão social através de uma interface intuitiva e acessível.
 
-## Available Scripts
+---
 
-In the project directory, you can run:
+## Problema a ser resolvido 🌟
 
-### `npm start`
+Muitas pessoas enfrentam dificuldades emocionais e psicológicas, mas encontram barreiras como:
+- **Custos elevados** de atendimento.
+- **Falta de acesso** a profissionais capacitados.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+Por outro lado, existem profissionais de psicologia dispostos a ajudar, mas sem uma plataforma centralizada para conectar seus serviços à comunidade.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+---
 
-### `npm test`
+## A Solução Desse Problema💡
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+A plataforma oferece:
+- **Cadastro de Profissionais**: Psicólogos podem criar perfis com informações sobre especialidades, localização e faixa etária de atendimento.
+- **Busca de Profissionais**: Pacientes podem encontrar psicólogos com base em filtros como localidade, especialidade e público-alvo.
+- **Gerenciamento por Administradores**: Um painel administrativo garante que os cadastros e a organização da plataforma sejam geridos adequadamente.
 
-### `npm run build`
+---
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## Funcionalidades da Plataforma
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+- **Cadastro e Login**:
+  - **Profissionais**: Nome, especialidade, localização, faixa etária de atendimento e número de atendimentos gratuitos disponíveis.
+  - **Pacientes**: Nome, idade, gênero, principais queixas e objetivos de terapia.
+- **Busca com Filtros**:
+  - Filtros básicos para localizar profissionais por localidade, especialidade e faixa etária que ele atende.
+- **Painel Administrativo**:
+  - Gerenciamento de cadastros e monitoramento básico da plataforma.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+###Funcionalidades Avançadas
+- **Agenda e Agendamento**: Profissionais configuram horários disponíveis, e pacientes agendam sessões diretamente pela plataforma.
+- **Feedback e Avaliação**: Pacientes podem avaliar as sessões realizadas.
 
-### `npm run eject`
+---
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+## Tecnologias Utilizadas 🛠️
+- **Frontend**: HTML, CSS, JavaScript.
+- **Frameworks**: React para uma experiência interativa.
+- **Design Responsivo**: Layout adaptado para desktop e dispositivos móveis.
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+---
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+## Como Utilizar 🖥️
+1. Acesse a plataforma.
+2. Realize o cadastro como paciente ou profissional.
+3. Utilize os filtros de busca para encontrar profissionais disponíveis.
+4. Agora só utilizar os serviços da melhor forma!.
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+---
 
-## Learn More
+## Impacto Social 🌈
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+- **Comunidades mais fortes**: Melhorar o acesso à saúde mental transforma vidas e promove bem-estar.
+- **Engajamento profissional**: Psicólogos têm uma ferramenta prática para ajudar a sociedade.
+- **Inclusão social**: Atendimento psicológico acessível para todos.
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+---
 
-### Code Splitting
+**Juntos, podemos construir um futuro mais saudável e acolhedor!** 🌍💙
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
