@@ -33,7 +33,7 @@ function Profile() {
                         <p>Valor do atendimento: <span>R$ 100,00</span></p>
                         <p>CRP: <span>XXXXX</span></p>
                     </div>
-                    <button className='agend'>Agendar</button>
+                    <button className='agend'>Sair</button>
                 </div>
             </div>
         </div>
