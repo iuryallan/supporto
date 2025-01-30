@@ -1,0 +1,34 @@
+.container-profi{
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  padding: 0.8rem;
+}
+ion-icon.location{
+  color: #DBF4A7;
+  font-size: 3rem;
+}
+
+.localizacao{
+display: flex;
+}
+
+.localizacao p{
+ font-size: 2rem; 
+}
+
+.info-profissional{
+  display: flex;
+}
+
+.info-profissional .name-user{
+  font-size: 1.8rem;
+}
+
+.info-profissional .especialidade-user{
+  font-size: 1.2rem;
+}
+
+.info-profissional ion-icon{
+  font-size: 4rem;
+}
