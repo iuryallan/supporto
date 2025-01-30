@@ -23,6 +23,16 @@ body{
   background-color: #F9F9ED;
 }
 
+/*Página de login */
+.Login {
+  display: flex;
+  justify-content: center;
+  padding: 5%;
+  align-items: center;
+  min-height: 100vh;
+  background: linear-gradient(135deg, #8E9DCC, #7D84B2);
+}
+
 ::-webkit-scrollbar{
   width: 1rem;
 }
