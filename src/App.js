@@ -10,11 +10,15 @@ import Home from "./pages/home/Home";
 import Agendamento from "./pages/agendamento/agendamento"
 import Calendar from "./components/Agend/Calendar"
 import TimePicker from './components/Agend/Time';
+import Profile from './pages/profiles/clientProfile'
+import User from './pages/profiles/userProfile'
 
 function App() {
   return (
     <>
-      <Calendar/>
+      {/* <User/> */}
+      <Profile/>
+      {/* <Calendar/> */}
     </>
   );
 }
