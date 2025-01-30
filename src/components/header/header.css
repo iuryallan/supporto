@@ -57,3 +57,12 @@ header{
 .icon-ativado ion-icon{
   color: var(--roxoClaro);
 }
+
+.column2:hover > div:not(:hover){
+  background-color: var(--roxoClaro);
+}
+
+.column2 > div:hover,.column2 ion-icon:hover {
+  background-color: white;
+  color: var(--roxoClaro);
+}
