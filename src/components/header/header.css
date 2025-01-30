@@ -62,7 +62,10 @@ header{
   background-color: var(--roxoClaro);
 }
 
-.column2 > div:hover,.column2 ion-icon:hover {
+.column2 > div:hover {
   background-color: white;
+}
+
+.column2:hover ion-icon {
   color: var(--roxoClaro);
 }

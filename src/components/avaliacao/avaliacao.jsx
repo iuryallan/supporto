@@ -1,4 +1,4 @@
-import CardOpiniao from "../card-opiniao";
+import CardOpiniao from "../card-opiniao/cardOpiniao";
 import './avaliacao.css'
 
 import './avaliacao.css'

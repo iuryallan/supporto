@@ -1,8 +1,8 @@
 import React from 'react';
 import './footer.css';
-import ImgFace from '../assets/icon-face.svg';
-import ImgInsta from '../assets/icon-insta.svg';
-import ImgTwitter from '../assets/icon-x.svg';
+import ImgFace from '../../assets/icon-face.svg';
+import ImgInsta from '../../assets/icon-insta.svg';
+import ImgTwitter from '../../assets/icon-x.svg';
 
 function Footer (){
     return(

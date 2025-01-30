@@ -1,5 +1,4 @@
-import '../components/cardOpiniao.css'
-import Star from "../assets/star.svg"
+import '../../components/card-opiniao/cardOpiniao.css'
 
 function cardOpiniao(props){
   return(

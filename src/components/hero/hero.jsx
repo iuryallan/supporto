@@ -1,6 +1,6 @@
 import './hero.css'
-import Button from './Button'
-import ImgHero from '../assets/img-hero.svg'
+import Button from '../button/Button'
+import ImgHero from '../../assets/img-hero.svg'
 
 function hero(){
   return(
