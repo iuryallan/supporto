@@ -1,6 +1,7 @@
 import Button from '../button/Button';
 import './header.css';
 import Search from '../search';
+import { Link } from "react-router-dom";
 
 function Header() {
   return (
@@ -13,15 +14,21 @@ function Header() {
       </div>
 
       <div className="column2">
-        <div>
-          <ion-icon name="home-outline"></ion-icon>
-        </div>
-        <div>
-          <ion-icon name="calendar"></ion-icon>
-        </div>
-        <div className='icon-ativado'>
-          <ion-icon name="person-outline"></ion-icon>
-        </div>
+        <Link to="/">
+          <div>
+            <ion-icon name="home-outline"></ion-icon>
+          </div>
+        </Link>
+        <Link to="/Agendamento">
+          <div>
+            <ion-icon name="calendar"></ion-icon>
+          </div>
+        </Link>
+        <Link to="/User">
+          <div>
+            <ion-icon name="person-outline"></ion-icon>
+          </div>
+        </Link>
       </div>
     </header>
   );

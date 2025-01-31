@@ -39,9 +39,6 @@ header{
   transition: ease 0.3s transform;
 }
 
-.column2 ion-icon:hover{
-  transform: scale(1.1);
-}
 
 .column2 div{
   padding: 2rem;
@@ -49,23 +46,22 @@ header{
   display: flex;
   align-items: center;
 }
-.icon-ativado{
-  background-color: rgb(255, 255, 255);
-  height: 100%;
-}
 
-.icon-ativado ion-icon{
-  color: var(--roxoClaro);
-}
 
-.column2:hover > div:not(:hover){
+.column2:hover a div:not(:hover) {
   background-color: var(--roxoClaro);
 }
 
-.column2 > div:hover {
-  background-color: white;
+.column2:hover a div:not(:hover) ion-icon {
+  color: white;
 }
 
-.column2:hover ion-icon {
+.column2 a div:hover {
+  background-color: white;
   color: var(--roxoClaro);
+}
+
+.column2 a div:hover ion-icon {
+  color: var(--roxoClaro);
+  transform: scale(1.1);
 }
