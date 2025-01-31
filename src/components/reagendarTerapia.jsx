@@ -1,4 +1,5 @@
 import './reagendarTerapia.css'
+import { Link } from "react-router-dom";
 
 function reagendarTerapia(props){
   return(
@@ -8,7 +9,9 @@ function reagendarTerapia(props){
           <h4>Sessão de Terapia</h4>
           <p>com {props.profissional}</p>
         </div>
-        <button className="newagend">Agendar Novamente</button>
+        <Link to="/Calendario">
+          <button className="newagend">Agendar Novamente</button>
+        </Link>
         <div className='dataehora'>
           <p>18 de janeiro, 2025</p>
           <p>{props.horario}</p>

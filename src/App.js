@@ -10,6 +10,8 @@ import Login from "./components/login"
 import JuntarSe from "./components/loginFazerParte" 
 import LoginPaciente from "./components/loginPaciente" 
 import LoginProfissional from "./components/loginProfissional" 
+import Calendario from "./pages/Calendario"
+
 function App() {
   return (
     <Router>
@@ -22,6 +24,7 @@ function App() {
         <Route path='/Home' element={<Home />}/>
         <Route path='/User' element={<User />}/>
         <Route path='/Agendamento' element={<Agendamento />} />
+        <Route path='/Calendario' element={<Calendario/>}/>
       </Routes>
     </Router>
   );

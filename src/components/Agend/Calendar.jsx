@@ -28,6 +28,9 @@ function ReactCalendar () {
                 <TimePicker time='17:00'/>
                 <TimePicker time='18:00'/>
             </div>
+            <div>
+                <button className='agend-button'>Agendar</button>
+            </div>
         </div>
     )
 }

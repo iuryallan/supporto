@@ -184,7 +184,7 @@
     align-items: center;
     gap: 2rem;
     padding: 2rem;
-    margin-top: 10rem;
+    margin-top: 2rem;
     background-color: #fff;
     border-radius: 2rem;
     box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
@@ -200,4 +200,20 @@
   .title-container {
     display: flex;
     font-size: 1.5rem;
+  }
+
+  .agend-button {
+    color: white;
+    background-color: var(--roxoClaro);
+    border: none;
+    padding: 1rem 3.5rem;
+    width: 40rem;
+    border-radius: 5rem;
+    cursor: pointer;
+    transition: ease 0.2s transform;
+    font-size: 1.5rem;
+  }
+
+  .agend-button:hover{
+    transform: scale(1.020);
   }
