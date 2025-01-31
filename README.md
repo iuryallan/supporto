@@ -65,3 +65,14 @@ A plataforma oferece:
 
 **Juntos, podemos construir um futuro mais saudável e acolhedor!** 🌍💙
 
+---
+
+### Tarefas de cada colaborador 💪🏽
+  - A maior parte do projeto foi feita com interação conjunta da equipe, como a página inicial onde cada colaborador ficou com um componente. Em um momento para agilizarmos o processo, dividimos as funções para cada integrante, ficando basicamente assim:
+     
+    - Cidrack: Ficou a frente na parte de construção do login.
+    - Diego: Deu ênfase na página home.
+    - Fabrício: Construiu o filtro e esse belo README.
+    - Guilherme: Focou nos perfis.
+    - Iury: Fez o design no Figma e o react calendar;
+
