@@ -33,6 +33,8 @@ A plataforma oferece:
   - Filtros básicos para localizar profissionais por localidade, especialidade e faixa etária que ele atende.
 - **Painel Administrativo**:
   - Gerenciamento de cadastros e monitoramento básico da plataforma.
+ 
+---
 
 ###Funcionalidades Avançadas
 - **Agenda e Agendamento**: Profissionais configuram horários disponíveis, e pacientes agendam sessões diretamente pela plataforma.
@@ -41,8 +43,7 @@ A plataforma oferece:
 ---
 
 ## Tecnologias Utilizadas 🛠️
-- **Frontend**: HTML, CSS, JavaScript.
-- **Frameworks**: React para uma experiência interativa.
+- **Frontend**: ReactJS, JavaScript, CSS.
 - **Design Responsivo**: Layout adaptado para desktop e dispositivos móveis.
 
 ---
