@@ -14,7 +14,7 @@ function Header() {
       </div>
 
       <div className="column2">
-        <Link to="/">
+        <Link to="/Home">
           <div>
             <ion-icon name="home-outline"></ion-icon>
           </div>

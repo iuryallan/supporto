@@ -5,13 +5,22 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Home from "./pages/home/Home";
 import Agendamento from "./pages/agendamento/agendamento";
 import User from './pages/profiles/userProfile';
-
+import Lobby from "./pages/lobby/Lobby"
+import Login from "./components/login" 
+import JuntarSe from "./components/loginFazerParte" 
+import LoginPaciente from "./components/loginPaciente" 
+import LoginProfissional from "./components/loginProfissional" 
 function App() {
   return (
     <Router>
       <Routes>
-        <Route path='/' element={<Home />} />
-        <Route path='/User' element={<User />} />
+        <Route path='/' element={<Lobby />}/>
+        <Route path='/JuntarSe' element={<JuntarSe/>}/>
+        <Route path='/LoginPaciente' element={<LoginPaciente/>}/>
+        <Route path='/LoginProfissional' element={<LoginProfissional/>}/>
+        <Route path='/Login' element={<Login />}/>
+        <Route path='/Home' element={<Home />}/>
+        <Route path='/User' element={<User />}/>
         <Route path='/Agendamento' element={<Agendamento />} />
       </Routes>
     </Router>

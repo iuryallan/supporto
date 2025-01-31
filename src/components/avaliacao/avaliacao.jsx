@@ -10,14 +10,9 @@ function Avaliacao(){
                     <h2>Qual a opinião dos nossos usuários?</h2>
                 </div>
                 <div className="conteinerCards">
-                    <CardOpiniao nome='diego' profissional='barbeiro' opiniao = 'topsisisismo'/>
-                    <CardOpiniao nome='iury' profissional='prefeito' opiniao = 'competentissisismo'/>
-                    <CardOpiniao nome='Fabs' profissional='gay' opiniao = 'gente boasisisimo'/>
-                </div>
-                
-                <div className="navAvaliacao">
-                    <ion-icon name="ellipse" className='elipse-nav'></ion-icon>
-                    <ion-icon name="ellipse" className='elipse-nav'></ion-icon>
+                    <CardOpiniao nome='xxxx' profissional='xxxxx' opiniao = 'xxxxx'/>
+                    <CardOpiniao nome='xxxx' profissional='xxxxx' opiniao = 'xxxxx'/>
+                    <CardOpiniao nome='xxxxxx' profissional='xxxxx' opiniao = 'xxxx'/>
                 </div>
             </div>
         </section>
