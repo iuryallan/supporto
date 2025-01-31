@@ -4,7 +4,7 @@ import './avaliacao.css'
 import './avaliacao.css'
 function Avaliacao(){
     return (
-        <section className="secaoAvaliacao">
+        <section id = 's2' className="secaoAvaliacao">
             <div>
                 <div className="tituloAvaliacao">
                     <h2>Qual a opinião dos nossos usuários?</h2>

@@ -5,9 +5,27 @@ import Duvidas from "../../components/duvidas/duvidas"
 import Footer from "../../components/footer/footer"
 import Button from "../../components/button/Button"
 import "./lobby.css"
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
+import { useEffect } from "react";
 
-function Lobby(){
+const Lobby = () =>{
+
+  const location = useLocation();
+
+  useEffect(() => {
+    if (location.hash) {
+      setTimeout(() => {
+        const id = location.hash.replace("#", "");
+        const element = document.getElementById(id);
+        if (element) {
+          element.scrollIntoView({ behavior: "smooth", block: "start" });
+        }
+      }, 100);
+    } else {
+      window.scrollTo(0, 0);
+    }
+  }, [location]);
+
   return(
     <>
       <header className="header-lobby">

@@ -1,7 +1,5 @@
 import './App.css';
-import Header from './components/header/Header';
-import Footer from './components/footer/footer';
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route, useLocation } from "react-router-dom";
 import Home from "./pages/home/Home";
 import Agendamento from "./pages/agendamento/agendamento";
 import User from './pages/profiles/userProfile';
@@ -11,10 +9,27 @@ import JuntarSe from "./components/loginFazerParte"
 import LoginPaciente from "./components/loginPaciente" 
 import LoginProfissional from "./components/loginProfissional" 
 import Calendario from "./pages/Calendario"
+import { useEffect } from "react";
+
+const ScrollToHashElement = () => {
+  const location = useLocation();
+
+  useEffect(() => {
+    if (location.hash) {
+      const element = document.getElementById(location.hash.replace("#", ""));
+      if (element) {
+        element.scrollIntoView({ behavior: "smooth", block: "start" });
+      }
+    }
+  }, [location]);
+
+  return null;
+};
 
 function App() {
   return (
     <Router>
+      <ScrollToHashElement/>
       <Routes>
         <Route path='/' element={<Lobby />}/>
         <Route path='/JuntarSe' element={<JuntarSe/>}/>

@@ -2,9 +2,9 @@ import { Link, useNavigate } from "react-router-dom";
 import ImgFace from '../../assets/icon-face.svg';
 import ImgInsta from '../../assets/icon-insta.svg';
 import ImgTwitter from '../../assets/icon-x.svg';
-import './footer.css';
+import './navbar.css';
 
-const Footer = () => {
+const Navbar = () => {
   const navigate = useNavigate();
 
   const handleAnchorClick = (section) => {
@@ -18,7 +18,7 @@ const Footer = () => {
   };
 
   return (
-    <nav className="footer">
+    <nav className="navbar">
         <div className='footer-section'>
             <h4>
                     Sobre o suportto
@@ -66,4 +66,4 @@ const Footer = () => {
   );
 };
 
-export default Footer;
+export default Navbar;

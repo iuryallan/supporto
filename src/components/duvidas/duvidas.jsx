@@ -15,7 +15,7 @@ function Duvidas(){
   const handleToggle4 = () => setArrow4(arrow4 === DownArrow ? UpArrow : DownArrow);
 
   return(
-    <section className='secao-duvidas'>
+    <section id = 's3' className='secao-duvidas'>
       <div className='h2-duvidas'>
         <h2>Em caso de dúvidas...</h2>
       </div>

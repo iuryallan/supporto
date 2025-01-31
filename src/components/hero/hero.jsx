@@ -6,7 +6,7 @@ import { Link } from "react-router-dom";
 
 function hero(){
   return(
-    <section className="section-hero">
+    <section id= 's1' className="section-hero">
       <div className="content-hero">
         <h2>
           Nem toda tempestade precisa ser enfrentada sozinha. Procure ajuda.
