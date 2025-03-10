@@ -52,5 +52,11 @@
 
 .resumoAgend h3{
   font-size: 2rem;
+  margin-bottom: 1rem;
 }
 
+.container-reagendar{
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}

@@ -1,16 +1,35 @@
-import "./search.css"
-import Profissional from "../components/profissional"
-function search (){
+import React, { useState } from "react";
+import "./search.css";
+import Profissional from "../components/profissional";
+
+function Search() {
+
+  const [mostrarFiltros, setMostrarFiltros] = useState(false);
+
+  const alternarFiltros = () => {
+    setMostrarFiltros(!mostrarFiltros);
+  };
+
   return (
-    <div className="barraPesquisa">
-      <input type="text" name="search" id="search" />
+    <div className={!mostrarFiltros? "barraPesquisa":"barra-posFiltros"}>
+      <input
+        type="text"
+        name="search"
+        id="search"
+        className="input-filtro"
+        autoComplete="off"
+      />
       <label htmlFor="search">
-        <ion-icon name="search"></ion-icon>
+        <ion-icon name="search" className="lupa"></ion-icon>
       </label>
 
-      <div className="filtros">
-        <div className="pos-filtro">
-          <div>
+      <div className="icone-filtros" onClick={alternarFiltros}>
+        <ion-icon name="options-outline"></ion-icon>
+      </div>
+
+      {mostrarFiltros && (
+        <div className="filtros">
+          <div className="pos-filtro">
             <select name="estado" id="estado">
               <option value="estado">CE</option>
               <option value="estado">PE</option>
@@ -33,15 +52,13 @@ function search (){
               <option value="estado">véi</option>
             </select>
           </div>
-          <div>
-            <Profissional/>
+          <div className="filtro-profissionais">
+            <Profissional />
           </div>
-
         </div>
-      </div>
-
+      )}
     </div>
-  )
+  );
 }
 
-export default search;
+export default Search;
