@@ -19,6 +19,11 @@ function Header() {
             <ion-icon name="home-outline"></ion-icon>
           </div>
         </Link>
+        <Link to="/GrupoApoio">
+          <div>
+            <ion-icon name="people-outline"></ion-icon>
+          </div>
+        </Link>
         <Link to="/Agendamento">
           <div>
             <ion-icon name="calendar"></ion-icon>
