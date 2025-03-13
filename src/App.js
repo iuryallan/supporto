@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Routes, Route, useLocation } from "react-route
 import Home from "./pages/home/Home";
 import Agendamento from "./pages/agendamento/agendamento";
 import User from './pages/profiles/userProfile';
+import ClientProfile from './pages/profiles/clientProfile'
 import Lobby from "./pages/lobby/Lobby"
 import Login from "./components/login" 
 import JuntarSe from "./components/loginFazerParte" 
@@ -41,6 +42,7 @@ function App() {
         <Route path='/Login' element={<Login />}/>
         <Route path='/Home' element={<Home />}/>
         <Route path='/User' element={<User />}/>
+        <Route path='/ClientProfile' element={<ClientProfile/>}/>
         <Route path='/Agendamento' element={<Agendamento />} />
         <Route path='/GrupoApoio' element={<GrupoApoio/>}/>
         <Route path='/Calendario' element={<Calendario/>}/>

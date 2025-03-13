@@ -11,9 +11,6 @@ function Profile() {
         <div><Header/>
             <div className='page-container'>
                 <div className='container-profile'>
-                    <div className='picture-star'>
-                        <img src={Star} alt="Imagem de estrela" className='star' />
-                    </div>
                     <div className='name-specialist'>
                         <img src={Ellipse} alt="blank" className='profile-pic' />
                         <h2>Fulano Martins</h2>

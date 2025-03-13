@@ -1,3 +1,7 @@
+span {
+    color: var(--verdeForte);
+}
+
 .page-container {
     display: flex;
     justify-content: center;
@@ -31,24 +35,24 @@
 }
 
 .profile-pic {
-    width: 50px;
-    height: 50px;
+    width: 70px;
+    height: 70px;
     border-radius: 50%;
     margin-bottom: 10px;
 }
   
 .name-specialist {
-    margin-top: 10px;
+    margin-top: 0px;
 }
   
 .name-specialist h2 {
-    font-size: 1.2em;
+    font-size: 2.5rem;
     font-weight: bold;
     margin: 5px 0;
 }
   
 .name-specialist h3 {
-    font-size: 1em;
+    font-size: 1.8rem;
     color: #777;
     margin: 0;
 }
@@ -67,7 +71,7 @@
   
 .address p {
     margin: 0;
-    font-size: 0.9em;
+    font-size: 1.5rem;
 }
   
 .information {
@@ -77,7 +81,7 @@
 }
   
 .information p {
-    font-size: 0.9em;
+    font-size: 1.5em;
     color: #333;
     margin: 5px 0;
     font-weight: 600;
@@ -90,7 +94,7 @@
 }
   
 .information ul li {
-    font-size: 0.9em;
+    font-size: 1.5em;
     color: #555;
 }
 
