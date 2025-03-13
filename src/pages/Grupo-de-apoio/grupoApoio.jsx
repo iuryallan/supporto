@@ -8,6 +8,7 @@ function grupoApoio(){
       <Header/>
       <div className="grupoAPoio-container">
         <div className="lista-gruposDeApoio">
+        <h2>Grupos de apoio</h2>
           <Profissional/>
           <Profissional/>
           <Profissional/>

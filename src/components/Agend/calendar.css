@@ -217,3 +217,16 @@
   .agend-button:hover{
     transform: scale(1.020);
   }
+
+  .dataSelecionada p{
+    font-weight: 600;
+    font-size: 1.3rem;
+  }
+  .dataSelecionada h3{
+    font-size: 1.5rem;
+    margin-right: 0.5rem;
+  }
+
+  .dataSelecionada p,h3{
+    display: inline-block;
+  }
