@@ -29,6 +29,16 @@
   border-bottom-left-radius: 15rem ;
 }
 
+.creditos {
+  display: flex;
+  justify-content: center;
+}
+
+.creditos p {
+  font-size: 1rem;
+  color: var(--roxoForte);
+}
+
 @media (max-width: 800px){
   .img-hero {
       height: 28rem;

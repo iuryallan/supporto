@@ -4,6 +4,7 @@ import Header from "../../components/header/Header";
 import ReagendarTerapia from "../../components/reagendarTerapia";
 import ProxAgendamento from "../../components/proxAgendamento";
 import ProfUltimoAtend from "../../components/profUltimoAtend";
+import ProfProxAtend from "../../components/profProxAgend";
 
 function Home(props) {
   return (

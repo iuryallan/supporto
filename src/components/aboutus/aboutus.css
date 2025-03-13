@@ -39,6 +39,16 @@
     border-bottom-left-radius: 10rem ;
 }
 
+.creditos {
+    display: flex;
+    justify-content: center;
+}
+
+.creditos p {
+    font-size: 1rem;
+    color: var(--roxoForte);
+}
+
 @media (max-width: 800px){
     .img-aboutus {
         height: 28rem;

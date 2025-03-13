@@ -5,7 +5,6 @@ function cardOpiniao(props){
     <div className="cardAvaliacao">
       <div className="headerCard">
           <h3>{props.nome}</h3>
-          <p>{props.profissional}</p>
       </div>
       <div className="bodyCard">
           <p>{props.opiniao}</p>
