@@ -30,34 +30,89 @@ enum Type{
 }
 model Usuario{
   id Int @id @default(autoincrement())
-  nome String
-  idade int
   email String @unique
   tipo Type
-  genere Gender
+  senha String
+
+  profissionais Profissional[]
+  pacientes       Paciente[]
+  depoimento   Depoimento[]
 }
 
-model Profissionais{
+model Profissional{
   id Int @id @default(autoincrement())
-  faixa_etaria String
+  nome String
+  matricula_profissional String
   foto_perfil String?
+  quant_atend_gratis Int
+  faixa_etaria String
+  cidade String
+  estado String
+  genero Gender
+  idade Int
+  usuarioId Int
+
+  usuario Usuario? @relation(fields: [usuarioId], references: [id])
+  atendimento Atendimento[]
+  evolucoes Evolucao_clinica[]
+
 }
 
 model Paciente{
   id Int @id @default(autoincrement())
-}
-
-model Anamnese {
-  id Int @id @default(autoincrement())
+  nome String
+  genero Gender
+  data_nasc DateTime @db.Date
   motivo_terapia String
   medicamentos String
   historico_familiar String
   principal_queixa String
+  usuarioId Int
+
+  usuario Usuario? @relation(fields: [usuarioId], references: [id])
+  evolucoes Evolucao_clinica[]
+  atendimento Atendimento[]
+
 }
 
-model Atendimentos {
+model Evolucao_clinica{
   id Int @id @default(autoincrement())
-  hora DateTime
+  data DateTime
+  relato_atendimento String
+  ajustes_tratamento String
+  pacienteId Int
+  profissionalId Int?
+  
+  paciente Paciente @relation(fields: [pacienteId], references: [id])
+  profissional Profissional? @relation(fields: [profissionalId], references: [id])
+
+}
+
+model Atendimento {
+  id Int @id @default(autoincrement())
   data DateTime
   status Status
+  pacienteId Int
+  profissionalId Int
+
+  paciente Paciente @relation(fields: [pacienteId], references: [id])
+  profissional Profissional? @relation(fields: [profissionalId], references: [id])
+  
+ 
+}
+
+model Grupo_apoio{
+  id Int @id @default(autoincrement())
+  link String
+  descricao String
+}
+
+model Depoimento{
+  id Int @id @default(autoincrement())
+  texto String
+  data  DateTime @default(now())
+  usuarioId Int
+
+  usuario     Usuario   @relation(fields: [usuarioId], references: [id])
+
 }
