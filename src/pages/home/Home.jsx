@@ -3,13 +3,31 @@ import "./home.css";
 import Header from "../../components/header/Header";
 import ReagendarTerapia from "../../components/reagendarTerapia";
 import ProxAgendamento from "../../components/proxAgendamento";
+import Paciente from "../../components/paciente/paciente"
+
 
 function Home(props) {
   return (
     <div className="home">
 
       <Header />
-      <div className="container-home">
+
+      <div className="container">
+        <div className="container-pacientes">
+          <h3>Meus Pacientes</h3>
+          <Paciente nome="Diego" relatorio="homem"/>
+          <Paciente nome="Diego" relatorio="homem"/>
+          <Paciente nome="Diego" relatorio="homem"/>
+          <Paciente nome="Diego" relatorio="homem"/>
+          <Paciente nome="Diego" relatorio="homem"/>
+          <Paciente nome="Diego" relatorio="homem"/>
+          <Paciente nome="Diego" relatorio="homem"/>
+          <Paciente nome="Diego" relatorio="homem"/>
+          <Paciente nome="Diego" relatorio="homem"/>
+          <Paciente nome="Diego" relatorio="homem"/>
+        </div>
+      </div>
+      {/* <div className="container-home">
         <div className="profissionaisLista">
           <h3>Conheça Profissionais</h3>
           <Profissional />
@@ -28,7 +46,7 @@ function Home(props) {
             <ProxAgendamento horario="11:00" profissional="Iury"/>
           </div>
         </div>
-      </div>
+      </div> */}
     </div>
   );
 }

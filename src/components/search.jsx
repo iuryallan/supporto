@@ -11,16 +11,16 @@ function Search() {
   };
 
   return (
-    <div className={!mostrarFiltros? "barraPesquisa":"barra-posFiltros"}>
+    <div className={!mostrarFiltros ? "container-barraPesquisa" : "container-barraPesquisa-pos-filtros"}>
       <input
         type="text"
-        name="search"
-        id="search"
-        className="input-filtro"
+        name="pesquisa"
+        id="campo-pesquisa"
+        className="input-pesquisa"
         autoComplete="off"
       />
-      <label htmlFor="search">
-        <ion-icon name="search" className="lupa"></ion-icon>
+      <label htmlFor="campo-pesquisa">
+        <ion-icon name="search" className="icone-lupa"></ion-icon>
       </label>
 
       <div className="icone-filtros" onClick={alternarFiltros}>
@@ -28,31 +28,28 @@ function Search() {
       </div>
 
       {mostrarFiltros && (
-        <div className="filtros">
-          <div className="pos-filtro">
-            <select name="estado" id="estado">
-              <option value="estado">CE</option>
-              <option value="estado">PE</option>
-              <option value="estado">FO</option>
-              <option value="estado">QU</option>
-              <option value="estado">IC</option>
+        <div className="painel-filtros">
+            <select name="estado" id="selecao-estado">
+              <option value="CE">CE</option>
+              <option value="PE">PE</option>
+              <option value="FO">FO</option>
+              <option value="QU">QU</option>
+              <option value="IC">IC</option>
             </select>
-            <select name="doentesMentais" id="doentesMentais">
-              <option value="estado">depressao</option>
-              <option value="estado">ansiedade</option>
-              <option value="estado">crise de panico </option>
-              <option value="estado">iury sem muie</option>
-              <option value="estado">ostioporose</option>
+            <select name="doenca-mental" id="selecao-doenca-mental">
+              <option value="depressao">Depressão</option>
+              <option value="ansiedade">Ansiedade</option>
+              <option value="crise-de-panico">Crise de Pânico</option>
+              <option value="osteoporose">Osteoporose</option>
             </select>
-            <select name="faixaEtaria" id="faixaEtaria">
-              <option value="estado">Criança</option>
-              <option value="estado">Adolecente</option>
-              <option value="estado">Jovem-Adulto</option>
-              <option value="estado">Adulto</option>
-              <option value="estado">véi</option>
+            <select name="faixa-etaria" id="selecao-faixa-etaria">
+              <option value="crianca">Criança</option>
+              <option value="adolescente">Adolescente</option>
+              <option value="jovem-adulto">Jovem-Adulto</option>
+              <option value="adulto">Adulto</option>
+              <option value="idoso">Idoso</option>
             </select>
-          </div>
-          <div className="filtro-profissionais">
+          <div className="lista-profissionais">
             <Profissional />
           </div>
         </div>

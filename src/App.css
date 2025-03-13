@@ -26,6 +26,9 @@ body{
   background-color: #F9F9ED;
 }
 
+body, html{
+  overflow-x: hidden;
+}
 /*Página de login */
 .login {
   display: flex;

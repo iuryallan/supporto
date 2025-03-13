@@ -1,100 +1,72 @@
-.barraPesquisa{
-  max-width: 60rem;
-  width: 100%;
-  text-align: right;
+.container-barraPesquisa{
   position: relative;
-  display: inline-block;
-}
-
-.barra-posFiltros{
-  max-width: 60rem;
-  width: 100%;
-  text-align: right;
-  position: relative;
-  display: inline-block;
-}
-
-.input-filtro{
-  background-color: #D9D9D9;  
-  padding: 1rem;
-  width: 100%;
-  border: 0;
-  padding-left: 4rem;
-  padding-right: 8rem;
-}
-
-.barraPesquisa input{
-  border-radius: 3rem;
-}
-
-.barra-posFiltros input{
-  border-radius: 2rem 2rem 0 0;
-}
-
-.input-filtro:focus{
-  border: 0;
-  outline: none;
-}
-
-ion-icon.lupa{
-  position: absolute;
-  right: 1rem;
-  font-size: 3rem;
-  color: #7D84B2;
-  transition: ease 0.3s transform;
-}
-
-ion-icon.lupa:hover{
-  transform: scale(1.050);
-}
-
-.icone-filtros{
-  position: absolute;
-  right: 5rem;
-  top: 0;
-}
-.icone-filtros >ion-icon{
-  color: #7D84B2;
-  font-size: 3rem;
-  transition: ease 0.3s transform;
-}
-.icone-filtros >ion-icon:hover{
-  transform: scale(1.050);
-
-}
-
-.filtros{
   display: flex;
-  justify-content: center;
+  width: 70%;
   align-items: center;
-  flex-direction: column;
-  background-color: #D9D9D9;
-  border-radius: 0 0 2rem 2rem;
-  padding: 0 2rem 2rem 2rem;
-  position: absolute;
-  width: 100%;
+  background-color: var(--bg);
+  border-radius: 20px;
+  padding: 0 2rem;
 }
 
-.pos-filtro{
-  padding-top: 1rem;
-  width: 90%;
+.container-barraPesquisa-pos-filtros{
+  position: relative;
   display: flex;
-  justify-content: center;
-  gap: 1.5rem;
-  border-top: 1px solid #7D84B2;
-  flex-wrap: wrap;
-
+  width: 70%;
+  align-items: center;
+  background-color: var(--bg);
+  border-radius: 20px;
+  padding: 0 2rem;
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
 }
 
-.filtros select{
-  background-color: #7D84B2;
-  border-radius: 3rem;
-  text-align: center;
-  color: white;
-  min-width: 10rem;
-  padding: 0.2rem;
+.icone-lupa, .icone-filtros{
+  font-size: 3rem;
+  color: var(--roxoClaro);
 }
 
-.filtro-profissionais{
-  width: 80%;
+.input-pesquisa{
+  all: unset;
+  padding: 0.5rem;
+  font-size: 1.3rem;
+  flex: 8;
+}
+
+.painel-filtros{
+  display: flex;
+  flex-direction: column;
+  align-items: center !important;
+  width: 100%;
+  border-top: 1px solid var(--roxoClaro);
+  border-bottom-left-radius: 20px;
+  border-bottom-right-radius: 20px;
+  background-color: var(--bg);
+  padding: 2rem;
+  position: absolute;
+  top: 36px;
+  left: 0;
+}
+
+.painel-filtros select{
+  width: 60%;
+}
+.lista-profissionais{
+  margin-top: 1rem;
+  width: 60%;
+}
+@media (max-width: 1270px) {
+  .painel-filtros select{
+    width: 100%;
+  }
+  .lista-profissionais{
+    width: 100%;
+  }
+}
+@media (max-width: 745px) {
+  .painel-filtros select{
+    width: 100%;
+  }
+  .lista-profissionais{
+    width: 100%;
+  }
 }
