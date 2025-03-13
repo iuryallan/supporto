@@ -68,43 +68,12 @@ header {
 
 .column2 a.ativo div ion-icon {
   color: var(--roxoClaro);
+}
+
+.column2 a:hover ion-icon {
   transform: scale(1.1);
+  border-bottom: 2px solid white ;
 }
- 
-
-.column2 a div:hover {
-  background-color: white;
-  color: var(--roxoClaro);
-}
-
-.column2  div:hover ion-icon {
-  color: var(--roxoClaro);
-  transform: scale(1.1);
-}
-
-/* Ajuste para o item ativo seguir o efeito */
-
-.column2 a.ativo div ion-icon {
-  color: var(--roxoClaro);
-  transform: scale(1.1);
-}
-
-/* Faz o item ativo mudar de fundo apenas se não houver hover */
-.column2 a:hover ~ a.ativo div {
-  background-color: var(--roxoClaro);
-  color: white;
-}
-
-.column2 a.ativo div {
-  background-color: white;
-  color: var(--roxoClaro);
-}
-
-.column2 a:hover ~ a.ativo div ion-icon {
-  color: white;
-}
-
-
 
 @media (max-width: 745px) {
   .menu-hamburguer {
