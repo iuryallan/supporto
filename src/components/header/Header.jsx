@@ -1,12 +1,11 @@
 import React, { useState, useEffect } from 'react';
-import Button from '../button/Button';
-import './header.css';
+import { Link, useLocation } from "react-router-dom";
 import Search from '../search';
-import { Link } from "react-router-dom";
+import './header.css';
 
 function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-
+  const location = useLocation();
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
   };
@@ -35,22 +34,25 @@ function Header() {
       </div>
 
       <div className={`column2 ${isMenuOpen ? 'open' : ''}`}>
-        <Link to="/Home">
+        <Link to="/Home" className={location.pathname === "/Home" ? "ativo" : ""}>
           <div>
             <ion-icon name="home-outline"></ion-icon>
           </div>
         </Link>
-        <Link to="/GrupoApoio">
+
+        <Link to="/GrupoApoio" className={location.pathname === "/GrupoApoio" ? "ativo" : ""}>
           <div>
             <ion-icon name="people-outline"></ion-icon>
           </div>
         </Link>
-        <Link to="/Agendamento">
+
+        <Link to="/Agendamento" className={location.pathname === "/Agendamento" ? "ativo" : ""}>
           <div>
             <ion-icon name="calendar"></ion-icon>
           </div>
         </Link>
-        <Link to="/User">
+
+        <Link to="/User" className={location.pathname === "/User" ? "ativo" : ""}>
           <div>
             <ion-icon name="person-outline"></ion-icon>
           </div>
