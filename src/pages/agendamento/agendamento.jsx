@@ -2,6 +2,8 @@ import Header from '../../components/header/Header'
 import ProxAgend from "../../components/proxAgendamento"
 import ReagendarTerapia from "../../components/reagendarTerapia"
 import './agendamento.css'
+import ProfUltimoAtend from '../../components/profUltimoAtend'
+import ProfProxAtend from '../../components/profProxAgend'
 
 function agendamento(){
   return(

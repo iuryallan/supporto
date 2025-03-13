@@ -20,6 +20,9 @@ function hero(){
       </div>
       <div>
         <img src={ImgHero} alt='duas pessoas abraçadas' className='img-hero'/>
+        <div className='creditos'>
+          <p>Designed by FreePik</p>
+        </div>
       </div>
     </section>
   );

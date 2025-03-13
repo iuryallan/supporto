@@ -10,6 +10,9 @@ function aboutUs() {
             <div className='content-about'>
                 <div>
                     <img src={ImgAboutUs} alt="imagem de comunidade" className='img-aboutus'/>
+                    <div className='creditos'>
+                        <p>Designed by FreePik</p>
+                    </div>
                 </div>
                 <div className='text-about'>
                     <h3>Nossa missão é disponibilizar ajuda psicológica de forma prática, segura e de baixo custo. </h3>
