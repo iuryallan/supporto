@@ -7,6 +7,7 @@ function proxAgendamento(props){
           <h4>Sessão de Terapia</h4>
           <p>com {props.profissional}</p>
         </div>
+        <button className="newagend">Cancelar Agendamento</button>
         <div className="dataehora">
           <p>18 de janeiro, 2025</p>
           <p>{props.horario}</p>

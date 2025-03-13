@@ -3,6 +3,7 @@ import "./home.css";
 import Header from "../../components/header/Header";
 import ReagendarTerapia from "../../components/reagendarTerapia";
 import ProxAgendamento from "../../components/proxAgendamento";
+import ProfUltimoAtend from "../../components/profUltimoAtend";
 
 function Home(props) {
   return (
