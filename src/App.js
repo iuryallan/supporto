@@ -4,6 +4,7 @@ import Home from "./pages/home/Home";
 import Agendamento from "./pages/agendamento/agendamento";
 import Profile from "./pages/profiles/clientProfile";
 import User from "./pages/profiles/userProfile";
+import RateUser from "./pages/Rate/Rate";
 
 function App() {
   return (
@@ -11,7 +12,7 @@ function App() {
     
       {/* <Home/> */}
       {/* <Agendamento/> */}
-      <User/>
+      <RateUser />
     </>
   );
 }
