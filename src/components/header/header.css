@@ -1,11 +1,8 @@
-/* Reset básico */
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
-
-
 
 header {
   display: flex;
@@ -63,25 +60,21 @@ header {
   padding: 0 2rem;
 }
 
-.column2:hover a div:not(:hover) {
-  background-color: var(--roxoClaro);
-}
 
-.column2:hover a div:not(:hover) ion-icon {
-  color: white;
-}
-
-.column2 a div:hover {
+.column2 a.ativo div {
   background-color: white;
   color: var(--roxoClaro);
 }
 
-.column2 a div:hover ion-icon {
+.column2 a.ativo div ion-icon {
   color: var(--roxoClaro);
-  transform: scale(1.1);
 }
 
-/* Estilos para dispositivos menores */
+.column2 a:hover ion-icon {
+  transform: scale(1.1);
+  border-bottom: 2px solid white ;
+}
+
 @media (max-width: 745px) {
   .menu-hamburguer {
     display: flex;
