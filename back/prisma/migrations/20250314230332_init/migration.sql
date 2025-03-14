@@ -1,11 +1,11 @@
 -- CreateEnum
-CREATE TYPE "Status" AS ENUM ('Confirmado', 'Cancelado', 'Finalizado');
+CREATE TYPE "Status" AS ENUM ('CONFIRMADO', 'CANCELADO', 'FINALIZADO');
 
 -- CreateEnum
-CREATE TYPE "Gender" AS ENUM ('Masculino', 'Feminino', 'Outro');
+CREATE TYPE "Gender" AS ENUM ('MASCULINO', 'FEMININO', 'OUTRO');
 
 -- CreateEnum
-CREATE TYPE "Type" AS ENUM ('Administrador', 'Paciente', 'Profissional');
+CREATE TYPE "Type" AS ENUM ('ADMINISTRADOR', 'PACIENTE', 'PROFISSIONAL');
 
 -- CreateTable
 CREATE TABLE "Usuario" (

@@ -14,19 +14,19 @@ datasource db {
 }
 
 enum Status{
-  Confirmado 
-  Cancelado
-  Finalizado
+  CONFIRMADO
+  CANCELADO
+  FINALIZADO
 }
 enum Gender {
-  Masculino
-  Feminino
-  Outro
+  MASCULINO
+  FEMININO
+  OUTRO
 }
 enum Type{
-  Administrador
-  Paciente
-  Profissional
+  ADMINISTRADOR
+  PACIENTE
+  PROFISSIONAL
 }
 model Usuario{
   id Int @id @default(autoincrement())
@@ -113,6 +113,6 @@ model Depoimento{
   data  DateTime @default(now())
   usuarioId Int
 
-  usuario     Usuario   @relation(fields: [usuarioId], references: [id])
+  usuario     Usuario   @relation(fields: [usuarioId], references: [id])
 
 }
