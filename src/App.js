@@ -19,6 +19,7 @@ import Calendario from "./pages/calendar/Calendario";
 import GrupoApoio from "./pages/Grupo-de-apoio/grupoApoio";
 import RegistrarEvolucao from "./pages/evolucao-clinica/registro";
 import RelatorioIndividual from "./pages/evolucao-clinica/relatorio";
+import Avaliacao from "./pages/avaliacao-atendimento/Avaliacao";
 import { useEffect } from "react";
 
 const ScrollToHashElement = () => {
@@ -51,6 +52,7 @@ function App() {
         <Route path="/ClientProfile" element={<ClientProfile />} />
         <Route path="/PacientProfile" element={<PacientProfile />} />
         <Route path="/Agendamento" element={<Agendamento />} />
+        <Route path="/Avaliacao" element={<Avaliacao />} />
         <Route path="/GrupoApoio" element={<GrupoApoio />} />
         <Route path="/Calendario" element={<Calendario />} />
         <Route path="/RegistrarEvolucao" element={<RegistrarEvolucao />} />
