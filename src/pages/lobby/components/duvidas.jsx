@@ -1,6 +1,6 @@
 import './duvidas.css';
-import DownArrow from '../../assets/down-arrow.svg';
-import UpArrow from '../../assets/up-arrow.svg';
+import DownArrow from '../../../assets/down-arrow.svg';
+import UpArrow from '../../../assets/up-arrow.svg';
 import {useState} from 'react';
 
 function Duvidas(){

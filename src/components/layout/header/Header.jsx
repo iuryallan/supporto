@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useLocation } from "react-router-dom";
-import Search from '../search';
+import Search from '../../features/search';
 import './header.css';
 
 function Header() {

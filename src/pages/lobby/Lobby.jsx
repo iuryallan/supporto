@@ -1,9 +1,9 @@
-import Hero from "../../components/hero/hero"
-import AboutUs from "../../components/aboutus/AboutUs"
-import Avaliacao from "../../components/avaliacao/avaliacao"
-import Duvidas from "../../components/duvidas/duvidas"
-import Footer from "../../components/footer/footer"
-import Button from "../../components/button/Button"
+import Hero from "../lobby/components/hero"
+import AboutUs from "../lobby/components/AboutUs"
+import Avaliacao from "../lobby/components/avaliacao"
+import Duvidas from "../lobby/components/duvidas"
+import Footer from "../../components/layout/footer/footer"
+import Button from "../lobby/components/Button"
 import "./lobby.css"
 import { Link, useLocation } from "react-router-dom";
 import { useEffect } from "react";

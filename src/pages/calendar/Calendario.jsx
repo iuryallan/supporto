@@ -1,6 +1,6 @@
 import './calendario.css'
-import Header from "../components/header/Header";
-import Calendar from "../components/Agend/Calendar";
+import Header from "../../components/layout/header/Header";
+import Calendar from "./components/Calendar";
 
 function Calendario(){
     return (

@@ -1,6 +1,6 @@
 import './userProfile.css';
 import React from 'react';
-import Header from '../../components/header/Header';
+import Header from '../../components/layout/header/Header';
 import Edit from '../../assets/Vector.svg';
 import Ellipse from '../../assets/ellipse.svg';
 import Localizacao from '../../assets/location.svg';

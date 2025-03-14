@@ -1,30 +1,29 @@
-import Profissional from "../../components/profissional";
+import Profissional from "../../components/ui/profissional";
 import "./home.css";
-import Header from "../../components/header/Header";
-import ReagendarTerapia from "../../components/reagendarTerapia";
-import ProxAgendamento from "../../components/proxAgendamento";
-import ProfUltimoAtend from "../../components/profUltimoAtend";
-import ProfProxAtend from "../../components/profProxAgend";
-import Paciente from "../../components/paciente/paciente"
+import Header from "../../components/layout/header/Header";
+import ReagendarTerapia from "../../components/ui/reagendarTerapia";
+import ProxAgendamento from "../../components/ui/proxAgendamento";
+import ProfUltimoAtend from "../../components/ui/profUltimoAtend";
+import ProfProxAtend from "../../components/ui/profProxAgend";
+import Paciente from "../../components/paciente/paciente";
 function Home(props) {
   return (
     <div className="home">
-
       <Header />
 
       <div className="container">
         <div className="container-pacientes">
           <h3>Meus Pacientes</h3>
-          <Paciente nome="Diego" relatorio="homem"/>
-          <Paciente nome="Diego" relatorio="homem"/>
-          <Paciente nome="Diego" relatorio="homem"/>
-          <Paciente nome="Diego" relatorio="homem"/>
-          <Paciente nome="Diego" relatorio="homem"/>
-          <Paciente nome="Diego" relatorio="homem"/>
-          <Paciente nome="Diego" relatorio="homem"/>
-          <Paciente nome="Diego" relatorio="homem"/>
-          <Paciente nome="Diego" relatorio="homem"/>
-          <Paciente nome="Diego" relatorio="homem"/>
+          <Paciente nome="Diego" relatorio="homem" />
+          <Paciente nome="Diego" relatorio="homem" />
+          <Paciente nome="Diego" relatorio="homem" />
+          <Paciente nome="Diego" relatorio="homem" />
+          <Paciente nome="Diego" relatorio="homem" />
+          <Paciente nome="Diego" relatorio="homem" />
+          <Paciente nome="Diego" relatorio="homem" />
+          <Paciente nome="Diego" relatorio="homem" />
+          <Paciente nome="Diego" relatorio="homem" />
+          <Paciente nome="Diego" relatorio="homem" />
         </div>
       </div>
       {/* <div className="container-home">

@@ -2,7 +2,7 @@ import "./relatorio.css";
 import { useState } from "react";
 import DownArrow from "../../assets/down-arrow.svg";
 import UpArrow from "../../assets/up-arrow.svg";
-import Header from "../../components/header/Header";
+import Header from "../../components/layout/header/Header";
 
 function RelatorioIndividual() {
   const [arrow1, setArrow1] = useState(DownArrow);

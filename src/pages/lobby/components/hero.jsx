@@ -1,6 +1,6 @@
 import './hero.css'
-import Button from '../button/Button'
-import ImgHero from '../../assets/img-hero.svg'
+import Button from '../../lobby/components/Button'
+import ImgHero from '../../../assets/img-hero.svg'
 import { Link } from "react-router-dom";
 
 

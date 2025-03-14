@@ -1,5 +1,5 @@
 import './pacientProfile';
-import Header from '../../components/header/Header';
+import Header from '../../components/layout/header/Header';
 import { Link } from "react-router-dom";
 
 function Profile () {

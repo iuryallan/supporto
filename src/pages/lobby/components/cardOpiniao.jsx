@@ -1,4 +1,4 @@
-import '../../components/card-opiniao/cardOpiniao.css'
+import './cardOpiniao.css'
 
 function cardOpiniao(props){
   return(

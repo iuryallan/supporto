@@ -1,7 +1,7 @@
-import ButtonLogin from './ButtonsLogin';
-import './login.css';
+import ButtonLogin from '../../../components/ui/ButtonsLogin';
+import '../../login/login.css';
 
-function loginPaciente () {
+function loginProfissional () {
     return (
         <div className="login">
             <div className='container-login'>
@@ -29,35 +29,47 @@ function loginPaciente () {
                             <input type="number" name="idade" required />
                         </label>
                     </div>
-                    <h3 className='titulo-login'>Informações de Saúde Mental</h3>
                     <div className='input-field'>
                         <label>
-                            Principal queixa: <br />
-                            <input type="text" name="Principal queixa" required />
+                            estado: <br />
+                            <input type="search" name="estado" required />
                         </label>
                     </div>
                     <div className='input-field'>
                         <label>
-                            Você tem algum histórico disso na família? <br />
-                            <select name="Você tem algum histórico disso na família?">
-                                <option value="Sim">Sim</option>
-                                <option value="Nao">Não</option>
-                            </select>
+                            cidade: <br />
+                            <input type="search" name="cidade" required />
+                        </label>
+                    </div>
+                    <h3 className='titulo-login'>Informações Profissionais</h3>
+                    <div className='input-field'>
+                        <label>
+                            CRP: <br />
+                            <input type="search" name="CRP" required />
                         </label>
                     </div>
                     <div className='input-field'>
                         <label>
-                            Você faz uso de medicamentos? <br />
-                            <select name="Você faz uso de medicamentos?">
-                                <option value="Sim">Sim</option>
-                                <option value="Nao">Não</option>
-                            </select>
+                            especialidade: <br />
+                            <input type="text" name="especialidade" required />
                         </label>
                     </div>
                     <div className='input-field'>
                         <label>
-                            Motivo de buscar terapia: <br />
-                            <input type="text" name="Motivo de buscar terapia" required />
+                            faixa etária de pacientes: <br />
+                            <input type="number" name="faixa etária de pacientes" required />
+                        </label>
+                    </div>
+                    <div className='input-field'>
+                        <label>
+                            quantidade de atendimentos gratuitos: <br />
+                            <input type="number" name="quantidade de atendimentos gratuitos" required />
+                        </label>
+                    </div>
+                    <div className='input-field'>
+                        <label>
+                            adicione uma foto no seu perfil: <br />
+                            <input type="file" name="adicione uma foto no seu perfil" required />
                         </label>
                     </div>
                     <h4 className='titulo-login'>Informações de Login</h4>
@@ -86,4 +98,4 @@ function loginPaciente () {
     )
 }
 
-export default loginPaciente;
+export default loginProfissional;

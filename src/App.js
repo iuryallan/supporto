@@ -1,19 +1,24 @@
-import './App.css';
-import { BrowserRouter as Router, Routes, Route, useLocation } from "react-router-dom";
+import "./App.css";
+import {
+  BrowserRouter as Router,
+  Routes,
+  Route,
+  useLocation,
+} from "react-router-dom";
 import Home from "./pages/home/Home";
 import Agendamento from "./pages/agendamento/agendamento";
-import User from './pages/profiles/userProfile';
-import ClientProfile from './pages/profiles/clientProfile'
-import PacientProfile from './pages/profiles/pacientProfile'
-import Lobby from "./pages/lobby/Lobby"
-import Login from "./components/login" 
-import JuntarSe from "./components/loginFazerParte" 
-import LoginPaciente from "./components/loginPaciente" 
-import LoginProfissional from "./components/loginProfissional" 
-import Calendario from "./pages/Calendario"
-import GrupoApoio from "./pages/Grupo-de-apoio/grupoApoio"
-import RegistrarEvolucao from "./pages/EvolucaoClinica/registro"
-import RelatorioIndividual from './pages/EvolucaoClinica/relatorio';
+import User from "./pages/profiles/userProfile";
+import ClientProfile from "./pages/profiles/clientProfile";
+import PacientProfile from "./pages/profiles/pacientProfile";
+import Lobby from "./pages/lobby/Lobby";
+import Login from "./pages/login/login";
+import JuntarSe from "./pages/juntar-se/loginFazerParte";
+import LoginPaciente from "./pages/juntar-se/paciente/loginPaciente";
+import LoginProfissional from "./pages/juntar-se/profissional/loginProfissional";
+import Calendario from "./pages/calendar/Calendario";
+import GrupoApoio from "./pages/Grupo-de-apoio/grupoApoio";
+import RegistrarEvolucao from "./pages/evolucao-clinica/registro";
+import RelatorioIndividual from "./pages/evolucao-clinica/relatorio";
 import { useEffect } from "react";
 
 const ScrollToHashElement = () => {
@@ -34,22 +39,22 @@ const ScrollToHashElement = () => {
 function App() {
   return (
     <Router>
-      <ScrollToHashElement/>
+      <ScrollToHashElement />
       <Routes>
-        <Route path='/' element={<Lobby />}/>
-        <Route path='/JuntarSe' element={<JuntarSe/>}/>
-        <Route path='/LoginPaciente' element={<LoginPaciente/>}/>
-        <Route path='/LoginProfissional' element={<LoginProfissional/>}/>
-        <Route path='/Login' element={<Login />}/>
-        <Route path='/Home' element={<Home />}/>
-        <Route path='/User' element={<User />}/>
-        <Route path='/ClientProfile' element={<ClientProfile/>}/>
-        <Route path='/PacientProfile' element={<PacientProfile/>}/>
-        <Route path='/Agendamento' element={<Agendamento />} />
-        <Route path='/GrupoApoio' element={<GrupoApoio/>}/>
-        <Route path='/Calendario' element={<Calendario/>}/>
-        <Route path='/RegistrarEvolucao' element={<RegistrarEvolucao/>}/>
-        <Route path='/RelatorioIndividual' element={<RelatorioIndividual/>}/>
+        <Route path="/" element={<Lobby />} />
+        <Route path="/JuntarSe" element={<JuntarSe />} />
+        <Route path="/LoginPaciente" element={<LoginPaciente />} />
+        <Route path="/LoginProfissional" element={<LoginProfissional />} />
+        <Route path="/Login" element={<Login />} />
+        <Route path="/Home" element={<Home />} />
+        <Route path="/User" element={<User />} />
+        <Route path="/ClientProfile" element={<ClientProfile />} />
+        <Route path="/PacientProfile" element={<PacientProfile />} />
+        <Route path="/Agendamento" element={<Agendamento />} />
+        <Route path="/GrupoApoio" element={<GrupoApoio />} />
+        <Route path="/Calendario" element={<Calendario />} />
+        <Route path="/RegistrarEvolucao" element={<RegistrarEvolucao />} />
+        <Route path="/RelatorioIndividual" element={<RelatorioIndividual />} />
       </Routes>
     </Router>
   );

@@ -1,7 +1,7 @@
 import { Link, useNavigate } from "react-router-dom";
-import ImgFace from '../../assets/icon-face.svg';
-import ImgInsta from '../../assets/icon-insta.svg';
-import ImgTwitter from '../../assets/icon-x.svg';
+import ImgFace from '../../../assets/icon-face.svg';
+import ImgInsta from '../../../assets/icon-insta.svg';
+import ImgTwitter from '../../../assets/icon-x.svg';
 import './footer.css';
 
 const Footer = () => {
