@@ -1,0 +1,58 @@
+.page-container {
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   height: 80vh; 
+}
+
+.container-profile {
+   background-color: white;
+   border-radius: 10px;
+   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+   padding: 20px;
+   width: 300px;
+   margin: 0 auto;
+   display: flex;
+   justify-content: center;
+   align-items: center;
+}
+ 
+.name-specialist {
+   margin-top: 0px;
+}
+ 
+.name-specialist h2 {
+   font-size: 2.5rem;
+   font-weight: bold;
+   margin: 5px 0;
+}
+ 
+.information {
+   text-align: center;
+   margin-top: 10px;
+   margin-bottom: 15px;
+}
+
+.information a {
+   font-size: 1.5rem;
+   text-decoration: none;
+   color: var(--verdeForte);
+}
+
+.agend{
+   color: white;
+   background-color: var(--roxoClaro);
+   border: none;
+   padding: 1rem 3.5rem;
+   width: 100%;
+   border-radius: 5rem;
+   cursor: pointer;
+   transition: ease 0.2s transform;
+   font-size: 1.5rem;
+ }
+ 
+ 
+ .agend:hover{
+   transform: scale(1.020);
+ }
+ 
