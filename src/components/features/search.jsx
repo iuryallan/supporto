@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import "./search.css";
-import Profissional from "../ui/profissional";
+import Profissional from "../ui/visao-paciente/profissional";
 
 function Search() {
   const [mostrarFiltros, setMostrarFiltros] = useState(false);

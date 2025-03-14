@@ -1,11 +1,11 @@
-import Profissional from "../../components/ui/profissional";
+import Profissional from "../../components/ui/visao-paciente/profissional";
 import "./home.css";
 import Header from "../../components/layout/header/Header";
-import ReagendarTerapia from "../../components/ui/reagendarTerapia";
-import ProxAgendamento from "../../components/ui/proxAgendamento";
-import ProfUltimoAtend from "../../components/ui/profUltimoAtend";
-import ProfProxAtend from "../../components/ui/profProxAgend";
-import Paciente from "../../components/paciente/paciente";
+import ReagendarTerapia from "../../components/ui/visao-paciente/reagendarTerapia";
+import ProxAgendamento from "../../components/ui/visao-paciente/proxAgendamento";
+import ProfUltimoAtend from "../../components/ui/visao-profissional/profUltimoAtend";
+import ProfProxAtend from "../../components/ui/visao-profissional/profProxAgend";
+import Paciente from "../../components/ui/visao-profissional/paciente";
 function Home(props) {
   return (
     <div className="home">

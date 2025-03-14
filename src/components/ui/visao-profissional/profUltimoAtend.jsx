@@ -1,14 +1,13 @@
-import './proxAgendamento.css'
+import '../visao-paciente/reagendarTerapia.css'
 import { Link } from "react-router-dom";
 
-function ProfProxAtend(props){
+function ProfUltimoAtend(props){
    return(
      <div>
-       <div className="card-prox-agend">
+       <div className="card-ult-agend">
          <div className="secaocom">
            <h4>Sessão de Terapia</h4>
            <p>com {props.paciente}</p>
-           <p>Contato: {props.email}</p>
          </div>
          <Link to="/RegistrarEvolucao">
            <button className="newagend">Registrar Evolução</button>
@@ -22,4 +21,4 @@ function ProfProxAtend(props){
    )
 }
  
-export default ProfProxAtend;
+export default ProfUltimoAtend;

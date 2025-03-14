@@ -1,9 +1,9 @@
 import Header from "../../components/layout/header/Header";
-import ProxAgend from "../../components/ui/proxAgendamento";
-import ReagendarTerapia from "../../components/ui/reagendarTerapia";
+import ProxAgend from "../../components/ui/visao-paciente/proxAgendamento";
+import ReagendarTerapia from "../../components/ui/visao-paciente/reagendarTerapia";
 import "./agendamento.css";
-import ProfUltimoAtend from "../../components/ui/profUltimoAtend";
-import ProfProxAtend from "../../components/ui/profProxAgend";
+import ProfUltimoAtend from "../../components/ui/visao-profissional/profUltimoAtend";
+import ProfProxAtend from "../../components/ui/visao-profissional/profProxAgend";
 
 function agendamento() {
   return (

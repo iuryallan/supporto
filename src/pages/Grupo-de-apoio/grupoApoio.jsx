@@ -1,5 +1,5 @@
 import Header from "../../components/layout/header/Header";
-import Profissional from "../../components/ui/profissional";
+import Profissional from "../../components/ui/visao-paciente/profissional";
 import "./grupoApoio.css";
 function grupoApoio() {
   return (
