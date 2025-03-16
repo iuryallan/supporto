@@ -12,7 +12,6 @@ exports.criarUsuario = async (req, res) => {
     }
 }
 
-
 exports.buscarUsuarios = async (req, res) => {
     try{
         const usuarios = await usuarioModel.buscarUsuarios();
