@@ -57,7 +57,7 @@ async function atualizarUsuario(id, email, tipo, senha){
                 senha: senha,
             },
         });
-        return usuarioAtualizado
+        return usuarioAtualizado;
     } catch(error){
         console.error("Erro ao atualizar usuário: ", error);
         throw error;
