@@ -23,7 +23,7 @@ async function buscarGruposDeApoios(){
         const grupos = await prisma.grupo_apoio.findMany();
         return grupos;
     }catch (error){
-        console.error("Error ao buscar grupos de apoio: ", error);
+        console.error("Erro ao buscar grupos de apoio: ", error);
         throw error;
     }
 }
@@ -65,7 +65,7 @@ async function atualizargrupoDeApoio(id, link, descricao){
 
 async function deletargrupoDeApoio(id){
     try{
-        const grupoDeletado = await prisma.usuario.delete({
+        const grupoDeletado = await prisma.grupo_apoio.delete({
             where: {
                 id: id,
             },

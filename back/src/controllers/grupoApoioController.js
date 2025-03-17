@@ -26,7 +26,7 @@ exports.buscarGruposDeApoios = async (req, res) => {
 exports.buscarGrupoDeApoioPorId = async (req, res) => {
     try{
         const { id } = req.params;
-        const grupo = await usuarioModel.buscarGrupoDeApoioPorId(parseInt(id));
+        const grupo = await grupoApoioModel.buscarGrupoDeApoioPorId(parseInt(id));
 
 
         if(!grupo) {

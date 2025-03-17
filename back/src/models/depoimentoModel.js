@@ -3,7 +3,7 @@ const prisma = new PrismaClient();
 
 async function criarDepoimento(texto, data, usuarioId) {
     try{
-        const novoDepoimento = await prisma.usuario.create({
+        const novoDepoimento = await prisma.depoimento.create({
             data: {
                 texto: texto,
                 data: data,

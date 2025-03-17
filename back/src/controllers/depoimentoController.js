@@ -3,7 +3,7 @@ const depoimentoModel = require('../models/depoimentoModel');
 exports.criarDepoimento = async (req, res) => {
     try {
         const {texto, data, usuarioId} = req.body;
-        const novoDepoimento = await depoimentoModel.criarUsuario(texto, data, usuarioId);
+        const novoDepoimento = await depoimentoModel.criarDepoimento(texto, data, usuarioId);
         res.status(201).json(novoDepoimento);
     } catch (error) {
         console.error("Erro ao criar o novo depoimento", error);

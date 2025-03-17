@@ -55,7 +55,7 @@ exports.atualizarProfissional = async (req, res) => {
 exports.deletarProfissional = async (req, res) => {
     try{
         const {id} = req.params;
-        await profissionalModel.deletarUsuario(parseInt(id));
+        await profissionalModel.deletarProfissional(parseInt(id));
         res.status(200).json({message: "Profissional deletado"});
     } catch (error) {
         console.error("Erro ao deletar profissional", error);
