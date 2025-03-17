@@ -55,7 +55,7 @@ exports.atualizarGrupoDeApoio = async (req, res) => {
 }
 
 
-exports.deletargrupoDeApoio = async (req, res) => {
+exports.deletarGrupoDeApoio = async (req, res) => {
     try{
         const {id} = req.params;
         await grupoApoioModel.deletargrupoDeApoio(parseInt(id));
