@@ -1,0 +1,71 @@
+.home{
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  background-color: rgb(255, 255, 255);
+  width: 100%;
+}
+
+.profissionaisLista, .resumoAgend{
+  height: 100%;
+}
+
+.container-home, .container{
+  margin-top: 10rem;
+  display: flex;
+  gap: 6rem;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  height: 40rem;
+}
+
+.profissionaisLista{
+  border-radius: 2rem;
+  padding: 2rem;
+  background-color: white;
+  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+  max-width: 40rem;
+  width: 100%;
+}
+
+.profissionaisLista h3{
+  font-size: 2rem;
+}
+
+.outrosProf{
+  background: none;
+  border: none;
+  color: #799949;
+  cursor: pointer;
+  text-align: center;
+  width: 100%;
+  margin-top: 2rem;
+}
+
+.resumoAgend{
+  border-radius: 2rem;
+  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+  padding: 2rem;
+  background-color: white;
+}
+
+h3{
+  font-size: 2rem;
+  margin-bottom: 1rem;
+}
+
+.container-reagendar{
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.container-pacientes{
+  border-radius: 2rem;
+  padding: 2rem;
+  background-color: white;
+  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+  max-width: 40rem;
+  width: 100%;
+}

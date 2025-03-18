@@ -1,0 +1,10 @@
+.meusPacientes{
+  display: flex;
+  justify-content: space-between;
+  font-size: 1.3rem;
+  margin-bottom: 1rem;
+}
+
+.relatorio{
+  color: var(--verdeForte);
+}

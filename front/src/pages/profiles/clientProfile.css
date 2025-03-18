@@ -1,0 +1,102 @@
+span {
+    color: var(--verdeForte);
+}
+
+.page-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 80vh; 
+}
+
+.container-profile {
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    width: 300px;
+    margin: 0 auto;
+    text-align:left;
+}
+
+.profile-pic {
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    margin-bottom: 10px;
+}
+  
+.name-specialist {
+    margin-top: 0px;
+}
+  
+.name-specialist h2 {
+    font-size: 2.5rem;
+    font-weight: bold;
+    margin: 5px 0;
+}
+  
+.name-specialist h3 {
+    font-size: 1.8rem;
+    color: #777;
+    margin: 0;
+}
+  
+.address {
+    display: flex;
+    justify-content: left;
+    align-items: left;
+    margin: 10px 0;
+}
+  
+.address img {
+    width: 15px;
+    margin-right: 5px;
+}
+  
+.address p {
+    margin: 0;
+    font-size: 1.5rem;
+}
+  
+.information {
+    text-align: left;
+    margin-top: 10px;
+    margin-bottom: 15px;
+}
+  
+.information p {
+    font-size: 1.5em;
+    color: #333;
+    margin: 5px 0;
+    font-weight: 600;
+}
+  
+.information ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+  
+.information ul li {
+    font-size: 1.5em;
+    color: #555;
+}
+
+.agend{
+    color: white;
+    background-color: var(--roxoClaro);
+    border: none;
+    padding: 1rem 3.5rem;
+    width: 100%;
+    border-radius: 5rem;
+    cursor: pointer;
+    transition: ease 0.2s transform;
+    font-size: 1.5rem;
+  }
+  
+  
+  .agend:hover{
+    transform: scale(1.020);
+  }
+  

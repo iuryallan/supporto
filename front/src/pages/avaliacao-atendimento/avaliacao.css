@@ -1,0 +1,67 @@
+.container-review {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background: linear-gradient(to right, #8E9DCC, #7D84B2);
+  }
+  
+.card-review {
+    background-color: #F9F9ED;
+    padding: 20px;
+    border-radius: 40px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    width: 540px;
+    height: 600px;
+    text-align: center;
+}
+  
+.info-text-review {
+    font-size: 14px;
+    color: #000000;
+    margin-bottom: 20px;
+}
+  
+.label-review {
+    font-size: 20px;
+    color: #333;
+    margin-left: 30px;
+    margin-bottom: 15px;
+    text-align: left;
+    display: block;
+    font-family: Montserrat, sans-serif;
+}
+  
+.review-textarea {
+    width: 424px;
+    height: 202px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 20px;
+    resize: none;
+    margin-bottom: 4px;
+    background-color: #D9D9D9;
+}
+
+.submit-btn {
+    text-align: center;
+    margin-top: 2rem;
+}
+
+.submit-btn{
+    width: 80%;
+    height: 5rem;
+    font-size: 1.8rem;
+    background-color: #DBF4A7;
+    border-radius: 4rem;
+    border: none;
+    box-shadow: 1px 1px 3px;
+    cursor: pointer;
+    transition: .5s;
+}
+
+.submit-btn:hover {
+    transform: scale(1.05);
+    background: #799949;
+    color: #fff;
+}

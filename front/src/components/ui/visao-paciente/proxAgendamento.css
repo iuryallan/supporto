@@ -1,0 +1,34 @@
+.card-prox-agend{
+  background-color: #7D84B2;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  gap: 1.4rem;
+  padding: 1rem 3rem;
+  border-radius: 4rem;
+  width: 36rem;
+}
+
+.secaocom h4{
+  color:#fff;
+  font-size: 2rem;
+}
+
+.secaocom  p{
+  color:#fff;
+  font-size: 1.5rem;
+}
+
+.dataehora{
+  color: #fff;
+  display: flex;
+  justify-content: space-between;
+  font-size:1.5rem;
+}
+
+.prox-agend{
+  font-size: 1.8rem;
+  font-weight: 500;
+  margin-bottom: 0.3rem;
+}
+

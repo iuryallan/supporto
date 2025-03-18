@@ -1,0 +1,60 @@
+.about-us {
+    display: flex;
+    flex-direction: column;
+    background-color: var(--bg);
+    padding: 10rem 0;
+}
+
+.quem-somos {
+    display: flex;
+    justify-content: center;
+    font-size: 2.1rem;
+}
+
+.content-about {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 10rem;
+}
+
+.text-about {
+    max-width: 60rem;
+    line-height: 1.5;
+}
+
+.content-about h3 {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+}
+
+.content-about p {
+    font-size: 1.5rem;
+}
+
+.img-aboutus {
+    height: 40rem;
+    border-bottom-right-radius: 10rem ;
+    border-bottom-left-radius: 10rem ;
+}
+
+.creditos {
+    display: flex;
+    justify-content: center;
+}
+
+.creditos p {
+    font-size: 1rem;
+    color: var(--roxoForte);
+}
+
+@media (max-width: 800px){
+    .img-aboutus {
+        height: 28rem;
+    }
+
+    .content-about{
+        flex-wrap: wrap;
+    }
+}
