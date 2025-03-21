@@ -3,7 +3,6 @@ import { useNavigate } from 'react-router-dom';
 import "./avaliacao.css";
 import Estrela from "./components/estrela";
 
-
 const Avaliacao = () => {
   const navigate = useNavigate();
 
@@ -22,7 +21,7 @@ const Avaliacao = () => {
 
             <Estrela rating={rating} setRating={setRating} />
 
-            <label className="label-review">O que você tem a dizer deste profissional?</label>
+            <label className="label-review">O que você tem a dizer da nossa plataforma?</label>
             <textarea
             className="review-textarea"
             placeholder="Escreva sua avaliação aqui..."
