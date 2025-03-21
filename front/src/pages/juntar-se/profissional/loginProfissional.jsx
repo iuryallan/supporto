@@ -1,11 +1,36 @@
 import ButtonLogin from '../../../components/ui/ButtonsLogin';
 import '../../login/login.css';
+import { useState } from 'react';
 
-function loginProfissional () {
+function LoginProfissional () {
+    const [senha, setSenha] = useState("");
+    const [confirmaSenha, setConfirmaSenha] = useState("");
+    const [erroSenha, setErroSenha] = useState("");
+
+    const handleSenhaChange = (e) => {
+        setSenha(e.target.value);
+    };
+
+    const handleConfirmaSenhaChange = (e) => {
+        setConfirmaSenha(e.target.value);
+    };
+
+    const handleSubmit = (e) => {
+        e.preventDefault();
+
+        if (senha !== confirmaSenha) {
+            setErroSenha("As senhas não coincidem.");
+            return;
+        }
+
+        setErroSenha(""); // Se estiver certo, limpa o erro
+        alert("Formulário enviado com sucesso!");
+    };
+
     return (
         <div className="login">
             <div className='container-login'>
-                <form>
+                <form onSubmit={handleSubmit}>
                     <h2 className='titulo-login'>Informações Pessoais</h2>
                     <div className='input-field'>
                         <label>
@@ -15,8 +40,8 @@ function loginProfissional () {
                     </div>
                     <div className='input-field'>
                         <label>
-                            genêro: <br />
-                            <select name="gênero">
+                            gênero: <br />
+                            <select name="genero" required>
                                 <option value="Prefiro não informar">Prefiro não informar</option>
                                 <option value="Masculino">Masculino</option>
                                 <option value="Feminino">Feminino</option>
@@ -25,8 +50,8 @@ function loginProfissional () {
                     </div>
                     <div className='input-field'>
                         <label>
-                            idade: <br />
-                            <input type="number" name="idade" required />
+                            data de nascimento: <br />
+                            <input type="date" name="dataNascimento" required />
                         </label>
                     </div>
                     <div className='input-field'>
@@ -44,7 +69,7 @@ function loginProfissional () {
                     <h3 className='titulo-login'>Informações Profissionais</h3>
                     <div className='input-field'>
                         <label>
-                            CRP: <br />
+                            registro profissional (CRP, RQE, etc.): <br />
                             <input type="search" name="CRP" required />
                         </label>
                     </div>
@@ -57,7 +82,13 @@ function loginProfissional () {
                     <div className='input-field'>
                         <label>
                             faixa etária de pacientes: <br />
-                            <input type="number" name="faixa etária de pacientes" required />
+                            <select name="faitaEtariaPacientes" required>
+                                <option value="Crianças">Crianças</option>
+                                <option value="Adolescentes">Adolescentes</option>
+                                <option value="Jovens Adultos">Jovens Adultos</option>
+                                <option value="Adultos">Adultos</option>
+                                <option value="Idosos">Idosos</option>
+                            </select>
                         </label>
                     </div>
                     <div className='input-field'>
@@ -69,7 +100,7 @@ function loginProfissional () {
                     <div className='input-field'>
                         <label>
                             adicione uma foto no seu perfil: <br />
-                            <input type="file" name="adicione uma foto no seu perfil" required />
+                            <input type="file" name="adicione uma foto no seu perfil" />
                         </label>
                     </div>
                     <h4 className='titulo-login'>Informações de Login</h4>
@@ -82,15 +113,16 @@ function loginProfissional () {
                     <div className='input-field'>
                         <label>
                             senha: <br />
-                            <input type="password" name="senha" required />
+                            <input type="password" name="senha" value={senha} onChange={handleSenhaChange}required />
                         </label>
                     </div>
                     <div className='input-field'>
                         <label>
                             confirme sua senha: <br />
-                            <input type="password" name="senha" required />
+                            <input type="password" name="senha" value={confirmaSenha} onChange={handleConfirmaSenhaChange} required />
                         </label>
                     </div>
+                    {erroSenha && <p style={{ color: "red" }}>{erroSenha}</p>}
                     <ButtonLogin type="submit" value="enviar informações"/>
                 </form>
             </div>
@@ -98,4 +130,4 @@ function loginProfissional () {
     )
 }
 
-export default loginProfissional;
+export default LoginProfissional;
