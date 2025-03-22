@@ -1,4 +1,4 @@
-import Header from "../../components/layout/header/Header";
+import Header from "../../components/layout/header/HeaderPaciente";
 import Profissional from "../../components/ui/visao-paciente/profissional";
 import "./grupoApoio.css";
 function grupoApoio() {
