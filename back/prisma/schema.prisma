@@ -14,7 +14,7 @@ datasource db {
 }
 enum Faixa_etaria{
   CRIANÇA
-  ADOLECENTE
+  ADOLESCENTE
   JOVEM
   ADULTO
   IDOSO
@@ -56,6 +56,7 @@ model Profissional{
   estado String
   genero Gender
   idade Int
+  valor Float
   usuarioId Int
 
   usuario Usuario? @relation(fields: [usuarioId], references: [id])
@@ -100,7 +101,6 @@ model Atendimento {
   status Status
   pacienteId Int
   profissionalId Int
-  valor Float
 
   paciente Paciente @relation(fields: [pacienteId], references: [id])
   profissional Profissional? @relation(fields: [profissionalId], references: [id])

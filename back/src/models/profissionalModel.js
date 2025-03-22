@@ -2,7 +2,7 @@ const { PrismaClient } = require('@prisma/client');
 const prisma = new PrismaClient();
 
 
-async function criarProfissional(nome, matricula_profissional, foto_perfil, quant_atend_gratis, faixa_etaria, cidade, estado, genero, idade, usuarioId) {
+async function criarProfissional(nome, matricula_profissional, foto_perfil, quant_atend_gratis, faixas_etarias, cidade, estado, genero, idade, usuarioId) {
     try{
         const novoProfissional = await prisma.profissional.create({
             data: {
@@ -10,7 +10,7 @@ async function criarProfissional(nome, matricula_profissional, foto_perfil, quan
                 matricula_profissional: matricula_profissional,
                 foto_perfil: foto_perfil,
                 quant_atend_gratis: quant_atend_gratis,
-                faixa_etaria: faixa_etaria,
+                faixas_etarias: faixas_etarias,
                 cidade: cidade,
                 estado: estado,
                 genero: genero,
@@ -50,7 +50,7 @@ async function buscarProfissionalPorId(id){
     }
 }
 
-async function atualizarProfissional(id, nome, matricula_profissional, foto_perfil, quant_atend_gratis, faixa_etaria, cidade, estado, genero, idade, usuarioId){
+async function atualizarProfissional(id, nome, matricula_profissional, foto_perfil, quant_atend_gratis, faixas_etarias, cidade, estado, genero, idade, usuarioId){
     try{
         const profissionalAtualizado = await prisma.profissional.update({
             where: {
@@ -61,7 +61,7 @@ async function atualizarProfissional(id, nome, matricula_profissional, foto_perf
                 matricula_profissional: matricula_profissional,
                 foto_perfil: foto_perfil,
                 quant_atend_gratis: quant_atend_gratis,
-                faixa_etaria: faixa_etaria,
+                faixas_etarias: faixas_etarias,
                 cidade: cidade,
                 estado: estado,
                 genero: genero,

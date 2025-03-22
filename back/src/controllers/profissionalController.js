@@ -3,8 +3,8 @@ const profissionalModel = require('../models/profissionalModel');
 
 exports.criarProfissional = async (req, res) => {
     try {
-        const { nome, matricula_profissional, foto_perfil, quant_atend_gratis, faixa_etaria, cidade, estado, genero, idade, usuarioId} = req.body;
-        const novoProfissional = await profissionalModel.criarProfissional(nome, matricula_profissional, foto_perfil, quant_atend_gratis, faixa_etaria, cidade, estado, genero, idade, usuarioId);
+        const { nome, matricula_profissional, foto_perfil, quant_atend_gratis, faixas_etarias, cidade, estado, genero, idade, usuarioId} = req.body;
+        const novoProfissional = await profissionalModel.criarProfissional(nome, matricula_profissional, foto_perfil, quant_atend_gratis, faixas_etarias, cidade, estado, genero, idade, usuarioId);
         res.status(201).json(novoProfissional);
     } catch (error) {
         console.error("Erro ao criar o novo profissional", error);
@@ -41,9 +41,9 @@ exports.buscarProfissionalPorId = async (req, res) => {
 exports.atualizarProfissional = async (req, res) => {
     try{
         const {id} = req.params;
-        const {nome, matricula_profissional, foto_perfil, quant_atend_gratis, faixa_etaria, cidade, estado, genero, idade, usuarioId} = req.body;
+        const {nome, matricula_profissional, foto_perfil, quant_atend_gratis, faixas_etarias, cidade, estado, genero, idade, usuarioId} = req.body;
 
-        const profissionalAtualizado = await profissionalModel.atualizarProfissional(parseInt(id), nome, matricula_profissional, foto_perfil, quant_atend_gratis, faixa_etaria, cidade, estado, genero, idade, usuarioId);
+        const profissionalAtualizado = await profissionalModel.atualizarProfissional(parseInt(id), nome, matricula_profissional, foto_perfil, quant_atend_gratis, faixas_etarias, cidade, estado, genero, idade, usuarioId);
         res.status(200).json(profissionalAtualizado)
     } catch( error) {
         console.error("Erro ao atualizar o profissional", error);
