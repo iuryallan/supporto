@@ -10,7 +10,7 @@ function ProfProxAtend(props) {
           <p>com {props.paciente}</p>
           <p>Contato: {props.email}</p>
         </div>
-        <Link to="/RegistrarEvolucao">
+        <Link to="/HomeProfissional">
           <button className="newagend">Cancelar Agendamento</button>
         </Link>
         <div className="dataehora">

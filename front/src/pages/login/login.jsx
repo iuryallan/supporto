@@ -33,7 +33,7 @@ function login() {
               </a>
             </p>
           </div>
-          <Link to="/Home">
+          <Link to="/HomeProfissional">
             <ButtonLogin type="submit" value="fazer login" />
           </Link>
         </form>

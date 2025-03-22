@@ -1,6 +1,6 @@
 import Profissional from "../../components/ui/visao-paciente/profissional";
 import "./home.css";
-import Header from "../../components/layout/header/Header";
+import Header from "../../components/layout/header/HeaderPaciente";
 import ReagendarTerapia from "../../components/ui/visao-paciente/reagendarTerapia";
 import ProxAgendamento from "../../components/ui/visao-paciente/proxAgendamento";
 import ProfUltimoAtend from "../../components/ui/visao-profissional/profUltimoAtend";
@@ -56,7 +56,7 @@ function Home(props) {
 
           <div className="container-reagendar">
             <ReagendarTerapia horario="11:00" profissional="Iury" />
-            <ProxAgendamento horario="11:00" profissional="Iury"/>
+            <ProxAgendamento horario="11:00" profissional="Iury" />
           </div>
         </div>
       </div>

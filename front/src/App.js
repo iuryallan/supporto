@@ -5,8 +5,10 @@ import {
   Route,
   useLocation,
 } from "react-router-dom";
-import Home from "./pages/home/Home";
-import Agendamento from "./pages/agendamento/agendamento";
+import Home from "./pages/home/HomePaciente";
+import HomeProf from "./pages/home/HomeProfissional"
+import Agendamento from "./pages/agendamento/AgendPaciente";
+import AgendamentoProfissional from "./pages/agendamento/AgendProfissional";
 import User from "./pages/profiles/userProfile";
 import ClientProfile from "./pages/profiles/clientProfile";
 import PacientProfile from "./pages/profiles/pacientProfile";
@@ -48,10 +50,12 @@ function App() {
         <Route path="/LoginProfissional" element={<LoginProfissional />} />
         <Route path="/Login" element={<Login />} />
         <Route path="/Home" element={<Home />} />
+        <Route path="/HomeProfissional" element={<HomeProf />} />
         <Route path="/User" element={<User />} />
         <Route path="/ClientProfile" element={<ClientProfile />} />
         <Route path="/PacientProfile" element={<PacientProfile />} />
         <Route path="/Agendamento" element={<Agendamento />} />
+        <Route path="/AgendamentoProfissional" element={<AgendamentoProfissional />} />
         <Route path="/Avaliacao" element={<Avaliacao />} />
         <Route path="/GrupoApoio" element={<GrupoApoio />} />
         <Route path="/Calendario" element={<Calendario />} />
