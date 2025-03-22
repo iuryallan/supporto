@@ -28,7 +28,7 @@ function Profile() {
                         </ul>
                         <p>Quantidade de atendimentos gratuitos: <span>2</span></p>
                         <p>Valor do atendimento: <span>R$ 100,00</span></p>
-                        <p>CRP: <span>XXXXX</span></p>
+                        <p>Registro Profissional: <span>XXXXX</span></p>
                     </div>
                     <button className='agend'>Agendar</button>
                 </div>

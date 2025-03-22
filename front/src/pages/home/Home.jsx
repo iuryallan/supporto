@@ -11,7 +11,7 @@ function Home(props) {
     <div className="home">
       <Header />
 
-      <div className="container">
+      {/* <div className="container">
         <div className="container-pacientes">
           <h3>Meus Pacientes</h3>
           <Paciente nome="Diego" relatorio="homem" />
@@ -25,8 +25,8 @@ function Home(props) {
           <Paciente nome="Diego" relatorio="homem" />
           <Paciente nome="Diego" relatorio="homem" />
         </div>
-      </div>
-      {/* <div className="container-home">
+      </div> */}
+      <div className="container-home">
         <div className="profissionaisLista">
           <h3>Conheça Profissionais</h3>
           <Profissional />
@@ -37,6 +37,20 @@ function Home(props) {
           <button className="outrosProf">Ver outros profissionais</button>
         </div>
 
+        {/* <div className="container-pacientes">
+          <h3>Meus Pacientes</h3>
+          <Paciente nome="Diego" relatorio="homem" />
+          <Paciente nome="Diego" relatorio="homem" />
+          <Paciente nome="Diego" relatorio="homem" />
+          <Paciente nome="Diego" relatorio="homem" />
+          <Paciente nome="Diego" relatorio="homem" />
+          <Paciente nome="Diego" relatorio="homem" />
+          <Paciente nome="Diego" relatorio="homem" />
+          <Paciente nome="Diego" relatorio="homem" />
+          <Paciente nome="Diego" relatorio="homem" />
+          <Paciente nome="Diego" relatorio="homem" />
+        </div> */}
+
         <div className="resumoAgend">
           <h3>Resumos de Agendamentos</h3>
 
@@ -45,7 +59,7 @@ function Home(props) {
             <ProxAgendamento horario="11:00" profissional="Iury"/>
           </div>
         </div>
-      </div> */}
+      </div>
     </div>
   );
 }

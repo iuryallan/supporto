@@ -52,7 +52,7 @@ function Header() {
           </div>
         </Link>
 
-        <Link to="/User" className={location.pathname === "/User" ? "ativo" : ""}>
+        <Link to="/pacientProfile" className={location.pathname === "/User" ? "ativo" : ""}>
           <div>
             <ion-icon name="person-outline"></ion-icon>
           </div>

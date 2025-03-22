@@ -11,7 +11,7 @@ function ProfProxAtend(props) {
           <p>Contato: {props.email}</p>
         </div>
         <Link to="/RegistrarEvolucao">
-          <button className="newagend">Registrar Evolução</button>
+          <button className="newagend">Cancelar Agendamento</button>
         </Link>
         <div className="dataehora">
           <p>18 de janeiro, 2025</p>

@@ -9,7 +9,7 @@ function hero(){
     <section id= 's1' className="section-hero">
       <div className="content-hero">
         <h2>
-          Nem toda tempestade precisa ser enfrentada sozinha. Procure ajuda.
+          Nem toda tempestade você precisa enfrentar sozinho(a). Procure ajuda.
         </h2>
         <p>
           Somos uma plataforma de Apoio Psicológico Comunitário. Oferecemos profissionais qualificados e serviço acessível.

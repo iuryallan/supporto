@@ -93,6 +93,12 @@ function LoginProfissional () {
                     </div>
                     <div className='input-field'>
                         <label>
+                            valor dos atendimentos: <br />
+                            <input type="number" name="valorAtendimento" required />
+                        </label>
+                    </div>
+                    <div className='input-field'>
+                        <label>
                             quantidade de atendimentos gratuitos: <br />
                             <input type="number" name="quantidade de atendimentos gratuitos" required />
                         </label>
