@@ -1,10 +1,10 @@
 .cardAvaliacao{
-  display: inline-block;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
   background-color: var(--bg);
   padding: 1rem;
   border-radius: 4rem;
-  max-width: 60rem;
-  width: 100%;
 }
 
 .headerCard{
