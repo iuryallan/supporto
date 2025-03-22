@@ -92,27 +92,27 @@ function LoginProfissional() {
                     <div className="age-range-option
                     ">
                       <label htmlFor="crianca">Crianças</label>
-                      <input type="radio" name="crianca" id="crianca" />
+                      <input type="checkbox" name="crianca" id="crianca" />
                     </div>
                     <div className="age-range-option
                     ">
                       <label htmlFor="adolecentes">Adolescentes</label>
-                      <input type="radio" name="adolecentes" id="adolecentes"/>
+                      <input type="checkbox" name="adolecentes" id="adolecentes"/>
                     </div>
                     <div className="age-range-option
                     ">
                       <label htmlFor="jovensAdultos">Jovens Adultos</label>
-                      <input type="radio" name="jovensAdultos" id="jovensAdultos" />
+                      <input type="checkbox" name="jovensAdultos" id="jovensAdultos" />
                     </div>
                     <div className="age-range-option
                     ">
                       <label htmlFor="adultos">Adultos</label>
-                      <input type="radio" name="adultos" id="adultos" />
+                      <input type="checkbox" name="adultos" id="adultos" />
                     </div>
                     <div className="age-range-option
                     ">
                       <label htmlFor="idosos">Idosos</label>
-                      <input type="radio" name="idosos" id="idosos" />
+                      <input type="checkbox" name="idosos" id="idosos" />
                     </div>
                 </div>
             </div>
