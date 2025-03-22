@@ -12,7 +12,13 @@ datasource db {
   provider = "postgresql"
   url      = env("DATABASE_URL")
 }
-
+enum Faixa_etaria{
+  CRIANÇA
+  ADOLECENTE
+  JOVEM
+  ADULTO
+  IDOSO
+}
 enum Status{
   CONFIRMADO
   CANCELADO
@@ -45,7 +51,7 @@ model Profissional{
   matricula_profissional String
   foto_perfil String?
   quant_atend_gratis Int
-  faixa_etaria String
+  faixas_etarias Faixa_etaria[]
   cidade String
   estado String
   genero Gender
@@ -94,6 +100,7 @@ model Atendimento {
   status Status
   pacienteId Int
   profissionalId Int
+  valor Float
 
   paciente Paciente @relation(fields: [pacienteId], references: [id])
   profissional Profissional? @relation(fields: [profissionalId], references: [id])
