@@ -54,3 +54,26 @@
     color: #4F5578;
 }
 
+.container-age-range-option{
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    margin-top: 1rem;
+}
+
+.age-range-option{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #D9D9D9;
+    padding: 1rem;
+    border-radius: 2rem;
+    border: 1px solid #000;
+    font-size: 1rem;
+}
+
+.age-range-option input[type="checkbox"]{
+   margin-left: 1rem;
+   width: 15px;
+   height: 15px;
+}
