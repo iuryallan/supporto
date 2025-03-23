@@ -49,6 +49,7 @@ model Profissional{
   id Int @id @default(autoincrement())
   nome String
   matricula_profissional String
+  especialidade String
   foto_perfil String?
   quant_atend_gratis Int
   faixas_etarias Faixa_etaria[]
@@ -74,6 +75,7 @@ model Paciente{
   medicamentos String
   historico_familiar String
   principal_queixa String
+  email_contato String
   usuarioId Int
 
   usuario Usuario? @relation(fields: [usuarioId], references: [id])

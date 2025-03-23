@@ -3,8 +3,8 @@ const pacienteModel = require('../models/pacienteModel');
 
 exports.criarPaciente = async (req, res) => {
     try {
-        const { nome, genero, data_nasc, motivo_terapia, medicamentos, historico_familiar, principal_queixa, usuarioId} = req.body;
-        const novoPaciente = await pacienteModel.criarPaciente(nome, genero, data_nasc, motivo_terapia, medicamentos, historico_familiar, principal_queixa, usuarioId);
+        const { nome, genero, data_nasc, motivo_terapia, medicamentos, historico_familiar, principal_queixa, email_contato, usuarioId} = req.body;
+        const novoPaciente = await pacienteModel.criarPaciente(nome, genero, data_nasc, motivo_terapia, medicamentos, historico_familiar, principal_queixa, email_contato, usuarioId);
         res.status(201).json(novoPaciente);
     } catch (error) {
         console.error("Erro ao criar o novo paciente", error);
@@ -41,9 +41,9 @@ exports.buscarPacientePorId = async (req, res) => {
 exports.atualizarPaciente = async (req, res) => {
     try{
         const {id} = req.params;
-        const {nome, genero, data_nasc, motivo_terapia, medicamentos, historico_familiar, principal_queixa, usuarioId} = req.body;
+        const {nome, genero, data_nasc, motivo_terapia, medicamentos, historico_familiar, principal_queixa, email_contato, usuarioId} = req.body;
 
-        const pacienteAtualizado = await pacienteModel.atualizarPaciente(parseInt(id), nome, genero, data_nasc, motivo_terapia, medicamentos, historico_familiar, principal_queixa, usuarioId);
+        const pacienteAtualizado = await pacienteModel.atualizarPaciente(parseInt(id), nome, genero, data_nasc, motivo_terapia, medicamentos, historico_familiar, principal_queixa, email_contato, usuarioId);
         res.status(200).json(pacienteAtualizado)
     } catch( error) {
         console.error("Erro ao atualizar o paciente", error);
