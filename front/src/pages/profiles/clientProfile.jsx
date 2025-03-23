@@ -1,7 +1,6 @@
 import "./clientProfile.css";
 import React from "react";
 import Header from "../../components/layout/header/HeaderPaciente";
-import Star from "../../assets/star.svg";
 import Ellipse from "../../assets/ellipse.svg";
 import Localizacao from "../../assets/location.svg";
 

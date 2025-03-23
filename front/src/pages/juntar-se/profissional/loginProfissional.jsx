@@ -1,11 +1,43 @@
 import ButtonLogin from "../../../components/ui/ButtonsLogin";
 import "../../login/login.css";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 function LoginProfissional() {
   const [senha, setSenha] = useState("");
   const [confirmaSenha, setConfirmaSenha] = useState("");
   const [erroSenha, setErroSenha] = useState("");
+  const [erroIdade, setErroIdade] = useState("");
+  const [erroValorAtendimento, setErroValorAtendimento] = useState("");
+  const [erroAtendimentosGratuitos, setErroAtendimentosGratuitos] = useState("");
+  const [erroEspecialidade, setErroEspecialidade] = useState("");
+
+  const [estados, setEstados] = useState([]);
+  const [cidades, setCidades] = useState([]);
+  const [estadoSelecionado, setEstadoSelecionado] = useState("");
+
+  useEffect(() => {
+    fetch("https://servicodados.ibge.gov.br/api/v1/localidades/estados")
+      .then((response) => response.json())
+      .then((data) => {
+        const estadosOrdenados = data.sort((a, b) => a.nome.localeCompare(b.nome));
+        setEstados(estadosOrdenados);
+      })
+      .catch((error) => console.error("Erro ao carregar estados:", error));
+  }, []);
+
+  useEffect(() => {
+    if (estadoSelecionado) {
+      fetch(`https://servicodados.ibge.gov.br/api/v1/localidades/estados/${estadoSelecionado}/municipios`)
+        .then((response) => response.json())
+        .then((data) => {
+          const cidadesOrdenadas = data.sort((a, b) => a.nome.localeCompare(b.nome));
+          setCidades(cidadesOrdenadas);
+        })
+        .catch((error) => console.error("Erro ao carregar cidades:", error));
+    } else {
+      setCidades([]);
+    }
+  }, [estadoSelecionado]);
 
   const handleSenhaChange = (e) => {
     setSenha(e.target.value);
@@ -15,8 +47,66 @@ function LoginProfissional() {
     setConfirmaSenha(e.target.value);
   };
 
+  const handleIdadeChange = (e) => {
+    const idade = e.target.value;
+    if (idade < 1 || isNaN(idade)) {
+      setErroIdade("Idade deve ser um número maior que zero.");
+    } else {
+      setErroIdade("");
+    }
+  };
+
+  const handleValorAtendimentoChange = (e) => {
+    const valor = e.target.value;
+    if (valor < 0 || isNaN(valor)) {
+      setErroValorAtendimento("Valor deve ser um número igual ou maior que zero.");
+    } else {
+      setErroValorAtendimento("");
+    }
+  };
+
+  const handleAtendimentosGratuitosChange = (e) => {
+    const quantidade = e.target.value;
+    if (quantidade < 0 || isNaN(quantidade)) {
+      setErroAtendimentosGratuitos("Quantidade deve ser um número igual ou maior que zero.");
+    } else {
+      setErroAtendimentosGratuitos("");
+    }
+  };
+
+  const handleEstadoChange = (e) => {
+    const estado = e.target.value;
+    setEstadoSelecionado(estado);
+  };
+
+  const handleCidadeChange = (e) => {
+    const cidade = e.target.value;
+  };
+
+  const handleEspecialidadeChange = (e) => {
+    const especialidade = e.target.value;
+    const regex = /^[A-Za-z\s]+$/;
+
+    if (!regex.test(especialidade)) {
+      setErroEspecialidade("A especialidade deve conter apenas letras.");
+    } else {
+      setErroEspecialidade("");
+    }
+  };
+
   const handleSubmit = (e) => {
     e.preventDefault();
+
+    if (
+      erroSenha ||
+      erroIdade ||
+      erroValorAtendimento ||
+      erroAtendimentosGratuitos ||
+      erroEspecialidade
+    ) {
+      alert("Por favor, corrija os erros antes de enviar o formulário.");
+      return;
+    }
 
     if (senha !== confirmaSenha) {
       setErroSenha("As senhas não coincidem.");
@@ -53,19 +143,40 @@ function LoginProfissional() {
           <div className="input-field">
             <label>
               idade: <br />
-              <input type="number" name="idade" required />
+              <input
+                type="number"
+                name="idade"
+                min="1"
+                onChange={handleIdadeChange}
+                required
+              />
+              {erroIdade && <p style={{ color: "red" }}>{erroIdade}</p>}
             </label>
           </div>
           <div className="input-field">
             <label>
               estado: <br />
-              <input type="search" name="estado" required />
+              <select name="estado" onChange={handleEstadoChange} required>
+                <option value="">Selecione um estado</option>
+                {estados.map((estado) => (
+                  <option key={estado.id} value={estado.sigla}>
+                    {estado.nome}
+                  </option>
+                ))}
+              </select>
             </label>
           </div>
           <div className="input-field">
             <label>
               cidade: <br />
-              <input type="search" name="cidade" required />
+              <select name="cidade" onChange={handleCidadeChange} required>
+                <option value="">Selecione uma cidade</option>
+                {cidades.map((cidade) => (
+                  <option key={cidade.id} value={cidade.nome}>
+                    {cidade.nome}
+                  </option>
+                ))}
+              </select>
             </label>
           </div>
           <h3 className="titulo-login">Informações Profissionais</h3>
@@ -78,7 +189,13 @@ function LoginProfissional() {
           <div className="input-field">
             <label>
               especialidade: <br />
-              <input type="text" name="especialidade" required />
+              <input
+                type="text"
+                name="especialidade"
+                onChange={handleEspecialidadeChange}
+                required
+              />
+              {erroEspecialidade && <p style={{ color: "red" }}>{erroEspecialidade}</p>}
             </label>
           </div>
 
@@ -121,7 +238,14 @@ function LoginProfissional() {
           <div className="input-field">
             <label>
               valor dos atendimentos: <br />
-              <input type="number" name="valorAtendimento" required />
+              <input
+                type="number"
+                name="valorAtendimento"
+                min="0"
+                onChange={handleValorAtendimentoChange}
+                required
+              />
+              {erroValorAtendimento && <p style={{ color: "red" }}>{erroValorAtendimento}</p>}
             </label>
           </div>
           <div className="input-field">
@@ -130,8 +254,11 @@ function LoginProfissional() {
               <input
                 type="number"
                 name="quantidade de atendimentos gratuitos"
+                min="0"
+                onChange={handleAtendimentosGratuitosChange}
                 required
               />
+              {erroAtendimentosGratuitos && <p style={{ color: "red" }}>{erroAtendimentosGratuitos}</p>}
             </label>
           </div>
           <div className="input-field">
