@@ -1,6 +1,7 @@
 import ButtonLogin from '../../../components/ui/ButtonsLogin';
 import '../../login/login.css';
 import { useState } from 'react';
+import axios from "axios";
 
 function LoginPaciente () {
     const [senha, setSenha] = useState("");

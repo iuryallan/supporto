@@ -52,8 +52,8 @@ function LoginProfissional() {
           </div>
           <div className="input-field">
             <label>
-              data de nascimento: <br />
-              <input type="date" name="dataNascimento" required />
+              idade: <br />
+              <input type="number" name="idade" required />
             </label>
           </div>
           <div className="input-field">
