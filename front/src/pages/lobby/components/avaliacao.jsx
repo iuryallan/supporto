@@ -33,7 +33,6 @@ function Avaliacao() {
             avaliacaoReal.map((avaliacao, index) => (
               <CardOpiniao
                 key={index}
-                nome={avaliacao.data}
                 opiniao={avaliacao.texto}
               />
             ))

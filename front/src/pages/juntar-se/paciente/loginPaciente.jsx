@@ -1,116 +1,121 @@
-import ButtonLogin from '../../../components/ui/ButtonsLogin';
-import '../../login/login.css';
-import { useState } from 'react';
+import ButtonLogin from "../../../components/ui/ButtonsLogin";
+import "../../login/login.css";
+import { useState } from "react";
 import axios from "axios";
 
-function LoginPaciente () {
-    const [senha, setSenha] = useState("");
-    const [confirmaSenha, setConfirmaSenha] = useState("");
-    const [erroSenha, setErroSenha] = useState("");
+function LoginPaciente() {
+  const [senha, setSenha] = useState("");
+  const [confirmaSenha, setConfirmaSenha] = useState("");
+  const [erroSenha, setErroSenha] = useState("");
 
-    const handleSenhaChange = (e) => {
-        setSenha(e.target.value);
-    };
+  const [rqe, setRqe] = useState("");
+  const [crp, setCrp] = useState("");
+  const [erroRqe, setErroRqe] = useState("");
+  const [erroCrp, setErroCrp] = useState("");
 
-    const handleConfirmaSenhaChange = (e) => {
-        setConfirmaSenha(e.target.value);
-    };
+  // Validações separadas
+  const validarCRP = (valor) => {
+    const valorFormatado = valor.replace(/\D/g, "");
+    return valorFormatado.length === 7 || valorFormatado.length === 8;
+  };
 
-    const handleSubmit = (e) => {
-        e.preventDefault();
+  const validarRQE = (valor) => {
+    const valorFormatado = valor.replace(/\D/g, "");
+    return valorFormatado.length === 5;
+  };
 
-        if (senha !== confirmaSenha) {
-            setErroSenha("As senhas não coincidem.");
-            return;
-        }
+  const handleSenhaChange = (e) => {
+    setSenha(e.target.value);
+  };
 
-        setErroSenha(""); // Se estiver certo, limpa o erro
-        alert("Formulário enviado com sucesso!");
-    };
+  const handleConfirmaSenhaChange = (e) => {
+    setConfirmaSenha(e.target.value);
+  };
 
-    return (
-        <div className="login">
-            <div className='container-login'>
-                <form onSubmit={handleSubmit}>
-                    <h2 className='titulo-login'>Informações Pessoais</h2>
-                    <div className='input-field'>
-                        <label>
-                            nome: <br />
-                            <input type="name" name="nome" required />
-                        </label>
-                    </div>
-                    <div className='input-field'>
-                        <label>
-                            gênero: <br />
-                            <select name="genero">
-                                <option value="Prefiro não informar">Prefiro não informar</option>
-                                <option value="Masculino">Masculino</option>
-                                <option value="Feminino">Feminino</option>
-                            </select>
-                        </label>
-                    </div>
-                    <div className='input-field'>
-                        <label>
-                            data de nascimento: <br />
-                            <input type="date" name="dataNascimento" required />
-                        </label>
-                    </div>
-                    <div className='input-field'>
-                        <label>
-                            e-mail para contato: <br />
-                            <input type="text" name="emailContato" placeholder='e-mail que será visualizado pelo profissional' required />
-                        </label>
-                    </div>
-                    <h3 className='titulo-login'>Informações de Saúde Mental</h3>
-                    <div className='input-field'>
-                        <label>
-                            Principal queixa: <br />
-                            <input type="text" name="principalQueixa" required />
-                        </label>
-                    </div>
-                    <div className='input-field'>
-                        <label>
-                            Você tem algum histórico disso na família? Explique<br />
-                            <input type="text" name="historicoFamiliar" required />
-                        </label>
-                    </div>
-                    <div className='input-field'>
-                        <label>
-                            Você faz uso de medicamentos para saúde mental? Quais?<br />
-                            <input type="text" name="medicamentos" required />
-                        </label>
-                    </div>
-                    <div className='input-field'>
-                        <label>
-                            Motivo de buscar terapia: <br />
-                            <input type="text" name="Motivo de buscar terapia" required />
-                        </label>
-                    </div>
-                    <h4 className='titulo-login'>Informações de Login</h4>
-                    <div className='input-field'>
-                        <label>
-                            e-mail: <br />
-                            <input type="email" name="e-mail" required />
-                        </label>
-                    </div>
-                    <div className='input-field'>
-                        <label>
-                            senha: <br />
-                            <input type="password" name="senha" value={senha} onChange={handleSenhaChange} required />
-                        </label>
-                    </div>
-                    <div className='input-field'>
-                        <label>
-                            confirme sua senha: <br />
-                            <input type="password" name="senha" value={confirmaSenha} onChange={handleConfirmaSenhaChange} required />
-                        </label>
-                    </div>
-                    {erroSenha && <p style={{ color: "red" }}>{erroSenha}</p>}
-                    <ButtonLogin type="submit" value="enviar informações"/>
-                </form>
-            </div>
-        </div>
-    )
+  const handleRqeChange = (e) => {
+    const valor = e.target.value.replace(/\D/g, "");
+    setRqe(valor);
+  };
+
+  const handleCrpChange = (e) => {
+    const valor = e.target.value.replace(/\D/g, "");
+    setCrp(valor);
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+
+    // Resetar erros
+    setErroSenha("");
+    setErroRqe("");
+    setErroCrp("");
+
+    // Validar senhas
+    if (senha !== confirmaSenha) {
+      setErroSenha("As senhas não coincidem.");
+      return;
+    }
+
+    // Validar RQE
+    if (!validarRQE(rqe)) {
+      setErroRqe("RQE deve ter exatamente 5 dígitos");
+      console.log("RQE inválido!", rqe);
+      return;
+    }
+
+    // Validar CRP
+    if (!validarCRP(crp)) {
+      setErroCrp("CRP deve ter 7 ou 8 dígitos");
+      console.log("CRP inválido!", crp);
+      return;
+    }
+
+    // Se todas as validações passarem
+    console.log("Dados válidos - CRP:", crp, "RQE:", rqe);
+    // Aqui você pode adicionar o envio para o backend
+  };
+
+  return (
+    <div className="login">
+      <div className="container-login">
+        <form onSubmit={handleSubmit}>
+          {/* ... (mantenha o restante do JSX igual) ... */}
+
+          <div className="input-field">
+            <label>
+              RQE: <br />
+              <input
+                type="text"
+                name="rqe"
+                value={rqe}
+                onChange={handleRqeChange}
+                required
+                maxLength={5} // Adicionei limitação de caracteres
+              />
+            </label>
+          </div>
+          {erroRqe && <p style={{ color: "red" }}>{erroRqe}</p>}
+
+          <div className="input-field">
+            <label>
+              CRP: <br />
+              <input
+                type="text"
+                name="crp"
+                value={crp}
+                onChange={handleCrpChange}
+                required
+                maxLength={8} // Adicionei limitação de caracteres
+              />
+            </label>
+          </div>
+          {erroCrp && <p style={{ color: "red" }}>{erroCrp}</p>}
+
+          <ButtonLogin type="submit" value="enviar informações" />
+        </form>
+      </div>
+    </div>
+  );
 }
 
 export default LoginPaciente;
