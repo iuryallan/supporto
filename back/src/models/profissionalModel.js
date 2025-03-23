@@ -2,12 +2,13 @@ const { PrismaClient } = require('@prisma/client');
 const prisma = new PrismaClient();
 
 
-async function criarProfissional(nome, matricula_profissional, foto_perfil, quant_atend_gratis, faixas_etarias, cidade, estado, genero, idade, usuarioId) {
+async function criarProfissional(nome, matricula_profissional, especialidade, foto_perfil, quant_atend_gratis, faixas_etarias, cidade, estado, genero, idade, valor, usuarioId) {
     try{
         const novoProfissional = await prisma.profissional.create({
             data: {
                 nome: nome,
                 matricula_profissional: matricula_profissional,
+                especialidade: especialidade,
                 foto_perfil: foto_perfil,
                 quant_atend_gratis: quant_atend_gratis,
                 faixas_etarias: faixas_etarias,
@@ -15,6 +16,7 @@ async function criarProfissional(nome, matricula_profissional, foto_perfil, quan
                 estado: estado,
                 genero: genero,
                 idade: idade,
+                valor: valor,
                 usuarioId: usuarioId
             },
         });
@@ -50,7 +52,7 @@ async function buscarProfissionalPorId(id){
     }
 }
 
-async function atualizarProfissional(id, nome, matricula_profissional, foto_perfil, quant_atend_gratis, faixas_etarias, cidade, estado, genero, idade, usuarioId){
+async function atualizarProfissional(id, nome, matricula_profissional, especialidade, foto_perfil, quant_atend_gratis, faixas_etarias, cidade, estado, genero, idade, valor, usuarioId){
     try{
         const profissionalAtualizado = await prisma.profissional.update({
             where: {
@@ -59,6 +61,7 @@ async function atualizarProfissional(id, nome, matricula_profissional, foto_perf
             data: {
                 nome: nome,
                 matricula_profissional: matricula_profissional,
+                especialidade: especialidade,
                 foto_perfil: foto_perfil,
                 quant_atend_gratis: quant_atend_gratis,
                 faixas_etarias: faixas_etarias,
@@ -66,6 +69,7 @@ async function atualizarProfissional(id, nome, matricula_profissional, foto_perf
                 estado: estado,
                 genero: genero,
                 idade: idade,
+                valor: valor,
                 usuarioId: usuarioId
             },
         });

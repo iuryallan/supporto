@@ -2,7 +2,7 @@ const { PrismaClient } = require('@prisma/client');
 const prisma = new PrismaClient();
 
 
-async function criarPaciente(nome, genero, data_nasc, motivo_terapia, medicamentos, historico_familiar, principal_queixa, usuarioId) {
+async function criarPaciente(nome, genero, data_nasc, motivo_terapia, medicamentos, historico_familiar, principal_queixa, email_contato, usuarioId) {
     try{
         const novoPaciente = await prisma.paciente.create({
             data: {
@@ -13,6 +13,7 @@ async function criarPaciente(nome, genero, data_nasc, motivo_terapia, medicament
                 medicamentos: medicamentos,
                 historico_familiar: historico_familiar, 
                 principal_queixa: principal_queixa,
+                email_contato: email_contato,
                 usuarioId: usuarioId
             },
         });
@@ -50,7 +51,7 @@ async function buscarPacientePorId(id){
 }
 
 
-async function atualizarPaciente(id, nome, genero, data_nasc, motivo_terapia, medicamentos, historico_familiar, principal_queixa, usuarioId){
+async function atualizarPaciente(id, nome, genero, data_nasc, motivo_terapia, medicamentos, historico_familiar, principal_queixa, email_contato, usuarioId){
     try{
         const pacienteAtualizado = await prisma.paciente.update({
             where: {
@@ -64,6 +65,7 @@ async function atualizarPaciente(id, nome, genero, data_nasc, motivo_terapia, me
                 medicamentos: medicamentos,
                 historico_familiar: historico_familiar, 
                 principal_queixa: principal_queixa,
+                email_contato: email_contato,
                 usuarioId: usuarioId
             },
         });
