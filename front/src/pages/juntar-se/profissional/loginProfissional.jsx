@@ -11,7 +11,7 @@ function LoginProfissional() {
   const [erroAtendimentosGratuitos, setErroAtendimentosGratuitos] =
     useState("");
   const [erroEspecialidade, setErroEspecialidade] = useState("");
-  const [registroProfissional, setRegistroProfissional] = useState("");
+  const [matricula_profissional, setRegistroProfissional] = useState("");
   const [erroRegistroProfissional, setErroRegistroProfissional] = useState("");
 
   const [estados, setEstados] = useState([]);
@@ -22,17 +22,17 @@ function LoginProfissional() {
   const [idade, setIdade] = useState("");
   const [cidadeSelecionada, setCidadeSelecionada] = useState("");
   const [especialidade, setEspecialidade] = useState("");
-  const [faixaEtaria, setFaixaEtaria] = useState({
+  const [faixas_etarias, setFaixasEtarias] = useState({
     crianca: false,
     adolescente: false,
     jovemAdulto: false,
     adulto: false,
     idoso: false,
   });
-  const [valorAtendimento, setValorAtendimento] = useState("");
-  const [quantidadeAtendimentosGratuitos, setQuantidadeAtendimentosGratuitos] =
+  const [valor, setValorAtendimento] = useState("");
+  const [quant_atend_gratis, setQuantidadeAtendimentosGratuitos] =
     useState("");
-  const [fotoPerfil, setFotoPerfil] = useState(null);
+  const [foto_perfil, setFotoPerfil] = useState(null);
   const [email, setEmail] = useState("");
 
   useEffect(() => {
@@ -65,7 +65,7 @@ function LoginProfissional() {
     }
   }, [estadoSelecionado]);
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
 
     if (
@@ -84,7 +84,7 @@ function LoginProfissional() {
       return;
     }
 
-    if (!validarRegistroProfissional(registroProfissional)) {
+    if (!validarRegistroProfissional(matricula_profissional)) {
       setErroRegistroProfissional(
         "Caso você possua CRP, ele precisa ter 7 ou 8 dígitos. Se você possui RQE, ele deve ter exatamente 5 dígitos."
       );
@@ -95,21 +95,46 @@ function LoginProfissional() {
     setErroRegistroProfissional("");
     alert("Formulário enviado com sucesso!");
 
-    const dadosProfissional = {
-      nome,
-      genero,
-      idade,
-      estado: estadoSelecionado,
-      cidade: cidadeSelecionada,
-      registroProfissional,
-      especialidade,
-      faixaEtaria,
-      valorAtendimento,
-      quantidadeAtendimentosGratuitos,
-      fotoPerfil,
-      email,
-    };
-
+    try {
+      // Criar usuário primeiro, já definindo o tipo como "profissional"
+      const responseUsuario = await fetch("http://localhost:3007/usuarios", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ email, senha, tipo: "PROFISSIONAL" }), // Adicionando tipo_usuario
+      });
+  
+      if (!responseUsuario.ok) throw new Error("Erro ao criar usuário");
+  
+      const { id } = await responseUsuario.json(); // Pegando o ID do usuário criado
+  
+      // Criar profissional vinculado ao usuário
+      const responseProfissional = await fetch("http://localhost:3007/profissionais", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          nome,
+          matricula_profissional,
+          especialidade,
+          foto_perfil: foto_perfil || null,
+          quant_atend_gratis: parseInt(quant_atend_gratis, 10),
+          faixas_etarias,
+          cidade: cidadeSelecionada,
+          estado: estadoSelecionado,
+          genero,
+          idade,
+          valor,
+          usuarioId: id,
+        }),
+      });
+  
+      if (!responseProfissional.ok) throw new Error("Erro ao criar profissional");
+  
+      alert("Cadastro realizado com sucesso!");
+  
+    } catch (error) {
+      console.error(error);
+      alert("Erro ao cadastrar. Tente novamente.");
+    }
     // Aqui você enviariamos o objeto para o banco
   };
 
@@ -134,10 +159,18 @@ function LoginProfissional() {
 
   const handleFaixaEtariaChange = (e) => {
     const { name, checked } = e.target;
-    setFaixaEtaria((prevState) => ({
+    setFaixasEtarias((prevState) => ({
       ...prevState,
       [name]: checked,
     }));
+  };
+
+  const handleSenhaChange = (e) => {
+    setSenha(e.target.value);
+  };
+
+  const handleConfirmaSenhaChange = (e) => {
+    setConfirmaSenha(e.target.value);
   };
 
   return (
@@ -236,7 +269,7 @@ function LoginProfissional() {
               <input
                 type="text"
                 name="registroProfissional"
-                value={registroProfissional}
+                value={matricula_profissional}
                 onChange={(e) => setRegistroProfissional(e.target.value)}
                 required
               />
@@ -273,7 +306,7 @@ function LoginProfissional() {
                     type="checkbox"
                     name="crianca"
                     id="crianca"
-                    checked={faixaEtaria.crianca}
+                    checked={faixas_etarias.crianca}
                     onChange={handleFaixaEtariaChange}
                   />
                 </div>
@@ -283,7 +316,7 @@ function LoginProfissional() {
                     type="checkbox"
                     name="adolescente"
                     id="adolescente"
-                    checked={faixaEtaria.adolescente}
+                    checked={faixas_etarias.adolescente}
                     onChange={handleFaixaEtariaChange}
                   />
                 </div>
@@ -294,7 +327,7 @@ function LoginProfissional() {
                     type="checkbox"
                     name="jovemAdulto"
                     id="jovens-adultos"
-                    checked={faixaEtaria.jovemAdulto}
+                    checked={faixas_etarias.jovemAdulto}
                     onChange={handleFaixaEtariaChange}
                   />
                 </div>
@@ -304,7 +337,7 @@ function LoginProfissional() {
                     type="checkbox"
                     name="adulto"
                     id="adultos"
-                    checked={faixaEtaria.adulto}
+                    checked={faixas_etarias.adulto}
                     onChange={handleFaixaEtariaChange}
                   />
                 </div>
@@ -314,7 +347,7 @@ function LoginProfissional() {
                     type="checkbox"
                     name="idoso"
                     id="idosos"
-                    checked={faixaEtaria.idoso}
+                    checked={faixas_etarias.idoso}
                     onChange={handleFaixaEtariaChange}
                   />
                 </div>
@@ -325,9 +358,9 @@ function LoginProfissional() {
             <label>
               Valor do atendimento: <br />
               <input
-                type="text"
+                type="number"
                 name="valorAtendimento"
-                value={valorAtendimento}
+                value={valor}
                 onChange={(e) => setValorAtendimento(e.target.value)}
                 required
               />
@@ -341,9 +374,9 @@ function LoginProfissional() {
             <label>
               Quantidade de atendimentos gratuitos: <br />
               <input
-                type="text"
+                type="number"
                 name="quantidadeAtendimentosGratuitos"
-                value={quantidadeAtendimentosGratuitos}
+                value={quant_atend_gratis}
                 onChange={(e) =>
                   setQuantidadeAtendimentosGratuitos(e.target.value)
                 }
@@ -366,7 +399,7 @@ function LoginProfissional() {
               />
             </label>
           </div>
-
+          <h4 className='titulo-login'>Informações de Login</h4>
           <div className="input-field">
             <label>
               E-mail: <br />
@@ -379,6 +412,31 @@ function LoginProfissional() {
               />
             </label>
           </div>
+          <div className='input-field'>
+              <label>
+                  senha: <br />
+                  <input 
+                  type="password"
+                  name="senha"
+                  value={senha}
+                  onChange={handleSenhaChange}
+                  required 
+                  />
+              </label>
+          </div>
+          <div className='input-field'>
+              <label>
+                  confirme sua senha: <br />
+                  <input 
+                  type="password"
+                  name="senha"
+                  value={confirmaSenha}
+                  onChange={handleConfirmaSenhaChange}
+                  required 
+                  />
+              </label>
+          </div>
+          {erroSenha && <p style={{ color: "red" }}>{erroSenha}</p>}
 
           <ButtonLogin type="submit" value="fazer cadastro" />
         </form>
