@@ -30,7 +30,7 @@ const [erroMedicamentos, setErroMedicamentos] = useState("");
 
   const handleQueixaChange = (e) => {
     const queixa = e.target.value;
-    const regex = /^[A-Za-z\s]+$/;
+    const regex = /^[A-Za-zÀ-ÖØ-öø-ÿ\s]+$/;
 
     if (!regex.test(queixa)) {
       setErroQueixa("O campo referido deve conter apenas palavras.");
@@ -41,7 +41,7 @@ const [erroMedicamentos, setErroMedicamentos] = useState("");
 
   const handleMotivoChange = (e) => {
     const motivo = e.target.value;
-    const regex = /^[A-Za-z\s]+$/;
+    const regex = /^[A-Za-zÀ-ÖØ-öø-ÿ\s]+$/;
 
     if (!regex.test(motivo)) {
         setErroMotivo("O campo referido deve conter apenas palavras.");
@@ -52,7 +52,7 @@ const [erroMedicamentos, setErroMedicamentos] = useState("");
 
 const handleMedicamentosChange = (e) => {
     const medicamentos = e.target.value;
-    const regex = /^[A-Za-z\s]+$/;
+    const regex = /^[A-Za-zÀ-ÖØ-öø-ÿ\s]+$/;
 
     if (!regex.test(medicamentos)) {
         setErroMedicamentos("O campo referido deve conter apenas palavras.");

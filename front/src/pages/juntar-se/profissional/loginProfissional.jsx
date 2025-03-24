@@ -85,7 +85,7 @@ function LoginProfissional() {
 
   const handleEspecialidadeChange = (e) => {
     const especialidade = e.target.value;
-    const regex = /^[A-Za-z\s]+$/;
+    const regex = /^[A-Za-zÀ-ÖØ-öø-ÿ\s]+$/;
 
     if (!regex.test(especialidade)) {
       setErroEspecialidade("A especialidade deve conter apenas letras.");
