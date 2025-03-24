@@ -6,7 +6,6 @@ function LoginPaciente () {
 const [senha, setSenha] = useState("");
 const [confirmaSenha, setConfirmaSenha] = useState("");
 const [erroSenha, setErroSenha] = useState("");
-const [erroIdade, setErroIdade] = useState("");
 const [erroQueixa, setErroQueixa] = useState("");
 const [erroMotivo, setErroMotivo] = useState("");
 const [erroMedicamentos, setErroMedicamentos] = useState("");
@@ -17,15 +16,6 @@ const [erroMedicamentos, setErroMedicamentos] = useState("");
 
   const handleConfirmaSenhaChange = (e) => {
     setConfirmaSenha(e.target.value);
-  };
-
-  const handleIdadeChange = (e) => {
-    const idade = e.target.value;
-    if (idade < 1 || isNaN(idade)) {
-      setErroIdade("Idade deve ser um número maior que zero.");
-    } else {
-      setErroIdade("");
-    }
   };
 
   const handleQueixaChange = (e) => {
@@ -66,7 +56,6 @@ const handleMedicamentosChange = (e) => {
 
     if (
       erroSenha ||
-      erroIdade ||
       erroQueixa ||
       erroMotivo ||
       erroMedicamentos
@@ -107,15 +96,23 @@ const handleMedicamentosChange = (e) => {
                     </div>
                     <div className='input-field'>
                         <label>
-                            idade: <br />
+                            data de nascimento: <br />
                             <input  
-                                type="number"
-                                name="idade"
-                                min="1"
-                                onChange={handleIdadeChange}
+                                type="date"
+                                name="dataNascimento"
                                 required
                             />
-                            {erroIdade && <p style={{ color: "red" }}>{erroIdade}</p>}
+                        </label>
+                    </div>
+                    <div className='input-field'>
+                        <label>
+                            e-mail para contato: <br />
+                            <input  
+                                type="email"
+                                name="emailContato"
+                                placeholder='por onde o profissional entrará em contato'
+                                required
+                            />
                         </label>
                     </div>
                     <h3 className='titulo-login'>Informações de Saúde Mental</h3>
@@ -133,25 +130,17 @@ const handleMedicamentosChange = (e) => {
                     </div>
                     <div className='input-field'>
                         <label>
-                            Você tem algum histórico disso na família? <br />
-                            <select name="Você tem algum histórico disso na família?">
-                                <option value="Sim">Sim</option>
-                                <option value="Nao">Não</option>
-                            </select>
+                            Qual o histórico de saúde mental na sua familia? <br />
+                            <input 
+                              type="text"
+                              name="historicoFamiliar"
+                              required 
+                            />
                         </label>
                     </div>
                     <div className='input-field'>
                         <label>
-                            Você faz uso de medicamentos? <br />
-                            <select name="Você faz uso de medicamentos?">
-                                <option value="Sim">Sim</option>
-                                <option value="Nao">Não</option>
-                            </select>
-                        </label>
-                    </div>
-                    <div className='input-field'>
-                        <label>
-                            Se sim, quais medicamentos? <br />
+                            Você faz uso de medicamentos? Se sim, quais? <br />
                             <input 
                             type="text"
                             name="motivo"

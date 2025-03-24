@@ -10,6 +10,8 @@ function LoginProfissional() {
   const [erroValorAtendimento, setErroValorAtendimento] = useState("");
   const [erroAtendimentosGratuitos, setErroAtendimentosGratuitos] = useState("");
   const [erroEspecialidade, setErroEspecialidade] = useState("");
+  const [registroProfissional, setRegistroProfissional] = useState("");
+  const [erroRegistroProfissional, setErroRegistroProfissional] = useState("");
 
   const [estados, setEstados] = useState([]);
   const [cidades, setCidades] = useState([]);
@@ -94,6 +96,16 @@ function LoginProfissional() {
     }
   };
 
+  const validarRegistroProfissional = (valor) => {
+    const valorFormatado = valor.replace(/\D/g, "");
+    return valorFormatado.length === 7 || valorFormatado.length === 8 || valorFormatado.length === 5;
+  };
+
+  const handleRegistroProfissionalChange = (e) => {
+    const valor = e.target.value.replace(/\D/g, "");
+    setRegistroProfissional(valor);
+  };
+
   const handleSubmit = (e) => {
     e.preventDefault();
 
@@ -113,7 +125,14 @@ function LoginProfissional() {
       return;
     }
 
+    if (!validarRegistroProfissional(registroProfissional)) {
+      setErroRegistroProfissional("Caso você possua CRP, ele precisa ter 7 ou 8 dígitos. Se você possui RQE, ele deve ter exatamente 5 dígitos.");
+      console.log("Registro profissional inválido!", registroProfissional);
+      return;
+    }
+
     setErroSenha("");
+    setErroRegistroProfissional("");
     alert("Formulário enviado com sucesso!");
   };
 
@@ -183,9 +202,10 @@ function LoginProfissional() {
           <div className="input-field">
             <label>
               registro profissional (CRP, RQE, etc.): <br />
-              <input type="search" name="CRP" required />
+              <input type="text" name="registroProfissional" value={registroProfissional} onChange={handleRegistroProfissionalChange} required />
             </label>
           </div>
+          {erroRegistroProfissional && <p style={{ color: "red" }}>{erroRegistroProfissional}</p>}
           <div className="input-field">
             <label>
               especialidade: <br />
