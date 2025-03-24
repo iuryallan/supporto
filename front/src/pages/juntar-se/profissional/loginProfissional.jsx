@@ -8,7 +8,8 @@ function LoginProfissional() {
   const [erroSenha, setErroSenha] = useState("");
   const [erroIdade, setErroIdade] = useState("");
   const [erroValorAtendimento, setErroValorAtendimento] = useState("");
-  const [erroAtendimentosGratuitos, setErroAtendimentosGratuitos] = useState("");
+  const [erroAtendimentosGratuitos, setErroAtendimentosGratuitos] =
+    useState("");
   const [erroEspecialidade, setErroEspecialidade] = useState("");
   const [registroProfissional, setRegistroProfissional] = useState("");
   const [erroRegistroProfissional, setErroRegistroProfissional] = useState("");
@@ -16,12 +17,31 @@ function LoginProfissional() {
   const [estados, setEstados] = useState([]);
   const [cidades, setCidades] = useState([]);
   const [estadoSelecionado, setEstadoSelecionado] = useState("");
+  const [nome, setNome] = useState("");
+  const [genero, setGenero] = useState("");
+  const [idade, setIdade] = useState("");
+  const [cidadeSelecionada, setCidadeSelecionada] = useState("");
+  const [especialidade, setEspecialidade] = useState("");
+  const [faixaEtaria, setFaixaEtaria] = useState({
+    crianca: false,
+    adolescente: false,
+    jovemAdulto: false,
+    adulto: false,
+    idoso: false,
+  });
+  const [valorAtendimento, setValorAtendimento] = useState("");
+  const [quantidadeAtendimentosGratuitos, setQuantidadeAtendimentosGratuitos] =
+    useState("");
+  const [fotoPerfil, setFotoPerfil] = useState(null);
+  const [email, setEmail] = useState("");
 
   useEffect(() => {
     fetch("https://servicodados.ibge.gov.br/api/v1/localidades/estados")
       .then((response) => response.json())
       .then((data) => {
-        const estadosOrdenados = data.sort((a, b) => a.nome.localeCompare(b.nome));
+        const estadosOrdenados = data.sort((a, b) =>
+          a.nome.localeCompare(b.nome)
+        );
         setEstados(estadosOrdenados);
       })
       .catch((error) => console.error("Erro ao carregar estados:", error));
@@ -29,10 +49,14 @@ function LoginProfissional() {
 
   useEffect(() => {
     if (estadoSelecionado) {
-      fetch(`https://servicodados.ibge.gov.br/api/v1/localidades/estados/${estadoSelecionado}/municipios`)
+      fetch(
+        `https://servicodados.ibge.gov.br/api/v1/localidades/estados/${estadoSelecionado}/municipios`
+      )
         .then((response) => response.json())
         .then((data) => {
-          const cidadesOrdenadas = data.sort((a, b) => a.nome.localeCompare(b.nome));
+          const cidadesOrdenadas = data.sort((a, b) =>
+            a.nome.localeCompare(b.nome)
+          );
           setCidades(cidadesOrdenadas);
         })
         .catch((error) => console.error("Erro ao carregar cidades:", error));
@@ -40,71 +64,6 @@ function LoginProfissional() {
       setCidades([]);
     }
   }, [estadoSelecionado]);
-
-  const handleSenhaChange = (e) => {
-    setSenha(e.target.value);
-  };
-
-  const handleConfirmaSenhaChange = (e) => {
-    setConfirmaSenha(e.target.value);
-  };
-
-  const handleIdadeChange = (e) => {
-    const idade = e.target.value;
-    if (idade < 1 || isNaN(idade)) {
-      setErroIdade("Idade deve ser um número maior que zero.");
-    } else {
-      setErroIdade("");
-    }
-  };
-
-  const handleValorAtendimentoChange = (e) => {
-    const valor = e.target.value;
-    if (valor < 0 || isNaN(valor)) {
-      setErroValorAtendimento("Valor deve ser um número igual ou maior que zero.");
-    } else {
-      setErroValorAtendimento("");
-    }
-  };
-
-  const handleAtendimentosGratuitosChange = (e) => {
-    const quantidade = e.target.value;
-    if (quantidade < 0 || isNaN(quantidade)) {
-      setErroAtendimentosGratuitos("Quantidade deve ser um número igual ou maior que zero.");
-    } else {
-      setErroAtendimentosGratuitos("");
-    }
-  };
-
-  const handleEstadoChange = (e) => {
-    const estado = e.target.value;
-    setEstadoSelecionado(estado);
-  };
-
-  const handleCidadeChange = (e) => {
-    const cidade = e.target.value;
-  };
-
-  const handleEspecialidadeChange = (e) => {
-    const especialidade = e.target.value;
-    const regex = /^[A-Za-zÀ-ÖØ-öø-ÿ\s]+$/;
-
-    if (!regex.test(especialidade)) {
-      setErroEspecialidade("A especialidade deve conter apenas letras.");
-    } else {
-      setErroEspecialidade("");
-    }
-  };
-
-  const validarRegistroProfissional = (valor) => {
-    const valorFormatado = valor.replace(/\D/g, "");
-    return valorFormatado.length === 7 || valorFormatado.length === 8 || valorFormatado.length === 5;
-  };
-
-  const handleRegistroProfissionalChange = (e) => {
-    const valor = e.target.value.replace(/\D/g, "");
-    setRegistroProfissional(valor);
-  };
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -126,14 +85,59 @@ function LoginProfissional() {
     }
 
     if (!validarRegistroProfissional(registroProfissional)) {
-      setErroRegistroProfissional("Caso você possua CRP, ele precisa ter 7 ou 8 dígitos. Se você possui RQE, ele deve ter exatamente 5 dígitos.");
-      console.log("Registro profissional inválido!", registroProfissional);
+      setErroRegistroProfissional(
+        "Caso você possua CRP, ele precisa ter 7 ou 8 dígitos. Se você possui RQE, ele deve ter exatamente 5 dígitos."
+      );
       return;
     }
 
     setErroSenha("");
     setErroRegistroProfissional("");
     alert("Formulário enviado com sucesso!");
+
+    const dadosProfissional = {
+      nome,
+      genero,
+      idade,
+      estado: estadoSelecionado,
+      cidade: cidadeSelecionada,
+      registroProfissional,
+      especialidade,
+      faixaEtaria,
+      valorAtendimento,
+      quantidadeAtendimentosGratuitos,
+      fotoPerfil,
+      email,
+    };
+
+    // Aqui você enviariamos o objeto para o banco
+  };
+
+  const validarRegistroProfissional = (valor) => {
+    const valorFormatado = valor.replace(/\D/g, "");
+    return (
+      valorFormatado.length === 7 ||
+      valorFormatado.length === 8 ||
+      valorFormatado.length === 5
+    );
+  };
+
+  const handleEstadoChange = (e) => {
+    const estado = e.target.value;
+    setEstadoSelecionado(estado);
+  };
+
+  const handleCidadeChange = (e) => {
+    const cidade = e.target.value;
+    setCidadeSelecionada(cidade);
+  };
+
+  const handleFaixaEtariaChange = (e) => {
+    const { name, checked } = e.target;
+    setFaixaEtaria((prevState) => ({
+      ...prevState,
+      [name]: checked,
+    }));
   };
 
   return (
@@ -143,14 +147,25 @@ function LoginProfissional() {
           <h2 className="titulo-login">Informações Pessoais</h2>
           <div className="input-field">
             <label>
-              nome: <br />
-              <input type="name" name="nome" required />
+              Nome: <br />
+              <input
+                type="text"
+                name="nome"
+                value={nome}
+                onChange={(e) => setNome(e.target.value)}
+                required
+              />
             </label>
           </div>
           <div className="input-field">
             <label>
-              gênero: <br />
-              <select name="genero" required>
+              Gênero: <br />
+              <select
+                name="genero"
+                value={genero}
+                onChange={(e) => setGenero(e.target.value)}
+                required
+              >
                 <option value="Prefiro não informar">
                   Prefiro não informar
                 </option>
@@ -161,12 +176,13 @@ function LoginProfissional() {
           </div>
           <div className="input-field">
             <label>
-              idade: <br />
+              Idade: <br />
               <input
                 type="number"
                 name="idade"
+                value={idade}
                 min="1"
-                onChange={handleIdadeChange}
+                onChange={(e) => setIdade(e.target.value)}
                 required
               />
               {erroIdade && <p style={{ color: "red" }}>{erroIdade}</p>}
@@ -174,8 +190,13 @@ function LoginProfissional() {
           </div>
           <div className="input-field">
             <label>
-              estado: <br />
-              <select name="estado" onChange={handleEstadoChange} required>
+              Estado: <br />
+              <select
+                name="estado"
+                value={estadoSelecionado}
+                onChange={handleEstadoChange}
+                required
+              >
                 <option value="">Selecione um estado</option>
                 {estados.map((estado) => (
                   <option key={estado.id} value={estado.sigla}>
@@ -185,141 +206,181 @@ function LoginProfissional() {
               </select>
             </label>
           </div>
-          <div className="input-field">
-            <label>
-              cidade: <br />
-              <select name="cidade" onChange={handleCidadeChange} required>
-                <option value="">Selecione uma cidade</option>
-                {cidades.map((cidade) => (
-                  <option key={cidade.id} value={cidade.nome}>
-                    {cidade.nome}
-                  </option>
-                ))}
-              </select>
-            </label>
-          </div>
+
+          {/* Renderiza a cidade somente se um estado for selecionado */}
+          {estadoSelecionado && (
+            <div className="input-field">
+              <label>
+                Cidade: <br />
+                <select
+                  name="cidade"
+                  value={cidadeSelecionada}
+                  onChange={handleCidadeChange}
+                  required
+                >
+                  <option value="">Selecione uma cidade</option>
+                  {cidades.map((cidade) => (
+                    <option key={cidade.id} value={cidade.nome}>
+                      {cidade.nome}
+                    </option>
+                  ))}
+                </select>
+              </label>
+            </div>
+          )}
+
           <h3 className="titulo-login">Informações Profissionais</h3>
           <div className="input-field">
             <label>
-              registro profissional (CRP, RQE, etc.): <br />
-              <input type="text" name="registroProfissional" value={registroProfissional} onChange={handleRegistroProfissionalChange} required />
+              Registro Profissional (CRP, RQE, etc.): <br />
+              <input
+                type="text"
+                name="registroProfissional"
+                value={registroProfissional}
+                onChange={(e) => setRegistroProfissional(e.target.value)}
+                required
+              />
             </label>
+            {erroRegistroProfissional && (
+              <p style={{ color: "red" }}>{erroRegistroProfissional}</p>
+            )}
           </div>
-          {erroRegistroProfissional && <p style={{ color: "red" }}>{erroRegistroProfissional}</p>}
           <div className="input-field">
             <label>
-              especialidade: <br />
+              Especialidade: <br />
               <input
                 type="text"
                 name="especialidade"
-                onChange={handleEspecialidadeChange}
+                value={especialidade}
+                onChange={(e) => setEspecialidade(e.target.value)}
                 required
               />
-              {erroEspecialidade && <p style={{ color: "red" }}>{erroEspecialidade}</p>}
+              {erroEspecialidade && (
+                <p style={{ color: "red" }}>{erroEspecialidade}</p>
+              )}
             </label>
           </div>
 
           <div className="input-field">
             <label>
-              faixa etária de pacientes: <br />
+              Faixa etária de pacientes: <br />
             </label>
-
             <div>
-                <div className="container-age-range-option">
-                    <div className="age-range-option
-                    ">
-                      <label htmlFor="crianca">Crianças</label>
-                      <input type="checkbox" name="crianca" id="crianca" />
-                    </div>
-                    <div className="age-range-option
-                    ">
-                      <label htmlFor="adolecentes">Adolescentes</label>
-                      <input type="checkbox" name="adolecentes" id="adolecentes"/>
-                    </div>
-                    <div className="age-range-option
-                    ">
-                      <label htmlFor="jovensAdultos">Jovens Adultos</label>
-                      <input type="checkbox" name="jovensAdultos" id="jovensAdultos" />
-                    </div>
-                    <div className="age-range-option
-                    ">
-                      <label htmlFor="adultos">Adultos</label>
-                      <input type="checkbox" name="adultos" id="adultos" />
-                    </div>
-                    <div className="age-range-option
-                    ">
-                      <label htmlFor="idosos">Idosos</label>
-                      <input type="checkbox" name="idosos" id="idosos" />
-                    </div>
+              <div className="container-age-range-option">
+                <div className="age-range-option">
+                  <label htmlFor="crianca">Crianças</label>
+                  <input
+                    type="checkbox"
+                    name="crianca"
+                    id="crianca"
+                    checked={faixaEtaria.crianca}
+                    onChange={handleFaixaEtariaChange}
+                  />
                 </div>
+                <div className="age-range-option">
+                  <label htmlFor="adolescente">Adolescentes</label>
+                  <input
+                    type="checkbox"
+                    name="adolescente"
+                    id="adolescente"
+                    checked={faixaEtaria.adolescente}
+                    onChange={handleFaixaEtariaChange}
+                  />
+                </div>
+
+                <div className="age-range-option">
+                  <label htmlFor="jovens-adultos">Jovens adultos</label>
+                  <input
+                    type="checkbox"
+                    name="jovemAdulto"
+                    id="jovens-adultos"
+                    checked={faixaEtaria.jovemAdulto}
+                    onChange={handleFaixaEtariaChange}
+                  />
+                </div>
+                <div className="age-range-option">
+                  <label htmlFor="adultos">Adultos</label>
+                  <input
+                    type="checkbox"
+                    name="adulto"
+                    id="adultos"
+                    checked={faixaEtaria.adulto}
+                    onChange={handleFaixaEtariaChange}
+                  />
+                </div>
+                <div className="age-range-option">
+                  <label htmlFor="idosos">Idosos</label>
+                  <input
+                    type="checkbox"
+                    name="idoso"
+                    id="idosos"
+                    checked={faixaEtaria.idoso}
+                    onChange={handleFaixaEtariaChange}
+                  />
+                </div>
+              </div>
             </div>
           </div>
+          <div className="input-field">
+            <label>
+              Valor do atendimento: <br />
+              <input
+                type="text"
+                name="valorAtendimento"
+                value={valorAtendimento}
+                onChange={(e) => setValorAtendimento(e.target.value)}
+                required
+              />
+            </label>
+            {erroValorAtendimento && (
+              <p style={{ color: "red" }}>{erroValorAtendimento}</p>
+            )}
+          </div>
 
           <div className="input-field">
             <label>
-              valor dos atendimentos: <br />
+              Quantidade de atendimentos gratuitos: <br />
               <input
-                type="number"
-                name="valorAtendimento"
-                min="0"
-                onChange={handleValorAtendimentoChange}
+                type="text"
+                name="quantidadeAtendimentosGratuitos"
+                value={quantidadeAtendimentosGratuitos}
+                onChange={(e) =>
+                  setQuantidadeAtendimentosGratuitos(e.target.value)
+                }
                 required
               />
-              {erroValorAtendimento && <p style={{ color: "red" }}>{erroValorAtendimento}</p>}
             </label>
+            {erroAtendimentosGratuitos && (
+              <p style={{ color: "red" }}>{erroAtendimentosGratuitos}</p>
+            )}
           </div>
+
           <div className="input-field">
             <label>
-              quantidade de atendimentos gratuitos: <br />
+              Foto de perfil: <br />
               <input
-                type="number"
-                name="quantidade de atendimentos gratuitos"
-                min="0"
-                onChange={handleAtendimentosGratuitosChange}
-                required
+                type="file"
+                name="fotoPerfil"
+                onChange={(e) => setFotoPerfil(e.target.files[0])}
+                accept="image/*"
               />
-              {erroAtendimentosGratuitos && <p style={{ color: "red" }}>{erroAtendimentosGratuitos}</p>}
             </label>
           </div>
+
           <div className="input-field">
             <label>
-              adicione uma foto no seu perfil: <br />
-              <input type="file" name="adicione uma foto no seu perfil" />
-            </label>
-          </div>
-          <h4 className="titulo-login">Informações de Login</h4>
-          <div className="input-field">
-            <label>
-              e-mail: <br />
-              <input type="email" name="e-mail" required />
-            </label>
-          </div>
-          <div className="input-field">
-            <label>
-              senha: <br />
+              E-mail: <br />
               <input
-                type="password"
-                name="senha"
-                value={senha}
-                onChange={handleSenhaChange}
+                type="email"
+                name="email"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
                 required
               />
             </label>
           </div>
-          <div className="input-field">
-            <label>
-              confirme sua senha: <br />
-              <input
-                type="password"
-                name="senha"
-                value={confirmaSenha}
-                onChange={handleConfirmaSenhaChange}
-                required
-              />
-            </label>
-          </div>
-          {erroSenha && <p style={{ color: "red" }}>{erroSenha}</p>}
-          <ButtonLogin type="submit" value="enviar informações" />
+
+          <ButtonLogin type="submit" value="fazer cadastro" />
         </form>
       </div>
     </div>
