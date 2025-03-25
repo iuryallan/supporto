@@ -82,6 +82,13 @@ async function deletarUsuario(id){
     }
 }
 
+async function getUserProfile(id) {
+    return prisma.user.findUnique({
+      where: { id: id },
+      select: { id: true, email: true, tipo: true }
+    });
+}
+
 
 module.exports = {
     criarUsuario,
@@ -89,4 +96,5 @@ module.exports = {
     buscarUsuarioPorId,
     atualizarUsuario,
     deletarUsuario,
+    getUserProfile
 };

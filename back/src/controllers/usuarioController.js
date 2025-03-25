@@ -65,3 +65,16 @@ exports.deletarUsuario = async (req, res) => {
         res.status(500).json({ error: "Erro ao deletar usuário"})
     }
 }
+
+exports.getUserProfile = async (req, res) => {
+    try {
+      const id = req.usuario.id;
+      const usuario = await usuarioModel.getUserProfile(id);
+  
+      if (!usuario) return res.status(404).json({ error: "Usuário não encontrado" });
+  
+      res.json(usuario);
+    } catch (error) {
+      res.status(500).json({ error: "Erro ao buscar perfil do usuário" });
+    }
+};

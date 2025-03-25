@@ -7,6 +7,7 @@ const evClinicaRoutes = require('./routes/evClinicaRoutes');
 const grupoApoioRoutes = require('./routes/grupoApoioRoutes');
 const atendimentoRoutes = require('./routes/atendimentoRoutes');
 const depoimentoRoutes = require('./routes/depoimentoRoutes');
+const authRoutes = require('./routes/authRoutes');
 
 const app = express();
 
@@ -24,6 +25,7 @@ app.use('/evClinicas', evClinicaRoutes);
 app.use('/gruposDeApoio', grupoApoioRoutes);
 app.use('/atendimentos', atendimentoRoutes);
 app.use('/depoimentos', depoimentoRoutes);
+app.use('/auth', authRoutes);
 
 // Exportando a instância do app
 module.exports = app;
