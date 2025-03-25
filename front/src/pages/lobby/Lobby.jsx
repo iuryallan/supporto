@@ -37,7 +37,7 @@ const Lobby = () =>{
           <div className="botoesLogin">
             <Link to="Login"><Button label="Login"/>
             </Link>
-            <Link to="JuntarSe"><Button label="Juntar-se"/></Link>
+            <Link to="cadastro"><Button label="Juntar-se"/></Link>
           </div>
       </header>
       <Hero/>

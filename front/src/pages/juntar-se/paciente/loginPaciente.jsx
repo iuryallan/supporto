@@ -1,6 +1,8 @@
 import ButtonLogin from '../../../components/ui/ButtonsLogin';
 import '../../login/login.css';
 import { useState } from "react";
+import { useNavigate } from 'react-router-dom';
+import { cadastrarUsuario } from '../../../services/usuarioService';
 
 function LoginPaciente () {
 const [senha, setSenha] = useState("");
@@ -10,26 +12,34 @@ const [erroQueixa, setErroQueixa] = useState("");
 const [erroMotivo, setErroMotivo] = useState("");
 const [erroMedicamentos, setErroMedicamentos] = useState("");
 
-  const handleSenhaChange = (e) => {
+const navigate = useNavigate();
+const [form, setForm] = useState({
+    email: '', senha: '', confirmarSenha: '',
+    nome: '', genero: '', data_nasc: '', motivo_terapia: '',
+    medicamentos: '', historico_familiar: '', principal_queixa: '',
+    email_contato: ''
+});
+
+const handleSenhaChange = (e) => {
     setSenha(e.target.value);
-  };
+};
 
-  const handleConfirmaSenhaChange = (e) => {
+const handleConfirmaSenhaChange = (e) => {
     setConfirmaSenha(e.target.value);
-  };
+};
 
-  const handleQueixaChange = (e) => {
+const handleQueixaChange = (e) => {
     const queixa = e.target.value;
     const regex = /^[A-Za-zÀ-ÖØ-öø-ÿ\s]+$/;
 
     if (!regex.test(queixa)) {
-      setErroQueixa("O campo referido deve conter apenas palavras.");
+        setErroQueixa("O campo referido deve conter apenas palavras.");
     } else {
-      setErroQueixa("");
+        setErroQueixa("");
     }
-  };
+};
 
-  const handleMotivoChange = (e) => {
+const handleMotivoChange = (e) => {
     const motivo = e.target.value;
     const regex = /^[A-Za-zÀ-ÖØ-öø-ÿ\s]+$/;
 
@@ -51,27 +61,44 @@ const handleMedicamentosChange = (e) => {
     }
 };
 
-  const handleSubmit = (e) => {
+const handleSubmit = async (e) => {
     e.preventDefault();
 
+    const { confirmarSenha, data_nasc, ...dados } = form;
+    const data_nasc_iso = new Date(data_nasc).toISOString();
+
     if (
-      erroSenha ||
-      erroQueixa ||
-      erroMotivo ||
-      erroMedicamentos
+        erroSenha ||
+        erroQueixa ||
+        erroMotivo ||
+        erroMedicamentos
     ) {
         alert("Por favor, corrija os erros antes de enviar o formulário.");
         return;
-      }
-  
-      if (senha !== confirmaSenha) {
+    }
+
+    if (senha !== confirmaSenha) {
         setErroSenha("As senhas não coincidem.");
         return;
-      }
-  
-      setErroSenha("");
-      alert("Formulário enviado com sucesso!");
-    };
+    }
+
+    setErroSenha("");
+    alert("Formulário enviado com sucesso!");
+
+    try {
+        await cadastrarUsuario({ tipo: "PACIENTE", ...dados, data_nasc: data_nasc_iso });
+        alert("Usuário cadastrado com sucesso!");
+        setForm({
+          email: '', senha: '', confirmarSenha: '',
+          nome: '', genero: '', data_nasc: '', motivo_terapia: '',
+          medicamentos: '', historico_familiar: '', principal_queixa: '',
+          email_contato: ''
+        });
+        navigate('/Login');
+      } catch (error) {
+        alert("Erro ao cadastrar usuário.");
+    }
+};
 
     return (
         <div className="login">
@@ -165,13 +192,13 @@ const handleMedicamentosChange = (e) => {
                     <h4 className='titulo-login'>Informações de Login</h4>
                     <div className='input-field'>
                         <label>
-                            e-mail: <br />
+                            E-mail: <br />
                             <input type="email" name="e-mail" required />
                         </label>
                     </div>
                     <div className='input-field'>
                         <label>
-                            senha: <br />
+                            Senha: <br />
                             <input 
                             type="password"
                             name="senha"
@@ -183,7 +210,7 @@ const handleMedicamentosChange = (e) => {
                     </div>
                     <div className='input-field'>
                         <label>
-                            confirme sua senha: <br />
+                            Confirme sua senha: <br />
                             <input 
                             type="password"
                             name="senha"

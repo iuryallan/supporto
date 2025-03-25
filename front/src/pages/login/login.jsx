@@ -66,7 +66,7 @@ function Login() {
           <div className="links-login">
             <p>
               Não possui uma conta ainda? <br />
-              <Link to="/JuntarSe">
+              <Link to="/cadastro">
                 <span className="junte-se"> Junte-se a nós!</span>
               </Link>
             </p>

@@ -45,9 +45,9 @@ function App() {
       <ScrollToHashElement />
       <Routes>
         <Route path="/" element={<Lobby />} />
-        <Route path="/JuntarSe" element={<JuntarSe />} />
-        <Route path="/LoginPaciente" element={<LoginPaciente />} />
-        <Route path="/LoginProfissional" element={<LoginProfissional />} />
+        <Route path="/cadastro" element={<JuntarSe />} />
+        <Route path="/cadastro/paciente" element={<LoginPaciente />} />
+        <Route path="/cadastro/profissional" element={<LoginProfissional />} />
         <Route path="/Login" element={<Login />} />
         <Route path="/Home" element={<Home />} />
         <Route path="/HomeProfissional" element={<HomeProf />} />

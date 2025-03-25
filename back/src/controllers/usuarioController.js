@@ -1,5 +1,5 @@
 const usuarioModel = require('../models/usuarioModel');
-
+const { createUsuarioComPerfil } = require('../models/usuarioModel');
 
 exports.criarUsuario = async (req, res) => {
     try {
@@ -76,5 +76,15 @@ exports.getUserProfile = async (req, res) => {
       res.json(usuario);
     } catch (error) {
       res.status(500).json({ error: "Erro ao buscar perfil do usuário" });
+    }
+};
+
+exports.cadastrarUsuario = async (req, res) => {
+    try {
+      const usuario = await createUsuarioComPerfil(req.body);
+      res.status(201).json(usuario);
+    } catch (err) {
+      console.error(err);
+      res.status(500).json({ error: 'Erro ao cadastrar usuário' });
     }
 };

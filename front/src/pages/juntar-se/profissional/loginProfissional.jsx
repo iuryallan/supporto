@@ -1,6 +1,8 @@
 import ButtonLogin from "../../../components/ui/ButtonsLogin";
 import "../../login/login.css";
 import { useState, useEffect } from "react";
+import { useNavigate } from 'react-router-dom';
+import { cadastrarUsuario } from '../../../services/usuarioService';
 
 function LoginProfissional() {
   const [senha, setSenha] = useState("");
@@ -35,6 +37,34 @@ function LoginProfissional() {
   const [foto_perfil, setFotoPerfil] = useState(null);
   const [email, setEmail] = useState("");
 
+  const navigate = useNavigate();
+  const [form, setForm] = useState({
+    email: '', senha: '', confirmarSenha: '',
+    nome: '', matricula_profissional: '', especialidade: '',
+    foto_perfil: '', quant_atend_gratis: '', faixas_etarias: [],
+    cidade: '', estado: '', genero: '', idade: '', valor: ''
+  });
+
+  const opcoesFaixaEtaria = ["CRIANÇA", "ADOLESCENTE", "JOVEM", "ADULTO", "IDOSO"];
+
+  const handleCheckboxChange = (e, faixa) => {
+    if (e.target.checked) {
+      setForm({
+        ...form,
+        faixas_etarias: [...form.faixas_etarias, faixa]
+      });
+    } else {
+      setForm({
+        ...form,
+        faixas_etarias: form.faixas_etarias.filter(f => f !== faixa)
+      });
+    }
+  };
+
+  const handleChange = (e) => {
+    setForm({ ...form, [e.target.name]: e.target.value });
+  };
+
   useEffect(() => {
     fetch("https://servicodados.ibge.gov.br/api/v1/localidades/estados")
       .then((response) => response.json())
@@ -68,6 +98,8 @@ function LoginProfissional() {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
+    const { confirmarSenha, faixas_etarias, ...resto } = form;
+
     if (
       erroSenha ||
       erroIdade ||
@@ -97,54 +129,19 @@ function LoginProfissional() {
 
     try {
       // Criar usuário primeiro, já definindo o tipo como "profissional"
-      const responseUsuario = await fetch("http://localhost:3007/usuarios", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ email, senha, tipo: "PROFISSIONAL" }),
+      await cadastrarUsuario({ tipo: "PROFISSIONAL", ...resto, faixas_etarias });
+      alert("Usuário cadastrado com sucesso!");
+      setForm({
+        email: '', senha: '', confirmarSenha: '',
+        nome: '', matricula_profissional: '', especialidade: '',
+        foto_perfil: '', quant_atend_gratis: '', faixas_etarias: [],
+        cidade: '', estado: '', genero: '', idade: '', valor: ''
       });
-    
-      if (!responseUsuario.ok) {
-        const errorData = await responseUsuario.json();
-        throw new Error(errorData.error || "Erro ao criar usuário");
-      }
-    
-      const usuarioCriado = await responseUsuario.json();
-      console.log("Usuário criado:", usuarioCriado);
-  
-      // Criar profissional vinculado ao usuário
-      const responseProfissional = await fetch("http://localhost:3007/profissionais", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          nome,
-          matricula_profissional,
-          especialidade,
-          foto_perfil: foto_perfil || null,
-          quant_atend_gratis: parseInt(quant_atend_gratis, 10),
-          faixas_etarias,
-          cidade: cidadeSelecionada,
-          estado: estadoSelecionado,
-          genero,
-          idade: parseInt(idade, 10),
-          valor: parseInt(valor, 10),
-          usuarioId: usuarioCriado.id,
-        }),
-      });
-  
-      if (!responseProfissional.ok) {
-        const errorData = await responseProfissional.json();
-        throw new Error(errorData.error || "Erro ao criar profissional");
-      }
-    
-      const profissionalCriado = await responseProfissional.json();
-      console.log("Profissional criado:", profissionalCriado);
-    
-      alert("Cadastro realizado com sucesso!");
+      navigate('/Login');
     } catch (error) {
       console.error("Erro completo:", error);
       alert(`Erro: ${error.message}`);
     }
-    // Aqui você enviariamos o objeto para o banco
   };
 
   const validarRegistroProfissional = (valor) => {
@@ -159,19 +156,20 @@ function LoginProfissional() {
   const handleEstadoChange = (e) => {
     const estado = e.target.value;
     setEstadoSelecionado(estado);
+    setForm({
+      ...form,
+      estado: estado,
+      cidade: '' // Limpa a cidade quando muda o estado
+    });
   };
 
   const handleCidadeChange = (e) => {
     const cidade = e.target.value;
     setCidadeSelecionada(cidade);
-  };
-
-  const handleFaixaEtariaChange = (e) => {
-    const { name, checked } = e.target;
-    setFaixasEtarias((prevState) => ({
-      ...prevState,
-      [name]: checked,
-    }));
+    setForm({
+      ...form,
+      cidade: cidade
+    });
   };
 
   const handleSenhaChange = (e) => {
@@ -194,7 +192,7 @@ function LoginProfissional() {
                 type="text"
                 name="nome"
                 value={nome}
-                onChange={(e) => setNome(e.target.value)}
+                onChange={handleChange}                
                 required
               />
             </label>
@@ -205,7 +203,7 @@ function LoginProfissional() {
               <select
                 name="genero"
                 value={genero}
-                onChange={(e) => setGenero(e.target.value)}
+                onChange={handleChange}
                 required
               >
                 <option value="Prefiro não informar">
@@ -224,7 +222,7 @@ function LoginProfissional() {
                 name="idade"
                 value={idade}
                 min="1"
-                onChange={(e) => setIdade(e.target.value)}
+                onChange={handleChange}
                 required
               />
               {erroIdade && <p style={{ color: "red" }}>{erroIdade}</p>}
@@ -278,8 +276,8 @@ function LoginProfissional() {
               <input
                 type="text"
                 name="registroProfissional"
-                value={matricula_profissional}
-                onChange={(e) => setRegistroProfissional(e.target.value)}
+                value={form.matricula_profissional}
+                onChange={handleChange}
                 required
               />
             </label>
@@ -293,8 +291,8 @@ function LoginProfissional() {
               <input
                 type="text"
                 name="especialidade"
-                value={especialidade}
-                onChange={(e) => setEspecialidade(e.target.value)}
+                value={form.especialidade}
+                onChange={handleChange}
                 required
               />
               {erroEspecialidade && (
@@ -307,61 +305,21 @@ function LoginProfissional() {
             <label>
               Faixa etária de pacientes: <br />
             </label>
-            <div>
-              <div className="container-age-range-option">
-                <div className="age-range-option">
-                  <label htmlFor="crianca">Crianças</label>
+            <fieldset>
+              {opcoesFaixaEtaria.map((faixa) => (
+                <label key={faixa} style={{ display: 'block' }}>
                   <input
                     type="checkbox"
-                    name="crianca"
-                    id="crianca"
-                    checked={faixas_etarias.crianca}
-                    onChange={handleFaixaEtariaChange}
+                    name="faixas_etarias"
+                    value={form.faixa}
+                    checked={form.faixas_etarias.includes(faixa)}
+                    onChange={handleChange}
                   />
-                </div>
-                <div className="age-range-option">
-                  <label htmlFor="adolescente">Adolescentes</label>
-                  <input
-                    type="checkbox"
-                    name="adolescente"
-                    id="adolescente"
-                    checked={faixas_etarias.adolescente}
-                    onChange={handleFaixaEtariaChange}
-                  />
-                </div>
-
-                <div className="age-range-option">
-                  <label htmlFor="jovens-adultos">Jovens adultos</label>
-                  <input
-                    type="checkbox"
-                    name="jovemAdulto"
-                    id="jovens-adultos"
-                    checked={faixas_etarias.jovemAdulto}
-                    onChange={handleFaixaEtariaChange}
-                  />
-                </div>
-                <div className="age-range-option">
-                  <label htmlFor="adultos">Adultos</label>
-                  <input
-                    type="checkbox"
-                    name="adulto"
-                    id="adultos"
-                    checked={faixas_etarias.adulto}
-                    onChange={handleFaixaEtariaChange}
-                  />
-                </div>
-                <div className="age-range-option">
-                  <label htmlFor="idosos">Idosos</label>
-                  <input
-                    type="checkbox"
-                    name="idoso"
-                    id="idosos"
-                    checked={faixas_etarias.idoso}
-                    onChange={handleFaixaEtariaChange}
-                  />
-                </div>
-              </div>
-            </div>
+                  {faixa}
+                </label>
+              ))}
+            </fieldset>
+            
           </div>
           <div className="input-field">
             <label>
@@ -369,8 +327,8 @@ function LoginProfissional() {
               <input
                 type="number"
                 name="valorAtendimento"
-                value={valor}
-                onChange={(e) => setValorAtendimento(e.target.value)}
+                value={form.valor}
+                onChange={handleChange}
                 required
               />
             </label>
@@ -378,17 +336,14 @@ function LoginProfissional() {
               <p style={{ color: "red" }}>{erroValorAtendimento}</p>
             )}
           </div>
-
           <div className="input-field">
             <label>
               Quantidade de atendimentos gratuitos: <br />
               <input
                 type="number"
                 name="quantidadeAtendimentosGratuitos"
-                value={quant_atend_gratis}
-                onChange={(e) =>
-                  setQuantidadeAtendimentosGratuitos(e.target.value)
-                }
+                value={form.quant_atend_gratis}
+                onChange={handleChange}
                 required
               />
             </label>
@@ -403,7 +358,8 @@ function LoginProfissional() {
               <input
                 type="file"
                 name="fotoPerfil"
-                onChange={(e) => setFotoPerfil(e.target.files[0])}
+                value={form.foto_perfil}
+                onChange={handleChange}
                 accept="image/*"
               />
             </label>
@@ -415,32 +371,32 @@ function LoginProfissional() {
               <input
                 type="email"
                 name="email"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
+                value={form.email}
+                onChange={handleChange}
                 required
               />
             </label>
           </div>
           <div className='input-field'>
               <label>
-                  senha: <br />
+                  Senha: <br />
                   <input 
                   type="password"
                   name="senha"
-                  value={senha}
-                  onChange={handleSenhaChange}
+                  value={form.senha}
+                  onChange={handleChange}
                   required 
                   />
               </label>
           </div>
           <div className='input-field'>
               <label>
-                  confirme sua senha: <br />
+                  Confirme sua senha: <br />
                   <input 
                   type="password"
                   name="senha"
                   value={confirmaSenha}
-                  onChange={handleConfirmaSenhaChange}
+                  onChange={handleChange}
                   required 
                   />
               </label>
