@@ -100,12 +100,16 @@ function LoginProfissional() {
       const responseUsuario = await fetch("http://localhost:3007/usuarios", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ email, senha, tipo: "PROFISSIONAL" }), // Adicionando tipo_usuario
+        body: JSON.stringify({ email, senha, tipo: "PROFISSIONAL" }),
       });
-  
-      if (!responseUsuario.ok) throw new Error("Erro ao criar usuário");
-  
-      const { id } = await responseUsuario.json(); // Pegando o ID do usuário criado
+    
+      if (!responseUsuario.ok) {
+        const errorData = await responseUsuario.json();
+        throw new Error(errorData.error || "Erro ao criar usuário");
+      }
+    
+      const usuarioCriado = await responseUsuario.json();
+      console.log("Usuário criado:", usuarioCriado);
   
       // Criar profissional vinculado ao usuário
       const responseProfissional = await fetch("http://localhost:3007/profissionais", {
@@ -121,19 +125,24 @@ function LoginProfissional() {
           cidade: cidadeSelecionada,
           estado: estadoSelecionado,
           genero,
-          idade,
-          valor,
-          usuarioId: id,
+          idade: parseInt(idade, 10),
+          valor: parseInt(valor, 10),
+          usuarioId: usuarioCriado.id,
         }),
       });
   
-      if (!responseProfissional.ok) throw new Error("Erro ao criar profissional");
-  
+      if (!responseProfissional.ok) {
+        const errorData = await responseProfissional.json();
+        throw new Error(errorData.error || "Erro ao criar profissional");
+      }
+    
+      const profissionalCriado = await responseProfissional.json();
+      console.log("Profissional criado:", profissionalCriado);
+    
       alert("Cadastro realizado com sucesso!");
-  
     } catch (error) {
-      console.error(error);
-      alert("Erro ao cadastrar. Tente novamente.");
+      console.error("Erro completo:", error);
+      alert(`Erro: ${error.message}`);
     }
     // Aqui você enviariamos o objeto para o banco
   };

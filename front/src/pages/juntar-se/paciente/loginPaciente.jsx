@@ -80,13 +80,13 @@ const handleMedicamentosChange = (e) => {
                     <h2 className='titulo-login'>Informações Pessoais</h2>
                     <div className='input-field'>
                         <label>
-                            nome: <br />
+                            Nome: <br />
                             <input type="name" name="nome" required />
                         </label>
                     </div>
                     <div className='input-field'>
                         <label>
-                            genêro: <br />
+                            Gênero: <br />
                             <select name="gênero">
                                 <option value="Prefiro não informar">Prefiro não informar</option>
                                 <option value="Masculino">Masculino</option>
@@ -96,7 +96,7 @@ const handleMedicamentosChange = (e) => {
                     </div>
                     <div className='input-field'>
                         <label>
-                            data de nascimento: <br />
+                            Data de nascimento: <br />
                             <input  
                                 type="date"
                                 name="dataNascimento"
@@ -106,7 +106,7 @@ const handleMedicamentosChange = (e) => {
                     </div>
                     <div className='input-field'>
                         <label>
-                            e-mail para contato: <br />
+                            E-mail para contato: <br />
                             <input  
                                 type="email"
                                 name="emailContato"
