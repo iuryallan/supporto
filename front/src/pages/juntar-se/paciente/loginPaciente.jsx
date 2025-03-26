@@ -5,11 +5,10 @@ import { useNavigate } from 'react-router-dom';
 import { cadastrarUsuario } from '../../../services/usuarioService';
 
 function LoginPaciente () {
-const [erroSenha, setErroSenha] = useState("");
 
 const navigate = useNavigate();
 const [form, setForm] = useState({
-    email: '', senha: '', confirmaSenha: '',
+    email: '', senha: '', confirmarSenha: '',
     nome: '', genero: '', data_nasc: '', motivo_terapia: '',
     medicamentos: '', historico_familiar: '', principal_queixa: '',
     email_contato: ''
@@ -21,27 +20,14 @@ const handleChange = (e) =>
 const handleSubmit = async (e) => {
     e.preventDefault();
 
-    const { confirmaSenha, data_nasc, ...dados } = form;
+    const { confirmarSenha, data_nasc, ...dados } = form;
     const data_nasc_iso = new Date(data_nasc).toISOString();
 
-    if (erroSenha) {
-        alert("Por favor, corrija os erros antes de enviar o formulário.");
-        return;
-    }
-
-    if (form.senha !== form.confirmaSenha) {
-        setErroSenha("As senhas não coincidem.");
-        return;
-    }
-
-    setErroSenha("");
-    alert("Formulário enviado com sucesso!");
-
     try {
-        await cadastrarUsuario({ tipo: "PACIENTE", ...dados, senha: form.senha, data_nasc: data_nasc_iso });
+        await cadastrarUsuario({ tipo: "PACIENTE", ...dados, data_nasc: data_nasc_iso });
         alert("Usuário cadastrado com sucesso!");
         setForm({
-          email: '', senha: '', confirmaSenha: '',
+          email: '', senha: '', confirmarSenha: '',
           nome: '', genero: '', data_nasc: '', motivo_terapia: '',
           medicamentos: '', historico_familiar: '', principal_queixa: '',
           email_contato: ''
@@ -73,9 +59,9 @@ const handleSubmit = async (e) => {
                         <label>
                             Gênero: <br />
                             <select name="genero" value={form.genero} onChange={handleChange}>
-                                <option value="Prefiro não informar">Prefiro não informar</option>
-                                <option value="Masculino">Masculino</option>
-                                <option value="Feminino">Feminino</option>
+                                <option value="OUTRO">Prefiro não informar</option>
+                                <option value="MASCULINO">Masculino</option>
+                                <option value="FEMININO">Feminino</option>
                             </select>
                         </label>
                     </div>
@@ -183,14 +169,13 @@ const handleSubmit = async (e) => {
                             Confirme sua senha: <br />
                             <input 
                             type="password"
-                            name="confirmaSenha"
-                            value={form.confirmaSenha}
+                            name="confirmarSenha"
+                            value={form.confirmarSenha}
                             onChange={handleChange}
                             required 
                             />
                         </label>
                     </div>
-                    {erroSenha && <p style={{ color: "red" }}>{erroSenha}</p>}
                     <ButtonLogin type="submit" value="enviar informações"/>
                 </form>
             </div>
