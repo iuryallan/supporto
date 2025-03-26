@@ -1,8 +1,5 @@
 import './profissional.css'
-function profissional(){
-  const local = "xxxxxxx"
-  const nome = "xxxxxxx"
-  const especialidade = "xxxxxxx"
+function profissional({local,nome,especialidade}){
 
   return (
     <div className="container-profi">
