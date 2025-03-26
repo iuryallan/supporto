@@ -39,7 +39,7 @@ function LoginProfissional() {
 
   const navigate = useNavigate();
   const [form, setForm] = useState({
-    email: '', senha: '', confirmarSenha: '',
+    email: '', senha: '', confirmaSenha: '',
     nome: '', matricula_profissional: '', especialidade: '',
     foto_perfil: '', quant_atend_gratis: '', faixas_etarias: [],
     cidade: '', estado: '', genero: '', idade: '', valor: ''
@@ -95,6 +95,47 @@ function LoginProfissional() {
     }
   }, [estadoSelecionado]);
 
+  const validarRegistroProfissional = (valor) => {
+    const valorFormatado = valor.replace(/\D/g, "");
+    return (
+      valorFormatado.length === 7 ||
+      valorFormatado.length === 8 ||
+      valorFormatado.length === 5
+    );
+  };
+
+  const handleEstadoChange = (e) => {
+    const estadoSigla = e.target.value;
+    setEstadoSelecionado(estadoSigla);
+    setCidadeSelecionada(""); // Resetando cidade ao mudar estado
+
+    // Atualizando o form com o estado escolhido
+    setForm((prevForm) => ({
+      ...prevForm,
+      estado: estadoSigla,
+      cidade: "", // Resetando cidade no form também
+    }));
+  };
+
+  const handleCidadeChange = (e) => {
+    const cidadeNome = e.target.value;
+    setCidadeSelecionada(cidadeNome);
+
+    // Atualizando o form com a cidade escolhida
+    setForm((prevForm) => ({
+      ...prevForm,
+      cidade: cidadeNome,
+    }));
+  };
+
+  const handleSenhaChange = (e) => {
+    setSenha(e.target.value);
+  };
+
+  const handleConfirmaSenhaChange = (e) => {
+    setConfirmaSenha(e.target.value);
+  };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
 
@@ -122,6 +163,8 @@ function LoginProfissional() {
       );
       return;
     }
+    console.log("Registro Profissional:", form.registroProfissional, "Tamanho:", form.registroProfissional.length);
+
 
     setErroSenha("");
     setErroRegistroProfissional("");
@@ -132,7 +175,7 @@ function LoginProfissional() {
       await cadastrarUsuario({ tipo: "PROFISSIONAL", ...resto, faixas_etarias });
       alert("Usuário cadastrado com sucesso!");
       setForm({
-        email: '', senha: '', confirmarSenha: '',
+        email: '', senha: '', confirmaSenha: '',
         nome: '', matricula_profissional: '', especialidade: '',
         foto_perfil: '', quant_atend_gratis: '', faixas_etarias: [],
         cidade: '', estado: '', genero: '', idade: '', valor: ''
@@ -142,42 +185,6 @@ function LoginProfissional() {
       console.error("Erro completo:", error);
       alert(`Erro: ${error.message}`);
     }
-  };
-
-  const validarRegistroProfissional = (valor) => {
-    const valorFormatado = valor.replace(/\D/g, "");
-    return (
-      valorFormatado.length === 7 ||
-      valorFormatado.length === 8 ||
-      valorFormatado.length === 5
-    );
-  };
-
-  const handleEstadoChange = (e) => {
-    const estado = e.target.value;
-    setEstadoSelecionado(estado);
-    setForm({
-      ...form,
-      estado: estado,
-      cidade: '' // Limpa a cidade quando muda o estado
-    });
-  };
-
-  const handleCidadeChange = (e) => {
-    const cidade = e.target.value;
-    setCidadeSelecionada(cidade);
-    setForm({
-      ...form,
-      cidade: cidade
-    });
-  };
-
-  const handleSenhaChange = (e) => {
-    setSenha(e.target.value);
-  };
-
-  const handleConfirmaSenhaChange = (e) => {
-    setConfirmaSenha(e.target.value);
   };
 
   return (
@@ -191,7 +198,7 @@ function LoginProfissional() {
               <input
                 type="text"
                 name="nome"
-                value={nome}
+                value={form.nome}
                 onChange={handleChange}                
                 required
               />
@@ -202,7 +209,7 @@ function LoginProfissional() {
               Gênero: <br />
               <select
                 name="genero"
-                value={genero}
+                value={form.genero}
                 onChange={handleChange}
                 required
               >
@@ -220,7 +227,7 @@ function LoginProfissional() {
               <input
                 type="number"
                 name="idade"
-                value={idade}
+                value={form.idade}
                 min="1"
                 onChange={handleChange}
                 required
@@ -275,7 +282,7 @@ function LoginProfissional() {
               Registro Profissional (CRP, RQE, etc.): <br />
               <input
                 type="text"
-                name="registroProfissional"
+                name="matricula_profissional"
                 value={form.matricula_profissional}
                 onChange={handleChange}
                 required
@@ -311,9 +318,9 @@ function LoginProfissional() {
                   <input
                     type="checkbox"
                     name="faixas_etarias"
-                    value={form.faixa}
+                    value={faixa}
                     checked={form.faixas_etarias.includes(faixa)}
-                    onChange={handleChange}
+                    onChange={(e) => handleCheckboxChange(e, faixa)}
                   />
                   {faixa}
                 </label>
@@ -326,7 +333,8 @@ function LoginProfissional() {
               Valor do atendimento: <br />
               <input
                 type="number"
-                name="valorAtendimento"
+                name="valor"
+                step="0.01"
                 value={form.valor}
                 onChange={handleChange}
                 required
@@ -341,7 +349,7 @@ function LoginProfissional() {
               Quantidade de atendimentos gratuitos: <br />
               <input
                 type="number"
-                name="quantidadeAtendimentosGratuitos"
+                name="quant_atend_gratis"
                 value={form.quant_atend_gratis}
                 onChange={handleChange}
                 required
@@ -384,7 +392,7 @@ function LoginProfissional() {
                   type="password"
                   name="senha"
                   value={form.senha}
-                  onChange={handleChange}
+                  onChange={(e) => setForm({ ...form, senha: e.target.value })}
                   required 
                   />
               </label>
@@ -395,8 +403,8 @@ function LoginProfissional() {
                   <input 
                   type="password"
                   name="senha"
-                  value={confirmaSenha}
-                  onChange={handleChange}
+                  value={form.confirmaSenha}
+                  onChange={(e) => setForm({ ...form, confirmaSenha: e.target.value })}
                   required 
                   />
               </label>
