@@ -97,6 +97,7 @@ function LoginProfissional() {
 
   const validarRegistroProfissional = (valor) => {
     const valorFormatado = valor.replace(/\D/g, "");
+    console.log(valorFormatado);
     return (
       valorFormatado.length === 7 ||
       valorFormatado.length === 8 ||
@@ -402,7 +403,7 @@ function LoginProfissional() {
                   Confirme sua senha: <br />
                   <input 
                   type="password"
-                  name="senha"
+                  name="confirmaSenha"
                   value={form.confirmaSenha}
                   onChange={(e) => setForm({ ...form, confirmaSenha: e.target.value })}
                   required 
