@@ -18,7 +18,7 @@ app.use(cors());  // Permite que todas as origens acessem a API (caso queira res
 app.use(express.json());
 
 // Rotas da API
-app.use('/usuarios', usuarioRoutes);
+app.use('/api/usuarios', usuarioRoutes);
 app.use('/profissionais', profissionalRoutes);
 app.use('/pacientes', pacienteRoutes);
 app.use('/evClinicas', evClinicaRoutes);

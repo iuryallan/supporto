@@ -5,7 +5,7 @@ const authMiddleware = require('../middleware/authMiddleware');
 const { getUserProfile } = require("../controllers/usuarioController");
 const { cadastrarUsuario } = require("../controllers/usuarioController");
 
-router.post("/", usuario.criarUsuario);
+//router.post("/", usuario.criarUsuario);
 router.get("/", usuario.buscarUsuarios);
 router.get("/:id", usuario.buscarUsuarioPorId);
 router.put("/:id", usuario.atualizarUsuario);
