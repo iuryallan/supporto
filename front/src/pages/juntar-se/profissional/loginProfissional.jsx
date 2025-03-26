@@ -5,44 +5,33 @@ import { useNavigate } from 'react-router-dom';
 import { cadastrarUsuario } from '../../../services/usuarioService';
 
 function LoginProfissional() {
-  const [senha, setSenha] = useState("");
-  const [confirmaSenha, setConfirmaSenha] = useState("");
   const [erroSenha, setErroSenha] = useState("");
   const [erroIdade, setErroIdade] = useState("");
   const [erroValorAtendimento, setErroValorAtendimento] = useState("");
-  const [erroAtendimentosGratuitos, setErroAtendimentosGratuitos] =
-    useState("");
+  const [erroAtendimentosGratuitos, setErroAtendimentosGratuitos] = useState("");
   const [erroEspecialidade, setErroEspecialidade] = useState("");
-  const [matricula_profissional, setRegistroProfissional] = useState("");
   const [erroRegistroProfissional, setErroRegistroProfissional] = useState("");
-
   const [estados, setEstados] = useState([]);
   const [cidades, setCidades] = useState([]);
   const [estadoSelecionado, setEstadoSelecionado] = useState("");
-  const [nome, setNome] = useState("");
-  const [genero, setGenero] = useState("");
-  const [idade, setIdade] = useState("");
   const [cidadeSelecionada, setCidadeSelecionada] = useState("");
-  const [especialidade, setEspecialidade] = useState("");
-  const [faixas_etarias, setFaixasEtarias] = useState({
-    crianca: false,
-    adolescente: false,
-    jovemAdulto: false,
-    adulto: false,
-    idoso: false,
-  });
-  const [valor, setValorAtendimento] = useState("");
-  const [quant_atend_gratis, setQuantidadeAtendimentosGratuitos] =
-    useState("");
-  const [foto_perfil, setFotoPerfil] = useState(null);
-  const [email, setEmail] = useState("");
 
   const navigate = useNavigate();
   const [form, setForm] = useState({
-    email: '', senha: '', confirmaSenha: '',
-    nome: '', matricula_profissional: '', especialidade: '',
-    foto_perfil: '', quant_atend_gratis: '', faixas_etarias: [],
-    cidade: '', estado: '', genero: '', idade: '', valor: ''
+    email: '',
+    senha: '',
+    confirmaSenha: '',
+    nome: '',
+    matricula_profissional: '',
+    especialidade: '',
+    foto_perfil: null,
+    quant_atend_gratis: '',
+    faixas_etarias: [],
+    cidade: '',
+    estado: '',
+    genero: '',
+    idade: '',
+    valor: ''
   });
 
   const opcoesFaixaEtaria = ["CRIANÇA", "ADOLESCENTE", "JOVEM", "ADULTO", "IDOSO"];
@@ -69,184 +58,138 @@ function LoginProfissional() {
     fetch("https://servicodados.ibge.gov.br/api/v1/localidades/estados")
       .then((response) => response.json())
       .then((data) => {
-        const estadosOrdenados = data.sort((a, b) =>
-          a.nome.localeCompare(b.nome)
-        );
+        const estadosOrdenados = data.sort((a, b) => a.nome.localeCompare(b.nome));
         setEstados(estadosOrdenados);
-      })
-      .catch((error) => console.error("Erro ao carregar estados:", error));
+      });
   }, []);
 
   useEffect(() => {
     if (estadoSelecionado) {
-      fetch(
-        `https://servicodados.ibge.gov.br/api/v1/localidades/estados/${estadoSelecionado}/municipios`
-      )
+      fetch(`https://servicodados.ibge.gov.br/api/v1/localidades/estados/${estadoSelecionado}/municipios`)
         .then((response) => response.json())
         .then((data) => {
-          const cidadesOrdenadas = data.sort((a, b) =>
-            a.nome.localeCompare(b.nome)
-          );
+          const cidadesOrdenadas = data.sort((a, b) => a.nome.localeCompare(b.nome));
           setCidades(cidadesOrdenadas);
-        })
-        .catch((error) => console.error("Erro ao carregar cidades:", error));
+        });
     } else {
       setCidades([]);
     }
   }, [estadoSelecionado]);
 
   const validarRegistroProfissional = (valor) => {
-    const valorFormatado = valor.replace(/\D/g, "");
-    console.log(valorFormatado);
-    return (
-      valorFormatado.length === 7 ||
-      valorFormatado.length === 8 ||
-      valorFormatado.length === 5
-    );
+    const valorFormatado = valor.trim();
+    return [5, 7, 8].includes(valorFormatado.length);
   };
 
   const handleEstadoChange = (e) => {
     const estadoSigla = e.target.value;
     setEstadoSelecionado(estadoSigla);
-    setCidadeSelecionada(""); // Resetando cidade ao mudar estado
-
-    // Atualizando o form com o estado escolhido
-    setForm((prevForm) => ({
-      ...prevForm,
-      estado: estadoSigla,
-      cidade: "", // Resetando cidade no form também
-    }));
-  };
-
-  const handleCidadeChange = (e) => {
-    const cidadeNome = e.target.value;
-    setCidadeSelecionada(cidadeNome);
-
-    // Atualizando o form com a cidade escolhida
-    setForm((prevForm) => ({
-      ...prevForm,
-      cidade: cidadeNome,
-    }));
-  };
-
-  const handleSenhaChange = (e) => {
-    setSenha(e.target.value);
-  };
-
-  const handleConfirmaSenhaChange = (e) => {
-    setConfirmaSenha(e.target.value);
+    setForm(prev => ({ ...prev, estado: estadoSigla, cidade: '' }));
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    const { confirmarSenha, faixas_etarias, ...resto } = form;
-
-    if (
-      erroSenha ||
-      erroIdade ||
-      erroValorAtendimento ||
-      erroAtendimentosGratuitos ||
-      erroEspecialidade
-    ) {
-      alert("Por favor, corrija os erros antes de enviar o formulário.");
+    // Validações
+    if (form.senha !== form.confirmaSenha) {
+      setErroSenha("As senhas não coincidem");
+      return;
+    }
+    
+    if (!validarRegistroProfissional(form.matricula_profissional)) {
+      setErroRegistroProfissional("Registro profissional inválido");
       return;
     }
 
-    if (senha !== confirmaSenha) {
-      setErroSenha("As senhas não coincidem.");
+    if (form.idade < 18) {
+      setErroIdade("Idade mínima 18 anos");
       return;
     }
 
-    if (!validarRegistroProfissional(matricula_profissional)) {
-      setErroRegistroProfissional(
-        "Caso você possua CRP, ele precisa ter 7 ou 8 dígitos. Se você possui RQE, ele deve ter exatamente 5 dígitos."
-      );
-      return;
+    const formData = new FormData();
+    for (const key in form) {
+      if (key === 'faixas_etarias') {
+        formData.append(key, JSON.stringify(form[key]));
+      } else if (key === 'foto_perfil' && form[key]) {
+        formData.append(key, form[key]);
+      } else {
+        formData.append(key, form[key]);
+      }
     }
-    console.log("Registro Profissional:", form.registroProfissional, "Tamanho:", form.registroProfissional.length);
-
-
-    setErroSenha("");
-    setErroRegistroProfissional("");
-    alert("Formulário enviado com sucesso!");
+    formData.append('tipo', 'PROFISSIONAL');
 
     try {
-      // Criar usuário primeiro, já definindo o tipo como "profissional"
-      await cadastrarUsuario({ tipo: "PROFISSIONAL", ...resto, faixas_etarias });
-      alert("Usuário cadastrado com sucesso!");
-      setForm({
-        email: '', senha: '', confirmaSenha: '',
-        nome: '', matricula_profissional: '', especialidade: '',
-        foto_perfil: '', quant_atend_gratis: '', faixas_etarias: [],
-        cidade: '', estado: '', genero: '', idade: '', valor: ''
-      });
-      navigate('/Login');
+      await cadastrarUsuario(formData);
+      alert('Cadastro realizado com sucesso!');
+      navigate('/login');
     } catch (error) {
-      console.error("Erro completo:", error);
-      alert(`Erro: ${error.message}`);
+      console.error('Erro no cadastro:', error);
+      alert('Erro ao cadastrar. Verifique os dados e tente novamente.');
     }
   };
 
   return (
     <div className="login">
       <div className="container-login">
-        <form onSubmit={handleSubmit}>
+        <form onSubmit={handleSubmit} encType="multipart/form-data">
           <h2 className="titulo-login">Informações Pessoais</h2>
+
           <div className="input-field">
             <label>
-              Nome: <br />
+              Nome Completo:
               <input
                 type="text"
                 name="nome"
                 value={form.nome}
-                onChange={handleChange}                
+                onChange={handleChange}
                 required
               />
             </label>
           </div>
+
           <div className="input-field">
             <label>
-              Gênero: <br />
+              Gênero:
               <select
                 name="genero"
                 value={form.genero}
                 onChange={handleChange}
                 required
               >
-                <option value="Prefiro não informar">
-                  Prefiro não informar
-                </option>
+                <option value="">Selecione</option>
                 <option value="Masculino">Masculino</option>
                 <option value="Feminino">Feminino</option>
+                <option value="Outro">Outro</option>
               </select>
             </label>
           </div>
+
           <div className="input-field">
             <label>
-              Idade: <br />
+              Idade:
               <input
                 type="number"
                 name="idade"
                 value={form.idade}
-                min="1"
                 onChange={handleChange}
+                min="18"
                 required
               />
-              {erroIdade && <p style={{ color: "red" }}>{erroIdade}</p>}
+              {erroIdade && <span className="erro">{erroIdade}</span>}
             </label>
           </div>
+
           <div className="input-field">
             <label>
-              Estado: <br />
+              Estado:
               <select
                 name="estado"
                 value={estadoSelecionado}
                 onChange={handleEstadoChange}
                 required
               >
-                <option value="">Selecione um estado</option>
-                {estados.map((estado) => (
+                <option value="">Selecione</option>
+                {estados.map(estado => (
                   <option key={estado.id} value={estado.sigla}>
                     {estado.nome}
                   </option>
@@ -255,19 +198,18 @@ function LoginProfissional() {
             </label>
           </div>
 
-          {/* Renderiza a cidade somente se um estado for selecionado */}
           {estadoSelecionado && (
             <div className="input-field">
               <label>
-                Cidade: <br />
+                Cidade:
                 <select
                   name="cidade"
-                  value={cidadeSelecionada}
-                  onChange={handleCidadeChange}
+                  value={form.cidade}
+                  onChange={(e) => setForm({ ...form, cidade: e.target.value })}
                   required
                 >
-                  <option value="">Selecione uma cidade</option>
-                  {cidades.map((cidade) => (
+                  <option value="">Selecione</option>
+                  {cidades.map(cidade => (
                     <option key={cidade.id} value={cidade.nome}>
                       {cidade.nome}
                     </option>
@@ -278,9 +220,10 @@ function LoginProfissional() {
           )}
 
           <h3 className="titulo-login">Informações Profissionais</h3>
+
           <div className="input-field">
             <label>
-              Registro Profissional (CRP, RQE, etc.): <br />
+              Registro Profissional (CRP/RQE):
               <input
                 type="text"
                 name="matricula_profissional"
@@ -288,14 +231,13 @@ function LoginProfissional() {
                 onChange={handleChange}
                 required
               />
+              {erroRegistroProfissional && <span className="erro">{erroRegistroProfissional}</span>}
             </label>
-            {erroRegistroProfissional && (
-              <p style={{ color: "red" }}>{erroRegistroProfissional}</p>
-            )}
           </div>
+
           <div className="input-field">
             <label>
-              Especialidade: <br />
+              Especialidade:
               <input
                 type="text"
                 name="especialidade"
@@ -303,23 +245,16 @@ function LoginProfissional() {
                 onChange={handleChange}
                 required
               />
-              {erroEspecialidade && (
-                <p style={{ color: "red" }}>{erroEspecialidade}</p>
-              )}
             </label>
           </div>
 
           <div className="input-field">
-            <label>
-              Faixa etária de pacientes: <br />
-            </label>
             <fieldset>
-              {opcoesFaixaEtaria.map((faixa) => (
-                <label key={faixa} style={{ display: 'block' }}>
+              <legend>Faixas Etárias Atendidas:</legend>
+              {opcoesFaixaEtaria.map(faixa => (
+                <label key={faixa}>
                   <input
                     type="checkbox"
-                    name="faixas_etarias"
-                    value={faixa}
                     checked={form.faixas_etarias.includes(faixa)}
                     onChange={(e) => handleCheckboxChange(e, faixa)}
                   />
@@ -327,56 +262,53 @@ function LoginProfissional() {
                 </label>
               ))}
             </fieldset>
-            
           </div>
+
           <div className="input-field">
             <label>
-              Valor do atendimento: <br />
+              Valor do Atendimento (R$):
               <input
                 type="number"
                 name="valor"
-                step="0.01"
                 value={form.valor}
                 onChange={handleChange}
+                step="0.01"
                 required
               />
             </label>
-            {erroValorAtendimento && (
-              <p style={{ color: "red" }}>{erroValorAtendimento}</p>
-            )}
           </div>
+
           <div className="input-field">
             <label>
-              Quantidade de atendimentos gratuitos: <br />
+              Atendimentos Gratuitos Oferecidos:
               <input
                 type="number"
                 name="quant_atend_gratis"
                 value={form.quant_atend_gratis}
                 onChange={handleChange}
+                min="0"
                 required
               />
             </label>
-            {erroAtendimentosGratuitos && (
-              <p style={{ color: "red" }}>{erroAtendimentosGratuitos}</p>
-            )}
           </div>
 
           <div className="input-field">
             <label>
-              Foto de perfil: <br />
+              Foto de Perfil:
               <input
                 type="file"
-                name="fotoPerfil"
-                value={form.foto_perfil}
-                onChange={handleChange}
+                name="foto_perfil"
+                onChange={(e) => setForm({ ...form, foto_perfil: e.target.files[0] })}
                 accept="image/*"
               />
             </label>
           </div>
-          <h4 className='titulo-login'>Informações de Login</h4>
+
+          <h4 className="titulo-login">Dados de Acesso</h4>
+
           <div className="input-field">
             <label>
-              E-mail: <br />
+              E-mail:
               <input
                 type="email"
                 name="email"
@@ -386,33 +318,35 @@ function LoginProfissional() {
               />
             </label>
           </div>
-          <div className='input-field'>
-              <label>
-                  Senha: <br />
-                  <input 
-                  type="password"
-                  name="senha"
-                  value={form.senha}
-                  onChange={(e) => setForm({ ...form, senha: e.target.value })}
-                  required 
-                  />
-              </label>
-          </div>
-          <div className='input-field'>
-              <label>
-                  Confirme sua senha: <br />
-                  <input 
-                  type="password"
-                  name="confirmaSenha"
-                  value={form.confirmaSenha}
-                  onChange={(e) => setForm({ ...form, confirmaSenha: e.target.value })}
-                  required 
-                  />
-              </label>
-          </div>
-          {erroSenha && <p style={{ color: "red" }}>{erroSenha}</p>}
 
-          <ButtonLogin type="submit" value="fazer cadastro" />
+          <div className="input-field">
+            <label>
+              Senha:
+              <input
+                type="password"
+                name="senha"
+                value={form.senha}
+                onChange={handleChange}
+                required
+              />
+            </label>
+          </div>
+
+          <div className="input-field">
+            <label>
+              Confirmar Senha:
+              <input
+                type="password"
+                name="confirmaSenha"
+                value={form.confirmaSenha}
+                onChange={handleChange}
+                required
+              />
+              {erroSenha && <span className="erro">{erroSenha}</span>}
+            </label>
+          </div>
+
+          <ButtonLogin type="submit" value="Finalizar Cadastro" />
         </form>
       </div>
     </div>
