@@ -1,0 +1,22 @@
+.container-resultadoPesquisa{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  padding-bottom: 0.3rem;
+  border-bottom: 1px solid var(--roxoForte);
+}
+
+.container-resultadoPesquisa > div{
+  display: flex;
+  align-items: center;
+}
+
+.container-resultadoPesquisa p{
+  font-size: 1.4rem;
+  font-weight: 600;
+}
+
+.container-resultadoPesquisa > div ion-icon{
+  font-size: 1.6rem;
+}

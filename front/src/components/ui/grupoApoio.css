@@ -1,6 +1,7 @@
 .linkForGroup a > ion-icon{
   color: var(--verdeForte) ;
   font-size: 2.5rem;
+  margin-left: 1rem;
 }
 
 .container-grupos{

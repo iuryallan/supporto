@@ -1,0 +1,52 @@
+[
+  {
+    "nome": "Ana Souza",
+    "relatorio": "Paciente apresenta sintomas leves de ansiedade e está em acompanhamento psicológico.",
+    "tipoAtendimento": "psicológico"
+  },
+  {
+    "nome": "Carlos Pereira",
+    "relatorio": "Diagnóstico de depressão moderada, realizando acompanhamento psiquiátrico e medicamentoso.",
+    "tipoAtendimento": "psiquiátrico"
+  },
+  {
+    "nome": "Fernanda Lima",
+    "relatorio": "Paciente relatou dificuldades de sono e episódios de estresse. Indicado acompanhamento psicológico.",
+    "tipoAtendimento": "psicológico"
+  },
+  {
+    "nome": "João Mendes",
+    "relatorio": "Histórico de transtorno bipolar. Faz uso de medicação prescrita pelo psiquiatra.",
+    "tipoAtendimento": "psiquiátrico"
+  },
+  {
+    "nome": "Mariana Oliveira",
+    "relatorio": "Relata crises de pânico frequentes. Encaminhada para avaliação psiquiátrica.",
+    "tipoAtendimento": "psiquiátrico"
+  },
+  {
+    "nome": "Roberto Silva",
+    "relatorio": "Dificuldade de concentração e sintomas de TDAH. Em acompanhamento psicológico e neuropsiquiátrico.",
+    "tipoAtendimento": "psicológico"
+  },
+  {
+    "nome": "Luciana Costa",
+    "relatorio": "Paciente em tratamento de transtorno de ansiedade generalizada, sem uso de medicação.",
+    "tipoAtendimento": "psicológico"
+  },
+  {
+    "nome": "Gustavo Nunes",
+    "relatorio": "Paciente com episódios de depressão leve. Recomendado suporte psicológico contínuo.",
+    "tipoAtendimento": "psicológico"
+  },
+  {
+    "nome": "Tatiane Ribeiro",
+    "relatorio": "Histórico de esquizofrenia. Faz uso de antipsicóticos e acompanhamento psiquiátrico mensal.",
+    "tipoAtendimento": "psiquiátrico"
+  },
+  {
+    "nome": "Eduardo Martins",
+    "relatorio": "Paciente com histórico de TOC. Acompanhamento psicológico e avaliação psiquiátrica em andamento.",
+    "tipoAtendimento": "psicológico"
+  }
+]

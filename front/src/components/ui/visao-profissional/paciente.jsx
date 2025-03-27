@@ -3,7 +3,7 @@ import "./paciente.css"
 function paciente(props){
   return(
     <div className="meusPacientes">
-      <p>{props.nome}</p>
+      <div>{props.nome}</div>
       <p className="relatorio">{props.relatorio}</p>
     </div>
   )

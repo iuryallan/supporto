@@ -1,9 +1,24 @@
 import React, { useState } from "react";
 import "./search.css";
 import Profissional from "../ui/visao-paciente/profissional";
+import ProfissionalEncontrado from "../ui/profissionalEncontrado";
 
 function Search() {
   const [mostrarFiltros, setMostrarFiltros] = useState(false);
+  const [termoPesquisa, setTermoPesquisa] = useState("");
+
+  const profissionaisMock = [
+    { nome: "Diego", local: "Tapuio" },
+    { nome: "Maria", local: "Fortaleza" },
+    { nome: "João", local: "Recife" },
+  ];
+
+  const profissionaisFiltrados =
+    termoPesquisa.trim() !== ""
+      ? profissionaisMock.filter((profissional) =>
+          profissional.nome.toLowerCase().includes(termoPesquisa.toLowerCase())
+        )
+      : [];
 
   const alternarFiltros = () => {
     setMostrarFiltros(!mostrarFiltros);
@@ -23,6 +38,8 @@ function Search() {
         id="campo-pesquisa"
         className="input-pesquisa"
         autoComplete="off"
+        value={termoPesquisa}
+        onChange={(e) => setTermoPesquisa(e.target.value)}
       />
       <label htmlFor="campo-pesquisa">
         <ion-icon name="search" className="icone-lupa"></ion-icon>
@@ -54,12 +71,21 @@ function Search() {
             <option value="adulto">Adulto</option>
             <option value="idoso">Idoso</option>
           </select>
-          <div className="lista-profissionais">
-            <Profissional />
-          </div>
+          <button className="button">Aplicar</button>
         </div>
       )}
-      <div className="resultadosPesquisa">ola mundo</div>
+
+      {termoPesquisa.trim() !== "" && profissionaisFiltrados.length > 0 && (
+        <div className="resultadosPesquisa">
+          {profissionaisFiltrados.map((profissional, index) => (
+            <ProfissionalEncontrado
+              key={index}
+              profissional={profissional.nome}
+              local={profissional.local}
+            />
+          ))}
+        </div>
+      )}
     </div>
   );
 }
