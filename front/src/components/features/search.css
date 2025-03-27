@@ -54,6 +54,12 @@
   margin-top: 1rem;
   width: 60%;
 }
+
+.resultadosPesquisa{
+  position: absolute;
+  top: 36px;
+  background-color: red;
+}
 @media (max-width: 1270px) {
   .painel-filtros select{
     width: 100%;

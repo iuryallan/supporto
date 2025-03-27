@@ -59,6 +59,7 @@ function Search() {
           </div>
         </div>
       )}
+      <div className="resultadosPesquisa">ola mundo</div>
     </div>
   );
 }
