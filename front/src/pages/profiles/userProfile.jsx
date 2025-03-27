@@ -9,12 +9,12 @@ function Profile() {
   const [isEditing, setIsEditing] = useState(false);
   const [formData, setFormData] = useState({
     nome: "",
-    especialidade: "Fulano Martins",
+    especialidade: "Joabe Martins",
     cidade: "Fortaleza",
     quant_atend_gratis: 2,
     valor: 100.00,
     faixas_etarias: ["Crianças", "Adolescentes"],
-    matricula_profissional: "XXXXXXX",
+    matricula_profissional: "12345",
   });
 
   const [errors, setErrors] = useState({});

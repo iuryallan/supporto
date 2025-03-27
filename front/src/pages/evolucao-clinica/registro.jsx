@@ -1,5 +1,6 @@
 import "./registro.css";
 import ButtonLogin from "../../components/ui/ButtonsLogin";
+import { Link, useLocation } from "react-router-dom";
 
 function RegistrarEvolucao() {
   return (
@@ -25,7 +26,9 @@ function RegistrarEvolucao() {
               <input type="date" name="data" required />
             </label>
           </div>
-          <ButtonLogin type="submit" value="salvar" />
+          <Link to="/HomeProfissional">
+            <ButtonLogin type="submit" value="salvar" />
+          </Link>
         </form>
       </div>
     </div>

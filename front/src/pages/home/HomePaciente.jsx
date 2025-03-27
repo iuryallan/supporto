@@ -74,8 +74,8 @@ function Home(props) {
         <div className="resumoAgend">
           <h3>Resumos de Agendamentos</h3>
           <div className="container-reagendar">
-            <ReagendarTerapia horario="11:00" profissional="Iury" />
-            <ProxAgendamento horario="11:00" profissional="Iury" />
+            <ReagendarTerapia horario="11:00" profissional="Profissional X" />
+            <ProxAgendamento horario="11:00" profissional="Profissional X" />
           </div>
         </div>
       </div>
