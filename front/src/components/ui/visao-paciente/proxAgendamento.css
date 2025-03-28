@@ -6,7 +6,7 @@
   gap: 1.4rem;
   padding: 1rem 3rem;
   border-radius: 4rem;
-  width: 36rem;
+  max-width: 36rem;
 }
 
 .secaocom h4{

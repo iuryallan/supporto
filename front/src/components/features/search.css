@@ -86,4 +86,11 @@
   .lista-profissionais{
     width: 100%;
   }
+
+  .icone-lupa, .icone-filtros{
+    color: white;
+  }
+  .input-pesquisa{
+    margin-right: 2rem;
+  }
 }
