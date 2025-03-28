@@ -1,21 +1,23 @@
 import './profissional.css'
 import { MapPin, User } from 'lucide-react';
 
-function profissional({local,nome,especialidade}){
+function profissional({cidade,nome,especialidade,estado}){
 
   return (
-    <div className="container-profi">
-      <div className="info-profissional">
-        <User size={24} />
-        <div>
-          <p className="name-user">{nome}</p>
-          <p className="especialidade-user">{especialidade}</p>
+    <div className="professional-data-container">
+      <div className="view-professional">
+        <div className='user-icon'>
+          <i class='bx bx-user' ></i>
+        </div>
+        <div className='nameAndSpecialty'>
+          <p className="user-name">{nome}</p>
+          <p className="user-specialty">{especialidade}</p>
         </div>
       </div>
 
-      <div className='localizacao'>
-        <p>{local}</p>
-        <MapPin size={24} />
+      <div className='professional-location'>
+        <p>{cidade} - {estado}</p>
+        <i class='bx bxs-map' ></i>
       </div>
     </div>
   )

@@ -4,11 +4,9 @@ import "./home.css";
 import Header from "../../components/layout/header/HeaderPaciente";
 import ReagendarTerapia from "../../components/ui/visao-paciente/reagendarTerapia";
 import ProxAgendamento from "../../components/ui/visao-paciente/proxAgendamento";
-import Paciente from "../../components/ui/visao-profissional/paciente";
 
-function Home(props) {
+function Home() {
   const [profissionais, setProfissionais] = useState([]);
-  const [profissionaisAleatorios, setProfissionaisAleatorios] = useState([]);
 
   // Função para buscar os dados dos profissionais
   const buscarDadosProfissionais = async () => {
@@ -18,37 +16,16 @@ function Home(props) {
         throw new Error('Falha ao carregar os profissionais');
       }
       const dados = await resposta.json();
-      setProfissionais(dados); // Atualiza o estado com os dados dos profissionais
+      setProfissionais(dados); // Atualiza o estado com todos os profissionais
     } catch (erro) {
       console.error(erro);
     }
   };
 
-  // Função para selecionar aleatoriamente 5 profissionais
-  const selecionarProfissionaisAleatorios = (dados) => {
-    const selecionados = [];
-    const indiceAleatorio = (tamanho) => Math.floor(Math.random() * tamanho);
-
-    while (selecionados.length < 5 && selecionados.length < dados.length) {
-      const indice = indiceAleatorio(dados.length);
-      if (!selecionados.includes(dados[indice])) {
-        selecionados.push(dados[indice]);
-      }
-    }
-    setProfissionaisAleatorios(selecionados); // Atualiza o estado com os 5 profissionais aleatórios
-  };
-
-  // Chama as funções quando o componente for montado
+  // Chama a função quando o componente for montado
   useEffect(() => {
     buscarDadosProfissionais();
   }, []);
-
-  // Quando os dados dos profissionais são carregados, seleciona aleatoriamente os 5 profissionais
-  useEffect(() => {
-    if (profissionais.length > 0) {
-      selecionarProfissionaisAleatorios(profissionais);
-    }
-  }, [profissionais]); // Dependência no 'profissionais' para rodar quando ele for atualizado
 
   return (
     <div className="home">
@@ -56,11 +33,12 @@ function Home(props) {
       <div className="container-home">
         <div className="profissionaisLista">
           <h3>Conheça Profissionais</h3>
-          {profissionaisAleatorios.length > 0 ? (
-            profissionaisAleatorios.map((profissional) => (
+          {profissionais.length > 0 ? (
+            profissionais.map((profissional) => (
               <Profissional
                 key={profissional.id}
-                local={profissional.local}
+                cidade={profissional.cidade}
+                estado={profissional.estado}
                 nome={profissional.nome}
                 especialidade={profissional.especialidade}
               />
@@ -68,7 +46,6 @@ function Home(props) {
           ) : (
             <p>Carregando profissionais...</p>
           )}
-          <button className="outrosProf">Ver outros profissionais</button>
         </div>
 
         <div className="resumoAgend">

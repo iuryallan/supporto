@@ -1,34 +1,38 @@
-.container-profi{
+.professional-data-container{
   display: flex;
   justify-content: space-between;
-  width: 100%;
-  padding: 0.8rem;
-}
-ion-icon.location{
-  color: #DBF4A7;
-  font-size: 3rem;
+  margin-bottom: 1rem;
 }
 
-.localizacao{
-display: flex;
-}
-
-.localizacao p{
- font-size: 2rem; 
-}
-
-.info-profissional{
+.view-professional{
   display: flex;
 }
 
-.info-profissional .name-user{
-  font-size: 1.8rem;
+.user-icon{
+  font-size: 2rem;
+  color: var(--verdeForte);
 }
 
-.info-profissional .especialidade-user{
-  font-size: 1.2rem;
+.nameAndSpecialty{
+  display: flex;
+  flex-direction: column;
 }
 
-.info-profissional ion-icon{
-  font-size: 4rem;
+.user-name{
+  font-size: 1.5rem;
+  font-weight: 600;
+}
+
+.professional-location{
+  display: flex;
+  font-size: 1rem;
+}
+
+.professional-location > p{
+  font-size: 1.3rem;
+}
+.professional-location i{
+  color: var(--verdeForte);
+  font-size: 1.5rem;
+  margin-left: 1rem;
 }

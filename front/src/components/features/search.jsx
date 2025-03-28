@@ -42,12 +42,12 @@ function Search() {
         value={termoPesquisa}
         onChange={(e) => setTermoPesquisa(e.target.value)}
       />
-      <label htmlFor="campo-pesquisa">
-        <SearchIcon className="icone-lupa" size={24} />
+      <label htmlFor="campo-pesquisa" className="icone-lupa">
+         <i class='bx bx-search-alt-2' ></i>
       </label>
 
       <div className="icone-filtros" onClick={alternarFiltros}>
-        <Settings2 size={24} />
+        <i class='bx bx-filter' ></i>
       </div>
 
       {mostrarFiltros && (

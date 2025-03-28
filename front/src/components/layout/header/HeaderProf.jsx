@@ -29,25 +29,25 @@ function Header() {
       </div>
 
       <div className="menu-hamburguer" onClick={toggleMenu}>
-        <Menu size={24} />
+      <i class='bx bx-menu' ></i>
       </div>
 
       <div className={`column2 ${isMenuOpen ? 'open' : ''}`}>
         <Link to="/HomeProfissional" className={location.pathname === "/HomeProfissional" ? "ativo" : ""}>
           <div>
-            <Home size={24} />
+          <i class='bx bxs-home'></i>
           </div>
         </Link>
 
         <Link to="/AgendamentoProfissional" className={location.pathname === "/AgendamentoProfissional" ? "ativo" : ""}>
           <div>
-            <Calendar size={24} />
+          <i class='bx bx-calendar-star' ></i>
           </div>
         </Link>
 
         <Link to="/User" className={location.pathname === "/User" ? "ativo" : ""}>
           <div>
-            <User size={24} />
+          <i class='bx bx-user' ></i>
           </div>
         </Link>
       </div>
