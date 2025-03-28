@@ -9,7 +9,7 @@ function Profile() {
       <div className="page-container">
         <div className="container-profile">
           <div className="name-specialist">
-            <h2>Fulano Martins</h2>
+            <h2>Maria Lima</h2>
           </div>
           <div className="information">
             <Link to="/Avaliacao">

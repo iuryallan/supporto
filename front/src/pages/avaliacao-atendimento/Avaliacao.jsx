@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { useNavigate } from 'react-router-dom';
+import { Link, useLocation } from "react-router-dom";
 import "./avaliacao.css";
 import Estrela from "./components/estrela";
 
@@ -28,9 +29,11 @@ const Avaliacao = () => {
             value={review}
             onChange={(e) => setReview(e.target.value)}
             />
-        <button onClick className="submit-btn">
-        Enviar avaliação
-        </button>
+        <Link to="/Home">
+          <button onClick className="submit-btn">
+            Enviar avaliação
+          </button>
+        </Link>
         <button onClick={handleClose} className="submit-btn">
           Sair
         </button>

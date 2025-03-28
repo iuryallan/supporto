@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import Calendar from 'react-calendar';
 import './calendar.css';
 import TimePicker from './Time';
+import { Link, useLocation } from "react-router-dom";
 
 function ReactCalendar() {
   const horarios = {
@@ -79,7 +80,9 @@ function ReactCalendar() {
         </div>
       )}
       <div>
-        <button className='agend-button'>Agendar</button>
+      <Link to="/Home">
+        <button className='agend-button'>Agendar</button>  
+      </Link>
       </div>
     </div>
   );

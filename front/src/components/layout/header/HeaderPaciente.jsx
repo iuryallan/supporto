@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Link, useLocation } from "react-router-dom";
 import Search from '../../features/search';
 import './header.css';
+import { Menu, Home, Users, Calendar, User } from 'lucide-react';
 
 function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -30,31 +31,31 @@ function Header() {
       </div>
 
       <div className="menu-hamburguer" onClick={toggleMenu}>
-        <ion-icon name="menu-sharp"></ion-icon>
+        <Menu size={24} />
       </div>
 
       <div className={`column2 ${isMenuOpen ? 'open' : ''}`}>
         <Link to="/Home" className={location.pathname === "/Home" ? "ativo" : ""}>
           <div>
-            <ion-icon name="home-outline"></ion-icon>
+            <Home size={24} />
           </div>
         </Link>
 
         <Link to="/GrupoApoio" className={location.pathname === "/GrupoApoio" ? "ativo" : ""}>
           <div>
-            <ion-icon name="people-outline"></ion-icon>
+            <Users size={24} />
           </div>
         </Link>
 
         <Link to="/Agendamento" className={location.pathname === "/Agendamento" ? "ativo" : ""}>
           <div>
-            <ion-icon name="calendar"></ion-icon>
+            <Calendar size={24} />
           </div>
         </Link>
 
-        <Link to="/pacientProfile" className={location.pathname === "/User" ? "ativo" : ""}>
+        <Link to="/pacientProfile" className={location.pathname === "/pacientProfile" ? "ativo" : ""}>
           <div>
-            <ion-icon name="person-outline"></ion-icon>
+            <User size={24} />
           </div>
         </Link>
       </div>

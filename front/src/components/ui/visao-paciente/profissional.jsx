@@ -1,10 +1,12 @@
 import './profissional.css'
+import { MapPin, User } from 'lucide-react';
+
 function profissional({local,nome,especialidade}){
 
   return (
     <div className="container-profi">
       <div className="info-profissional">
-        <ion-icon name="person-circle-outline" className="user"></ion-icon>
+        <User size={24} />
         <div>
           <p className="name-user">{nome}</p>
           <p className="especialidade-user">{especialidade}</p>
@@ -13,7 +15,7 @@ function profissional({local,nome,especialidade}){
 
       <div className='localizacao'>
         <p>{local}</p>
-        <ion-icon name="location" className="location"></ion-icon>
+        <MapPin size={24} />
       </div>
     </div>
   )

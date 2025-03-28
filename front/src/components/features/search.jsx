@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import "./search.css";
+import { Search as SearchIcon, Settings2 } from 'lucide-react';
 import Profissional from "../ui/visao-paciente/profissional";
 import ProfissionalEncontrado from "../ui/profissionalEncontrado";
 
@@ -42,11 +43,11 @@ function Search() {
         onChange={(e) => setTermoPesquisa(e.target.value)}
       />
       <label htmlFor="campo-pesquisa">
-        <ion-icon name="search" className="icone-lupa"></ion-icon>
+        <SearchIcon className="icone-lupa" size={24} />
       </label>
 
       <div className="icone-filtros" onClick={alternarFiltros}>
-        <ion-icon name="options-outline"></ion-icon>
+        <Settings2 size={24} />
       </div>
 
       {mostrarFiltros && (
