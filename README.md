@@ -36,7 +36,7 @@ A plataforma oferece:
  
 ---
 
-###Funcionalidades Avançadas
+### Funcionalidades Avançadas
 - **Agenda e Agendamento**: Profissionais configuram horários disponíveis, e pacientes agendam sessões diretamente pela plataforma.
 - **Feedback e Avaliação**: Pacientes podem avaliar as sessões realizadas.
 
@@ -44,6 +44,7 @@ A plataforma oferece:
 
 ## Tecnologias Utilizadas 🛠️
 - **Frontend**: ReactJS, JavaScript, CSS.
+- **Backend**: NodeJS, Express, Prisma, PostgreeSQL
 - **Design Responsivo**: Layout adaptado para desktop e dispositivos móveis.
 
 ---
@@ -69,11 +70,11 @@ A plataforma oferece:
 ---
 
 ### Tarefas de cada colaborador 💪🏽
-  - A maior parte do projeto foi feita com interação conjunta da equipe, como a página inicial onde cada colaborador ficou com um componente. Em um momento para agilizarmos o processo, dividimos as funções para cada integrante, ficando basicamente assim:
+  - A maior parte do projeto foi feita com interação conjunta da equipe, como a página inicial onde cada colaborador ficou com um componente. Em um momento para agilizarmos o processo, dividimos as funções base para cada integrante, apesar de cada um também ajudar nas outras tarefas. A divisão ficou assim:
      
     - Cidrack: Ficou a frente na parte de construção do login.
-    - Diego: Deu ênfase na página home.
-    - Fabrício: Construiu o filtro e esse belo README.
-    - Guilherme: Focou nos perfis.
-    - Iury: Fez o design no Figma e o react calendar;
+    - Diego: Deu ênfase nas diversas funcionalidades da plataforma.
+    - Fabrício: Construção da API do Backend.
+    - Guilherme: Focou nos perfis de pacientes e profissionais.
+    - Iury: Construiu a identidade visual e o React Calendar;
 
