@@ -52,6 +52,12 @@ header {
   color: white;
 }
 
+.column2 a:link,
+.column2 a:visited,
+.column2 a:active {
+  text-decoration: none !important;
+}
+
 .column2 a div {
   height: 8rem;
   display: flex;
